@@ -7,8 +7,8 @@ class FullMovieButtons extends Component {
     }
     render(){
         return(
-            <div>
-                <button>close</button>
+            <div className='FullMovieButtons'>
+                <button className='btnClose'>close</button>
             </div>
         )
     }

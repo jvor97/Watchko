@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import FullMovie from './FullMovie';
-import MovieList from './MovieList';
+import FullMovie from '../FullMovie/FullMovie';
+import MovieList from '../MovieList/MovieList';
 
 class MovieDB extends Component {
 

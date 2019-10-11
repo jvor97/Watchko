@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import MovieDB from './containers/MovieDB';
+import MovieDB from './containers/MovieDB/MovieDB';
 
 function App() {
   return (

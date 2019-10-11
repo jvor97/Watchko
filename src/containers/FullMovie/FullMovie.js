@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import FullMovieButtons from '../components/FullMovieButtons';
+import FullMovieButtons from '../../components/FullMovieButtons/FullMovieButtons';
 
 class FullMovie extends Component {
 

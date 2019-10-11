@@ -1,11 +1,13 @@
 import React, {Component} from 'react';
 
+import './Movie.css';
+
 class Movie extends Component {
 
     render(){
         return(
-            <div>
-                <h4 className='title'>This is a title</h4>
+            <div className='Movie card'>
+                <h4 className='card-title'>This is a title</h4>
             </div>
         )
     }
