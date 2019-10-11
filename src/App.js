@@ -1,10 +1,11 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import MovieDB from './containers/MovieDB';
 
 function App() {
   return (
     <div className="App">
+      <MovieDB/>
     </div>
   );
 }
