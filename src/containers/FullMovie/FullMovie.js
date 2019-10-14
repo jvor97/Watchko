@@ -40,7 +40,7 @@ class FullMovie extends Component {
             console.log(genres);
 
            movie =(<div className='card bg-dark'>
-                <img className="card-img" src="https://upload.wikimedia.org/wikipedia/en/thumb/9/90/HeathJoker.png/220px-HeathJoker.png" alt="Card image"/>
+                <img className="card-img" src={'https://image.tmdb.org/t/p/w300/' + this.state.selectedMovie.poster_path}/>
                 <div className="card-img-overlay">
                 <h1 className='card-title'>{this.state.selectedMovie.title}</h1>
                 <h5>{genres}</h5>
