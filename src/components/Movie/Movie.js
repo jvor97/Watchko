@@ -12,7 +12,7 @@ class Movie extends Component {
               src="https://upload.wikimedia.org/wikipedia/en/thumb/9/90/HeathJoker.png/220px-HeathJoker.png"
               alt="Card image"
             />
-            <h5 className="card-title">Card title</h5>
+            <h5 className="card-title">{this.props.title}</h5>
 
           </div>
         );
