@@ -27,12 +27,16 @@ class MovieList extends Component {
     }).catch(error => {this.setState({error : error})})
      }
 
+     fullPosthandler = (id) =>{
+        this.props.history.push('/' + id);
+     }
+
     render(){
         let movies = <p>Something went wrong</p>;
         if (!this.state.error) {
             if (this.state.movies.results) {
                 movies = this.state.movies.results.map(movie => {return (
-                    <Movie title={movie.title} img={movie.poster_path}></Movie>
+                    <Movie title={movie.title} img={movie.poster_path} key={movie.id} clicked={() => this.fullPosthandler(movie.id)}></Movie>
                 )})
             }
         }
@@ -44,7 +48,7 @@ class MovieList extends Component {
             <div>
                 
                 {movies}
-                 <Route path={this.props.match.url + '/:id'} component={FullMovie}></Route>
+                 <Route path='/:id' component={FullMovie}></Route>
             </div>
         )
     }

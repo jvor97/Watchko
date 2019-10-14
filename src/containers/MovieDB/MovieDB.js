@@ -7,7 +7,7 @@ class MovieDB extends Component {
     render(){
         return(
             <div>
-                <Route path='/' exact component={MovieList}></Route>
+                <Route path='/' component={MovieList}></Route>
             </div>
         )
     }
