@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import FullMovie from '../FullMovie/FullMovie';
+import {Route} from 'react-router-dom';
 import MovieList from '../MovieList/MovieList';
 
 class MovieDB extends Component {
@@ -7,8 +7,7 @@ class MovieDB extends Component {
     render(){
         return(
             <div>
-                <MovieList/>
-                <FullMovie/>
+                <Route path='/' exact component={MovieList}></Route>
             </div>
         )
     }
