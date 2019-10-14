@@ -3,6 +3,7 @@ import {Route} from 'react-router-dom';
 import axios from 'axios';
 import Movie from '../../components/Movie/Movie';
 import FullMovie from '../FullMovie/FullMovie';
+import './MovieList.css';
 
 class MovieList extends Component {
 
@@ -46,8 +47,9 @@ class MovieList extends Component {
         return(
            
             <div>
-                
+                <div className='movies'>
                 {movies}
+                </div>
                  <Route path='/:id' component={FullMovie}></Route>
             </div>
         )
