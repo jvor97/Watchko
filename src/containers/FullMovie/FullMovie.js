@@ -38,6 +38,10 @@ class FullMovie extends Component {
     }
   }
 
+  deleteHandler = () => {
+    this.props.history.push('/');
+  }
+
   render() {
     let movie = <p>Please selest a movie</p>;
     if (this.props.match.params.id) {
@@ -73,7 +77,7 @@ class FullMovie extends Component {
     return (
       <div className='FullMovie'>
         {movie}
-        <FullMovieButtons />
+        <FullMovieButtons clicked={this.deleteHandler}/>
       </div>
     );
   }

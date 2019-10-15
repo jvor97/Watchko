@@ -7,7 +7,7 @@ class FullMovieButtons extends Component {
     }
     render(){
         return(
-            <div className='FullMovieButtons'>
+            <div className='FullMovieButtons' onClick={this.props.clicked}>
                 <button className='btnClose'>close</button>
             </div>
         )
