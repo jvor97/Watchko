@@ -5,26 +5,16 @@ import {connect} from 'react-redux';
 import Movie from "../../components/Movie/Movie";
 import FullMovie from "../FullMovie/FullMovie";
 import "./MovieList.css";
+import * as actionCreators from '../../store/actions/actions';
 
 class MovieList extends Component {
   state = {
-    movies: [],
-    error: "",
     displayHalfPage: false
   };
 
-  componentDidMount() {
+ componentDidMount() {
     console.log(this.props);
-    axios
-      .get(
-        "https://api.themoviedb.org/3/movie/popular?api_key=65777f92529c3462f958232f137b357f&language=en-US&page=1&fbclid=IwAR3WdGpp9ZHMyGn4Vyni4MFF0hpc-Kfvyyj9PLnyueheoQ0o3YIPcmSL5Dkhttps://jsonplaceholder.typicode.com/posts"
-      )
-      .then(response => {
-        this.setState({ movies: response.data });
-      })
-      .catch(error => {
-        this.setState({ error: error });
-      });
+  this.props.loadMovies();
   }
 
   fullPostHandler = id => {
@@ -40,9 +30,10 @@ class MovieList extends Component {
       movieListClasses.push('halfPage');
     }
     let movies = <p>Something went wrong</p>;
-    if (!this.state.error) {
-      if (this.state.movies.results) {
-        movies = this.state.movies.results.map(movie => {
+    // if (!this.props.error) {
+      console.log(this.props.movies);
+      if (this.props.movies) {
+        movies = this.props.movies.map(movie => {
           return (
             <Movie
               title={movie.title}
@@ -53,9 +44,8 @@ class MovieList extends Component {
           );
         });
       }
-    }
+    
 
-    console.log(this.state.movies);
     return (
       <div >
         <div className={movieListClasses.join(' ')}>{movies}</div>
@@ -65,16 +55,19 @@ class MovieList extends Component {
   }
 }
 
-mapStateToProps = state => {
+const mapStateToProps = state => {
   return {
-    
-  }
-}
+    movies: state.api.movies,
+    error: state.api.error,
+    halfPage: state.api.displayHalfPage
+  };
+};
 
-mapDispatchToProps = state => {
-  return {
 
-  }
-}
+// mapDispatchToProps = dispatch => {
+//   return {
+//     onMount : () => dispatch({type: actionType.LOADMOVIES})
+//   } 
+// }
 
-export default connect(mapStateToProps,mapDispatchToProps)(MovieList);
+export default connect(mapStateToProps,actionCreators)(MovieList);

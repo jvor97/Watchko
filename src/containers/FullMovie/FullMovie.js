@@ -84,16 +84,18 @@ class FullMovie extends Component {
   }
 }
 
-mapStateToProps = state => {
-  return {
+// mapStateToProps = state => {
+//   return {
     
-  }
-}
+//   }
+// }
 
-mapDispatchToProps = state => {
-  return {
+// mapDispatchToProps = state => {
+//   return {
 
-  }
-}
+//   }
+// }
 
-export default connect(mapStateToProps,mapDispatchToProps)(FullMovie);
+// export default connect(mapStateToProps,mapDispatchToProps)(FullMovie);
+
+export default FullMovie;

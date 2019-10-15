@@ -2,16 +2,19 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import {createStore, combineReducers} from 'redux';
+import {createStore,applyMiddleware, combineReducers} from 'redux';
 import {Provider} from 'react-redux';
+import thunk from 'redux-thunk';
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ApiReducer from './store/reducers/APIdata';
+import OtherReducer from './store/reducers/other';
 
 const reducer = combineReducers({
-    Api: ApiReducer
+    api: ApiReducer,
+    other: null,
 })
-const store = createStore{reducer};
+let store = createStore(reducer, applyMiddleware(thunk));
 
 ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
 
