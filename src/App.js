@@ -7,7 +7,6 @@ function App() {
   return (
     <BrowserRouter>
     <div className="App">
-      <button type="button" className="btn btn-primary">Primary</button>
       <MovieDB/>
     </div>
     </BrowserRouter>
