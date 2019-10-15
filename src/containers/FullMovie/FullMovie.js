@@ -3,6 +3,8 @@ import React, { Component } from "react";
 import FullMovieButtons from "../../components/FullMovieButtons/FullMovieButtons";
 import axios from "axios";
 
+import './FullMovie.css';
+
 class FullMovie extends Component {
   state = {
     selectedMovie: null,
@@ -69,7 +71,7 @@ class FullMovie extends Component {
     }
 
     return (
-      <div>
+      <div className='FullMovie'>
         {movie}
         <FullMovieButtons />
       </div>
