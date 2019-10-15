@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import FullMovieButtons from "../../components/FullMovieButtons/FullMovieButtons";
 import axios from "axios";
+import {connect} from 'react-redux';
 
 import './FullMovie.css';
 
@@ -83,4 +84,16 @@ class FullMovie extends Component {
   }
 }
 
-export default FullMovie;
+mapStateToProps = state => {
+  return {
+    
+  }
+}
+
+mapDispatchToProps = state => {
+  return {
+
+  }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(FullMovie);

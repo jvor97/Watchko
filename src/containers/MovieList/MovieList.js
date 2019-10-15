@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Route } from "react-router-dom";
 import axios from "axios";
+import {connect} from 'react-redux';
 import Movie from "../../components/Movie/Movie";
 import FullMovie from "../FullMovie/FullMovie";
 import "./MovieList.css";
@@ -64,4 +65,16 @@ class MovieList extends Component {
   }
 }
 
-export default MovieList;
+mapStateToProps = state => {
+  return {
+    
+  }
+}
+
+mapDispatchToProps = state => {
+  return {
+
+  }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(MovieList);
