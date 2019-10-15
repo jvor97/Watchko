@@ -2,7 +2,7 @@
 
 let initialState = {
     movies: [],
-    error: "",
+    selectedMovie: null,
 }
 
 const reducer = (state=initialState,action) => {
