@@ -29,16 +29,17 @@ export const loadFullMovie = (id) =>{
                     id +
                     "?api_key=65777f92529c3462f958232f137b357f&language=en-US&page=1&fbclid=IwAR3WdGpp9ZHMyGn4Vyni4MFF0hpc-Kfvyyj9PLnyueheoQ0o3YIPcmSL5Dk&language=en-US"
                 ).then(response => {
-            dispatch(loadMovie(response.data));
+            dispatch(loadMovie(response.data,id));
           })
     }
 }
 
-export const loadMovie = (selectedMovie) => {
+export const loadMovie = (selectedMovie,id) => {
     console.log(selectedMovie);
     return{
         type: 'LOAD_FULLMOVIE',
-        selectedMovie: selectedMovie
+        selectedMovie: selectedMovie,
+        previousID: id
     }
 }
 

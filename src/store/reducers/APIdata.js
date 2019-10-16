@@ -2,7 +2,8 @@
 
 let initialState = {
   movies: [],
-  selectedMovie: null
+  selectedMovie: null,
+  previousID: null
 };
 
 const reducer = (state = initialState, action) => {
@@ -17,7 +18,8 @@ const reducer = (state = initialState, action) => {
       console.log(action.selectedMovie);
       return {
         ...state,
-        selectedMovie: action.selectedMovie
+        selectedMovie: action.selectedMovie,
+        previousID: action.previousID
       };
   }
   return state;

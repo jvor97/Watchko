@@ -14,13 +14,20 @@ class FullMovie extends Component {
   };
 
   componentDidMount() {
+    if (this.props.match.params.id) {
+          if (this.props.match.params.id != this.props.previousID) {
     this.props.loadFullMovie(this.props.match.params.id);
-    console.log(this.props.match.params.id);
+    }
   }
+}
 
   componentDidUpdate() {
+    if (this.props.match.params.id) {
+      if (this.props.match.params.id != this.props.previousID) {
     this.props.loadFullMovie(this.props.match.params.id);
+      }
   }
+}
 
   // loadMovieDataHandler() {
   //   if (this.props.match.params.id) {
@@ -77,7 +84,6 @@ class FullMovie extends Component {
       );
     }
 
-
     return (
       <div className='FullMovie'>
         {movie}
@@ -89,7 +95,8 @@ class FullMovie extends Component {
 
 const mapStateToProps = state => {
   return {
-    fullMovie: state.api.selectedMovie
+    fullMovie: state.api.selectedMovie,
+    previousID: state.api.previousID
   }
 }
 
