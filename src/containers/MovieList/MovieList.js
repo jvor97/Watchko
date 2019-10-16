@@ -18,17 +18,10 @@ class MovieList extends Component {
   }
 
   fullPostHandler = id => {
-    this.props.history.push("/" + id);
-    this.setState({
-      displayHalfPage: true
-    })
+    this.props.history.push("/movies/" + id);
   };
 
   render() {
-    let movieListClasses = ['movies'];
-    if (this.state.displayHalfPage) {
-      movieListClasses.push('halfPage');
-    }
     let movies = <p>Something went wrong</p>;
     // if (!this.props.error) {
       console.log(this.props.movies);
@@ -48,8 +41,7 @@ class MovieList extends Component {
 
     return (
       <div >
-        <div className={movieListClasses.join(' ')}>{movies}</div>
-        <Route path="/:id" component={FullMovie}></Route>
+        <div className='movies'>{movies}</div>
       </div>
     );
   }

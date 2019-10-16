@@ -21,13 +21,13 @@ class FullMovie extends Component {
   }
 }
 
-  componentDidUpdate() {
-    if (this.props.match.params.id) {
-      if (this.props.match.params.id != this.props.previousID) {
-    this.props.loadFullMovie(this.props.match.params.id);
-      }
-  }
-}
+//   componentDidUpdate() {
+//     if (this.props.match.params.id) {
+//       if (this.props.match.params.id != this.props.previousID) {
+//     this.props.loadFullMovie(this.props.match.params.id);
+//       }
+//   }
+// }
 
   // loadMovieDataHandler() {
   //   if (this.props.match.params.id) {
@@ -67,8 +67,8 @@ class FullMovie extends Component {
           <img
             className="card-img"
             src={
-              "https://image.tmdb.org/t/p/w300/" +
-              this.props.fullMovie.poster_path
+              "https://image.tmdb.org/t/p/original/" +
+              this.props.fullMovie.backdrop_path
             }
           />
           <div className="card-img-overlay">

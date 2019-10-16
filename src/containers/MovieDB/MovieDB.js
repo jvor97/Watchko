@@ -13,7 +13,8 @@ class MovieDB extends Component {
         return(
             <div className='MovieDB'>
                 <Route path='/' exact component={WelcomePage}></Route>
-                <Route path='/' component={MovieList}></Route>
+                <Route path='/' exact component={MovieList}></Route>
+                <Route path="/movies/:id" exact component={FullMovie}></Route>
             </div>
         )
     }
