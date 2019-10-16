@@ -22,11 +22,11 @@ export const loadMoviesData = (movies) => {
     }
 }
 
-export const loadFullMovie = () =>{
+export const loadFullMovie = (id) =>{
     return(dispatch) => {
         return axios.get(
                   "https://api.themoviedb.org/3/movie/" +
-                    this.props.match.params.id +
+                    id +
                     "?api_key=65777f92529c3462f958232f137b357f&language=en-US&page=1&fbclid=IwAR3WdGpp9ZHMyGn4Vyni4MFF0hpc-Kfvyyj9PLnyueheoQ0o3YIPcmSL5Dk&language=en-US"
                 ).then(response => {
             dispatch(loadMovie(response.data));
@@ -35,7 +35,7 @@ export const loadFullMovie = () =>{
 }
 
 export const loadMovie = (selectedMovie) => {
-    console.log(movies);
+    console.log(selectedMovie);
     return{
         type: 'LOAD_FULLMOVIE',
         selectedMovie: selectedMovie
