@@ -2,10 +2,10 @@ import React, { Component } from "react";
 
 import FullMovieButtons from "../../components/FullMovieButtons/FullMovieButtons";
 import axios from "axios";
-import {connect} from 'react-redux';
+import { connect } from "react-redux";
 
-import './FullMovie.css';
-import * as actionCreators from '../../store/actions/actions';
+import "./FullMovie.css";
+import * as actionCreators from "../../store/actions/actions";
 
 class FullMovie extends Component {
   state = {
@@ -15,19 +15,19 @@ class FullMovie extends Component {
 
   componentDidMount() {
     if (this.props.match.params.id) {
-          if (this.props.match.params.id != this.props.previousID) {
-    this.props.loadFullMovie(this.props.match.params.id);
+      if (this.props.match.params.id != this.props.previousID) {
+        this.props.loadFullMovie(this.props.match.params.id);
+      }
     }
   }
-}
 
-//   componentDidUpdate() {
-//     if (this.props.match.params.id) {
-//       if (this.props.match.params.id != this.props.previousID) {
-//     this.props.loadFullMovie(this.props.match.params.id);
-//       }
-//   }
-// }
+  //   componentDidUpdate() {
+  //     if (this.props.match.params.id) {
+  //       if (this.props.match.params.id != this.props.previousID) {
+  //     this.props.loadFullMovie(this.props.match.params.id);
+  //       }
+  //   }
+  // }
 
   // loadMovieDataHandler() {
   //   if (this.props.match.params.id) {
@@ -49,8 +49,8 @@ class FullMovie extends Component {
   // }
 
   deleteHandler = () => {
-    this.props.history.push('/');
-  }
+    this.props.history.push("/");
+  };
 
   render() {
     let movie = <p>Please selest a movie</p>;
@@ -58,36 +58,43 @@ class FullMovie extends Component {
       movie = <p>Loading please wait...</p>;
     }
     if (this.props.fullMovie) {
-      let genres = this.props.fullMovie.genres.map(
-        genre => genre.name + " | "
-      );
+      let genres = this.props.fullMovie.genres.map(genre => genre.name + " | ");
 
       movie = (
-        <div className="card bg-dark">
-          <img
-            className="card-img"
-            src={
-              "https://image.tmdb.org/t/p/original/" +
-              this.props.fullMovie.backdrop_path
-            }
-          />
-          <div className="card-img-overlay">
-            <h1 className="card-title">{this.props.fullMovie.title}</h1>
-            <h5>{genres}</h5>
-            <div className="card-text">
-              <p>{this.props.fullMovie.release_date}</p>
-              <p>{this.props.fullMovie.runtime + " min"}</p>
+        <div>
+          <div className="card bg-dark">
+            <img
+              className="poster"
+              src={
+                "https://image.tmdb.org/t/p/original/" +
+                this.props.fullMovie.poster_path
+              }
+            />
+            <img
+              className="bg-image"
+              src={
+                "https://image.tmdb.org/t/p/original/" +
+                this.props.fullMovie.backdrop_path
+              }
+            />
+            <div className="card-img-overlay" style={{paddingTop: '1.8rem'}}>
+              <h3 className="FM-title">{this.props.fullMovie.title}</h3>
+              <div className="basic-info-movie">
+              <h6>{genres}</h6>
+                <p>{this.props.fullMovie.release_date}</p>
+                <p>{this.props.fullMovie.runtime + " min"}</p>
+              </div>
+              <div className="card-text">{this.props.fullMovie.overview}</div>
             </div>
-            <div className="card-text">{this.props.fullMovie.overview}</div>
           </div>
         </div>
       );
     }
 
     return (
-      <div className='FullMovie'>
+      <div className="FullMovie">
         {movie}
-        <FullMovieButtons clicked={this.deleteHandler}/>
+        <FullMovieButtons clicked={this.deleteHandler} />
       </div>
     );
   }
@@ -97,8 +104,8 @@ const mapStateToProps = state => {
   return {
     fullMovie: state.api.selectedMovie,
     previousID: state.api.previousID
-  }
-}
+  };
+};
 
 // mapDispatchToProps = state => {
 //   return {
@@ -108,4 +115,7 @@ const mapStateToProps = state => {
 
 // export default connect(mapStateToProps,mapDispatchToProps)(FullMovie);
 
-export default connect(mapStateToProps, actionCreators)(FullMovie);
+export default connect(
+  mapStateToProps,
+  actionCreators
+)(FullMovie);

@@ -1,4 +1,41 @@
-.FullMovie{
-    width: 35%;
-    display: inline-block;
+/* .FullMovie{
+    height: 100vh;
 }
+
+.bg-image{
+   opacity: 0.2; 
+   height: 100vh;
+}
+
+.poster {
+    width: 30%;
+    height: 100vh;
+    opacity: 0.5;
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+} */
+
+.FullMovie{
+    background-color: rgb(71, 71, 71);
+    color: #c5c5c5;
+}
+
+.FM-title {
+    margin-bottom: 1.5rem;
+}
+
+.bg-image{
+    object-fit: cover; 
+    max-height: 100vh;
+    opacity: 0.1;
+}
+.poster{
+    display: none;
+}
+
+.basic-info-movie{
+    color: #6f6f6f;
+}
+

@@ -10,6 +10,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import ApiReducer from './store/reducers/APIdata';
 import OtherReducer from './store/reducers/other';
 
+
 const reducer = combineReducers({
     api: ApiReducer,
     other: null,
