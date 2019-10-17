@@ -48,7 +48,7 @@ class FullMovie extends Component {
   //   }
   // }
 
-  deleteHandler = () => {
+  removeHandler = () => {
     this.props.history.push("/");
   };
 
@@ -77,7 +77,7 @@ class FullMovie extends Component {
                 this.props.fullMovie.backdrop_path
               }
             />
-            <div className="card-img-overlay" style={{paddingTop: '1.8rem'}}>
+            <div className="card-img-overlay" style={{paddingTop: '2.2rem'}}>
               <h3 className="FM-title">{this.props.fullMovie.title}</h3>
               <div className="basic-info-movie">
               <h6>{genres}</h6>
@@ -94,7 +94,7 @@ class FullMovie extends Component {
     return (
       <div className="FullMovie">
         {movie}
-        <FullMovieButtons clicked={this.deleteHandler} />
+        <FullMovieButtons onRemove={this.removeHandler} />
       </div>
     );
   }
