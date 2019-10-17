@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
-import './WelcomePage.css';
+import './About.css';
 
-class WelcomePage extends Component {
+class About extends Component {
     render () {
         return(
-            <section className='WelcomePage'>
-                <div className='welcomeText'>
+            <section className='About'>
+                <div className='aboutText'>
                     'Looking for a movie to watch tonight ? You are on the right place !
                     Choose your movie, read the info and then just enjoy your unlimited 
                     movie ..'
@@ -15,4 +15,4 @@ class WelcomePage extends Component {
     }
 }
 
-export default WelcomePage;
+export default About;
