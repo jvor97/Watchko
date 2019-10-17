@@ -1,10 +1,17 @@
 .Movie{
     position: relative;
+    flex: 1 1 auto;
+    border: none !important;
+    border-radius: 0 !important;
+    background-color: black !important;
+}
+.Movie img{
+    transition: opacity 0.5s ease-out 0.3s;
 }
 
-.Movie:hover,
-.Movie:active{
-    opacity: 0.7;
+.Movie img:hover,
+.Movie img:active{
+    opacity: 0.2;
 }
 
 .Movie:hover .list-movie-title,
@@ -21,4 +28,5 @@
     transform: translate(-50%, -50%);
     font-size: 150%;
     opacity: 0;
+    transition: opacity 0.7s;
 }

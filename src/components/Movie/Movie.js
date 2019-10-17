@@ -6,9 +6,8 @@ class Movie extends Component {
 
     render(){
         return (
-          <div className="Movie card bg-dark card-body" onClick={this.props.clicked}>
+          <div className="Movie card" onClick={this.props.clicked}>
             <img
-              className="card-img"
               src={'https://image.tmdb.org/t/p/w200/' + this.props.img}
               alt="Card image"
             />
