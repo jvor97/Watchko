@@ -12,8 +12,8 @@ class MovieDB extends Component {
     render(){
         return(
             <div className='MovieDB'>
-                <Route path='/about' exact component={About}></Route>
                 <Route path='/' exact component={MovieList}></Route>
+                <Route path='/about' exact component={About}></Route>
                 <Route path="/movies/:id" exact component={FullMovie}></Route>
             </div>
         )

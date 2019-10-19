@@ -9,7 +9,6 @@ let initialState = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case "LOAD_MOVIES":
-      console.log(action.movies);
       return {
         ...state,
         movies: action.movies
@@ -24,5 +23,6 @@ const reducer = (state = initialState, action) => {
   }
   return state;
 };
+
 
 export default reducer;

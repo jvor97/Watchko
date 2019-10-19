@@ -103,7 +103,8 @@ class FullMovie extends Component {
 const mapStateToProps = state => {
   return {
     fullMovie: state.api.selectedMovie,
-    previousID: state.api.previousID
+    previousID: state.api.previousID,
+    displayAbout: state.displayEl.displayAbout
   };
 };
 

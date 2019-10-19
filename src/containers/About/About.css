@@ -1,15 +1,12 @@
-.About{
-    height: 50%;
-    width: 100%;
+ .About{
+    height: 20rem;
     background-color: #333333f0;
     color: #9d9d9de6;
 }
 
+
 .aboutText{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
+
     font-size: 200%;
-}
+} 
 

@@ -8,12 +8,12 @@ import thunk from 'redux-thunk';
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ApiReducer from './store/reducers/APIdata';
-import OtherReducer from './store/reducers/other';
+import DisplayReducer from './store/reducers/displayEl';
 
 
 const reducer = combineReducers({
     api: ApiReducer,
-    other: null,
+    displayEl: DisplayReducer,
 })
 let store = createStore(reducer, applyMiddleware(thunk));
 
