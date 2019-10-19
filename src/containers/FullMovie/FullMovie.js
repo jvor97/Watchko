@@ -63,13 +63,13 @@ class FullMovie extends Component {
       movie = (
         <div>
           <div className="card bg-dark">
-            <img
+            {/* <img
               className="poster"
               src={
                 "https://image.tmdb.org/t/p/original/" +
                 this.props.fullMovie.poster_path
               }
-            />
+            /> */}
             <img
               className="bg-image"
               src={
