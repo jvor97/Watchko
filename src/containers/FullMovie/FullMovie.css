@@ -23,10 +23,17 @@
 }
 
 .FM-title {
-    margin-bottom: 1.5rem;
     text-transform: uppercase;
     font-weight: 700;
     letter-spacing: .2rem;
+}
+
+.tagline{
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 90%;
+    color: #837e139e;
 }
 
 .bg-image{
@@ -36,6 +43,11 @@
 }
 .poster{
     display: none;
+}
+
+.main-info{
+    border-left: 2px solid #847f12;
+    padding-left: 1%;
 }
 
 /* .basic-info-movie{
@@ -98,6 +110,7 @@
         position: absolute;
         top: 25%;
         left: 10%;
+        text-align: initial;
     }
 
     .FM-title{
@@ -108,7 +121,6 @@
 
     .card-text{
         max-width: 60%; 
-        text-align: initial;
     }
 
     .release-date{

@@ -81,6 +81,7 @@ class FullMovie extends Component {
             <div className="card-img-overlay" style={{paddingTop: '2.2rem'}}>
               <div className="main-info">
               <h3 className="FM-title">{this.props.fullMovie.title}</h3>
+              <h5 className="tagline">{this.props.fullMovie.tagline}</h5>
               <div className="card-text">{this.props.fullMovie.overview}</div>
               </div>
               {/* <div className="basic-info-movie"> */}
