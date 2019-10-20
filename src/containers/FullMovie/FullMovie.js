@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 
 import "./FullMovie.css";
 import * as actionCreators from "../../store/actions/actions";
+import { get } from "https";
 
 class FullMovie extends Component {
   state = {
@@ -78,13 +79,21 @@ class FullMovie extends Component {
               }
             />
             <div className="card-img-overlay" style={{paddingTop: '2.2rem'}}>
+              <div className="main-info">
               <h3 className="FM-title">{this.props.fullMovie.title}</h3>
+              <div className="card-text">{this.props.fullMovie.overview}</div>
+              </div>
               <div className="basic-info-movie">
               <h6>{genres}</h6>
-                <p>{this.props.fullMovie.release_date}</p>
+              <div className="release-date">
+                <div className="date">
+              <div>{this.props.fullMovie.release_date.split('-')[2]}</div>
+              <div>{this.props.fullMovie.release_date.split('-')[1]}</div>
+              </div>
+                <div className="year">{this.props.fullMovie.release_date.split('-')[0]}</div>
+                </div>
                 <p>{this.props.fullMovie.runtime + " min"}</p>
               </div>
-              <div className="card-text">{this.props.fullMovie.overview}</div>
             </div>
           </div>
         </div>

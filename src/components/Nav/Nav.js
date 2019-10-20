@@ -8,24 +8,24 @@ class Nav extends Component {
   render() {
 
     return (
-      <nav class="Nav navbar navbar-expand-lg navbar-dark fixed-top">
-        <div class="container">
-        <Link class="navbar-brand" to="/">
-          <div class="logo">
+      <nav className="Nav navbar navbar-expand-lg navbar-dark fixed-top">
+        <div className="container">
+        <Link className="navbar-brand" to="/">
+          <div className="logo">
             <img src={logo} alt="watchko-logo" />
           </div>
         </Link>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+          <span className="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <Link class="nav-link" to="/">Movies<span class="sr-only">(current)</span></Link>
+        <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
+          <ul className="navbar-nav">
+            <li className="nav-item">
+              <Link className="nav-link" to="/">Movies<span className="sr-only">(current)</span></Link>
             </li>
-            <li class="nav-item">
-              <Link class="nav-link" to="/about">About</Link>
+            <li className="nav-item">
+              <Link className="nav-link" to="/about">About</Link>
             </li>
           </ul>
         </div>

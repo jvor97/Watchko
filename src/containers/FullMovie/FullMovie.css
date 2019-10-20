@@ -20,17 +20,19 @@
 .FullMovie{
     background-color: rgb(71, 71, 71);
     color: #c5c5c5;
+    padding-top: 1rem;
 }
 
 .FM-title {
     margin-bottom: 1.5rem;
     text-transform: uppercase;
     font-weight: 700;
+    letter-spacing: .2rem;
 }
 
 .bg-image{
     object-fit: cover; 
-    max-height: 100vh;
+    max-height: 40rem;
     opacity: 0.1;
 }
 .poster{
@@ -42,6 +44,12 @@
 }
 
 /* MEDIA QUERIES */
+
+@media(min-width:425px){
+    .bg-image{
+        max-height: calc(100vh - 1rem);
+    }
+}
 
 @media(min-width:768px){
     /* .poster{
@@ -56,9 +64,57 @@
 
     } */
 
-    .card-img-overlay{
+    /* .card-img-overlay{
         right: 40% !important;
+    } */
+
+    .main-info{
+        position: absolute;
+        top: 25%;
+        left: 10%;
+    }
+
+    .FM-title{
+        font-size: 300%;
+        text-align: initial;
+        }
+
+    .card-text{
+        max-width: 60%; 
+        text-align: initial;
+    }
+
+    .release-date{
+        position: absolute;
+    top: 10%;
+    right: 10%;
+    font-family: 'Raleway', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #847f12;
+    }
+
+    .date{
+        font-size: 250%;
+    }
+    .date div:first-child{
+        margin-bottom: -0.8rem;
+    }
+    .year{
+     padding-left: 1rem;
+    vertical-align: middle;
+    top: 50%;
+    left: 50%;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 110%;
     }
 
 }
 
+@media(min-width:1024px){
+    .card-text{
+        font-size: 150%;
+    }
+}
