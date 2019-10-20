@@ -83,8 +83,8 @@ class FullMovie extends Component {
               <h3 className="FM-title">{this.props.fullMovie.title}</h3>
               <div className="card-text">{this.props.fullMovie.overview}</div>
               </div>
-              <div className="basic-info-movie">
-              <h6>{genres}</h6>
+              {/* <div className="basic-info-movie"> */}
+              <div className="genres"><h6>{genres}</h6></div>
               <div className="release-date">
                 <div className="date">
               <div>{this.props.fullMovie.release_date.split('-')[2]}</div>
@@ -93,7 +93,7 @@ class FullMovie extends Component {
                 <div className="year">{this.props.fullMovie.release_date.split('-')[0]}</div>
                 </div>
                 <p>{this.props.fullMovie.runtime + " min"}</p>
-              </div>
+              {/* </div> */}
             </div>
           </div>
         </div>

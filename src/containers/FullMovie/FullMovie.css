@@ -19,7 +19,6 @@
 
 .FullMovie{
     background-color: rgb(71, 71, 71);
-    color: #c5c5c5;
     padding-top: 1rem;
 }
 
@@ -39,9 +38,36 @@
     display: none;
 }
 
-.basic-info-movie{
+/* .basic-info-movie{
     color: #6f6f6f;
+} */
+
+.genres{
+    position: absolute;
+    bottom: 1%;
+    right: -1%;
 }
+
+.genres h6{
+    writing-mode: vertical-rl;
+}
+
+/* .genres h6{
+    /* position: absolute;
+    bottom: 7%;
+    right: 0;
+    transform: rotate(-90deg); */
+    /* transform: rotate(-90deg) translateX(50%);
+    transform-origin: right bottom; */
+/* 
+    transform: rotate(-90deg) translateX(30%);
+    transform-origin: right bottom;
+    right: 2%;
+    position: fixed;
+    bottom: 50%;
+} */ 
+
+      
 
 /* MEDIA QUERIES */
 
@@ -77,6 +103,7 @@
     .FM-title{
         font-size: 300%;
         text-align: initial;
+        max-width: 70%;
         }
 
     .card-text{
@@ -87,7 +114,7 @@
     .release-date{
         position: absolute;
     top: 10%;
-    right: 10%;
+    right: 15%;
     font-family: 'Raleway', sans-serif;
     display: flex;
     align-items: center;
