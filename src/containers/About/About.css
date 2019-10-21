@@ -1,12 +1,28 @@
  .About{
-    height: 20rem;
-    background-color: #333333f0;
+    height: 100vh;
+    background-color: #0c0d0ef2;
     color: #9d9d9de6;
 }
 
 
 .aboutText{
-
-    font-size: 200%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2vw;
+    text-align: left;
+    border-left: 2px solid #847f12;
+    padding-left: 1rem;
 } 
 
+#side-text{
+    writing-mode: vertical-lr;
+    font-size: 3vw;
+    text-transform: uppercase;
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    color: #847f12;
+    font-weight: 600;
+}

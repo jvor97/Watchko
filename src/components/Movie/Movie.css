@@ -4,6 +4,7 @@
     border: none !important;
     border-radius: 0 !important;
     background-color: black !important;
+    max-width: 100%;
 }
 .Movie img{
     transition: opacity 0.5s ease-out 0.3s;

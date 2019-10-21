@@ -21,7 +21,12 @@ class MovieList extends Component {
     this.props.history.push("/movies/" + id);
   };
 
+
   render() {
+if (this.props.movies) {
+  console.log(this.props.movies[0]);
+}
+
     let movies = <p>Something went wrong</p>;
     // if (!this.props.error) {
       console.log(this.props.movies);
