@@ -26,14 +26,19 @@
     text-transform: uppercase;
     font-weight: 700;
     letter-spacing: .2rem;
+    font-size: 130%;
 }
 
 .tagline{
     margin-bottom: 1.5rem;
     text-transform: uppercase;
     font-weight: 600;
-    font-size: 90%;
+    font-size: 80%;
     color: #837e139e;
+}
+
+.card-text{
+    font-size: 90%;
 }
 
 .bg-image{
@@ -62,6 +67,10 @@
 
 .genres h6{
     writing-mode: vertical-rl;
+}
+
+.react-rater-star.is-active {
+    color: #847f12;
 }
 
 /* .genres h6{
@@ -108,25 +117,30 @@
 
     .main-info{
         position: absolute;
-        top: 25%;
+        top: 20%;
         left: 10%;
         text-align: initial;
     }
 
     .FM-title{
-        font-size: 300%;
+        font-size: 4.5vw;
         text-align: initial;
         max-width: 70%;
         }
 
+    .tagline{
+        font-size: 2vw;
+    }
+
     .card-text{
         max-width: 60%; 
+        font-size: 2.3vw;
     }
 
     .release-date{
         position: absolute;
-    top: 10%;
-    right: 15%;
+    top: 13%;
+    right: 10%;
     font-family: 'Raleway', sans-serif;
     display: flex;
     align-items: center;
@@ -135,7 +149,7 @@
     }
 
     .date{
-        font-size: 250%;
+        font-size: 5vw;
     }
     .date div:first-child{
         margin-bottom: -0.8rem;
@@ -147,13 +161,21 @@
     left: 50%;
     flex-direction: column;
     justify-content: center;
-    font-size: 110%;
+    font-size: 2vw;
+    }
+
+    .react-rater{
+        writing-mode: vertical-rl;
+        font-size: 2vw;
+        position: absolute;
+        top: 20%;
+        left: 7%;
     }
 
 }
 
 @media(min-width:1024px){
-    .card-text{
+    /* .card-text{
         font-size: 150%;
-    }
+    } */
 }
