@@ -22,7 +22,7 @@ background: linear-gradient(0deg, rgba(30,35,35,0.08400446360184699) 1%, rgba(18
 .nav-link:hover,
 .nav-link:active{
     color: #c5c5c5;
-    border-bottom: 2px solid #e5d80e;
+    border-bottom: 2px solid #847f12;
 }
 
 .logo img{

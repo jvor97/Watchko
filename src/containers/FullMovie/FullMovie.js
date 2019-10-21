@@ -110,6 +110,7 @@ class FullMovie extends Component {
                 <div className="card-text">{this.props.fullMovie.overview}</div>
               </div>
               {/* <div className="basic-info-movie"> */}
+              <Rater total={5} rating={this.getRating(this.props.fullMovie.vote_average)} interactive={false}/>
               <div className="genres">
                 <h6>{genres}</h6>
               </div>
@@ -122,8 +123,8 @@ class FullMovie extends Component {
                   {this.props.fullMovie.release_date.split("-")[0]}
                 </div>
               </div>
-              <p>{this.props.fullMovie.runtime + " min"}</p>
-              <Rater total={5} rating={this.getRating(this.props.fullMovie.vote_average)} interactive={false}/>
+              <div className="runtime">{this.props.fullMovie.runtime + " min"}</div>
+          
               {/* </div> */}
             </div>
           </div>

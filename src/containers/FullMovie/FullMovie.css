@@ -59,20 +59,43 @@
     color: #6f6f6f;
 } */
 
-.genres{
-    position: absolute;
-    bottom: 1%;
-    right: -1%;
+.genres h6{
+   font-size: 80%;
 }
 
-.genres h6{
-    writing-mode: vertical-rl;
+.release-date{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #847f12;
+    font-family: 'Raleway', sans-serif;
+    float: left;
+    padding-left: 25%;
+
+}
+
+.year{
+    padding-left: .5rem;
+}
+
+.runtime{
+    display: flex;
+    padding-left: 10%;
+    padding-top: 0.9rem;
+    font-size: 90%;
+}
+
+.react-rater{
+    padding: .5rem; 
 }
 
 .react-rater-star.is-active {
     color: #847f12;
 }
 
+.react-rater-star {
+    color: #7d7d7f;
+}
 /* .genres h6{
     /* position: absolute;
     bottom: 7%;
@@ -115,6 +138,10 @@
         right: 40% !important;
     } */
 
+    .FullMovie{
+        padding-top: 0;
+    }
+
     .main-info{
         position: absolute;
         top: 20%;
@@ -134,18 +161,27 @@
 
     .card-text{
         max-width: 60%; 
-        font-size: 2.3vw;
+        font-size: 1.7vw;
+    }
+
+    .genres{
+        position: absolute;
+        bottom: 1%;
+        right: -1%;
+    }
+    .genres h6{
+        writing-mode: vertical-rl;
     }
 
     .release-date{
         position: absolute;
     top: 13%;
     right: 10%;
-    font-family: 'Raleway', sans-serif;
+    /* font-family: 'Raleway', sans-serif;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #847f12;
+    color: #847f12; */
     }
 
     .date{
@@ -156,11 +192,11 @@
     }
     .year{
      padding-left: 1rem;
-    vertical-align: middle;
+    /* vertical-align: middle; */
     top: 50%;
     left: 50%;
-    flex-direction: column;
-    justify-content: center;
+    /* flex-direction: column;
+    justify-content: center; */
     font-size: 2vw;
     }
 
@@ -170,6 +206,15 @@
         position: absolute;
         top: 20%;
         left: 7%;
+        padding: 0; 
+    }
+
+    .runtime{
+        position: absolute;
+        top: 15%;
+        left: 7%;
+        font-size: 1.7vw;
+        padding: 0;
     }
 
 }
