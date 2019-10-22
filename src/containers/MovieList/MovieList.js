@@ -25,10 +25,6 @@ class MovieList extends Component {
       paddingTop: '1.5rem'
     }
 
-    if (this.props.movies) {
-      console.log(this.props.movies[0]);
-    }
-
     let movies = <p>Something went wrong</p>;
     // if (!this.props.error) {
     if (this.props.movies) {
