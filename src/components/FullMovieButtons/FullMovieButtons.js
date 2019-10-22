@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { IoIosClose } from "react-icons/io";
+import { IoIosArrowRoundBack } from "react-icons/io";
 import Radium from "radium";
 
 class FullMovieButtons extends Component {
@@ -8,8 +8,8 @@ class FullMovieButtons extends Component {
 
     const style = {
       position: "absolute",
-      top: '0.2rem',
-      right: '0.2rem',
+      bottom: '.3rem',
+      left: '0.4rem',
       color: "#6f6f6f",
       ':hover': {
           color: '#c5c5c5'
@@ -18,10 +18,10 @@ class FullMovieButtons extends Component {
 
     return (
       <div className="FullMovieButtons">
-        <IoIosClose
+        <IoIosArrowRoundBack
         style={style}
           onClick={this.props.onRemove}
-          size={40}
+          size={50}
         />
       </div>
     );
