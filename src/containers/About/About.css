@@ -21,8 +21,18 @@
     font-size: 3vw;
     text-transform: uppercase;
     position: absolute;
-    top: 20%;
-    left: 20%;
+    /* top: 35%;
+    left: 20%; */
+    top: 40%;
+    left: 21%;
+    transform: translate(-21%,-40%);
     color: #847f12;
     font-weight: 600;
+    white-space: nowrap;
 }
+
+/* @media(min-width: 769px){
+    #side-text{
+        top: 20%;
+    }
+} */

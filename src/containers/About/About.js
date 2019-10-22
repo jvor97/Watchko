@@ -19,7 +19,7 @@ class About extends Component {
         return(
             <section className='About'>
               <div className='aboutText'>
-                <span style={{fontSize: '3vw', color: '#cacaca'}}>Looking for a movie to watch tonight but you can't decide which one ?</span> <br/> 
+                <span style={{fontSize: '3vw', color: '#cacaca'}}>Can't decide what movie to watch tonight ?</span> <br/> 
                 <span style={{fontSize: '2.5vw', color: '#bdbdbd'}}>You are on the right place !</span> <br/>
                 Watchko offers a huge movie database with all needed information to make your decision easier.
                 Are you in the mood for a good comedy ? Find it in our genre list!
