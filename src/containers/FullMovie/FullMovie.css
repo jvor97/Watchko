@@ -1,25 +1,12 @@
-/* .FullMovie{
-    height: 100vh;
-}
-
-.bg-image{
-   opacity: 0.2; 
-   height: 100vh;
-}
-
-.poster {
-    width: 30%;
-    height: 100vh;
-    opacity: 0.5;
-    z-index: 1;
-    position: absolute;
-    top: 0;
-    left: 0;
-} */
-
 .FullMovie{
     background-color: rgb(71, 71, 71);
     padding-top: 1rem;
+}
+
+/********** MAIN INFO (headings, text) ********/
+.main-info{
+    border-left: 2px solid #847f12;
+    padding-left: 1%;
 }
 
 .FM-title {
@@ -41,28 +28,26 @@
     font-size: 90%;
 }
 
+/********** BG IMG ********/
 .bg-image{
     object-fit: cover; 
     max-height: 40rem;
     opacity: 0.1;
 }
-.poster{
-    display: none;
-}
 
-.main-info{
-    border-left: 2px solid #847f12;
-    padding-left: 1%;
-}
-
-/* .basic-info-movie{
-    color: #6f6f6f;
-} */
-
+/********** BASIC INFO ********/
 .genres h6{
    font-size: 80%;
 }
 
+.runtime{
+    display: flex;
+    padding-left: 10%;
+    padding-top: 0.9rem;
+    font-size: 90%;
+}
+
+/********** Release date ********/
 .release-date{
     display: flex;
     align-items: center;
@@ -78,13 +63,7 @@
     padding-left: .5rem;
 }
 
-.runtime{
-    display: flex;
-    padding-left: 10%;
-    padding-top: 0.9rem;
-    font-size: 90%;
-}
-
+/********** Rater ********/
 .react-rater{
     padding: .5rem; 
 }
@@ -96,24 +75,10 @@
 .react-rater-star {
     color: #7d7d7f;
 }
-/* .genres h6{
-    /* position: absolute;
-    bottom: 7%;
-    right: 0;
-    transform: rotate(-90deg); */
-    /* transform: rotate(-90deg) translateX(50%);
-    transform-origin: right bottom; */
-/* 
-    transform: rotate(-90deg) translateX(30%);
-    transform-origin: right bottom;
-    right: 2%;
-    position: fixed;
-    bottom: 50%;
-} */ 
 
       
 
-/* MEDIA QUERIES */
+/************** MEDIA QUERIES ****************/
 
 @media(min-width:425px){
     .bg-image{
@@ -122,26 +87,11 @@
 }
 
 @media(min-width:768px){
-    /* .poster{
-        display: inline-block;
-        width: 40%;
-        height: 100vh;
-        opacity: 0.5;
-        z-index: 1;
-        position: absolute;
-        top: 0;
-        left: 0;
-
-    } */
-
-    /* .card-img-overlay{
-        right: 40% !important;
-    } */
-
     .FullMovie{
         padding-top: 0;
     }
 
+    /********** MAIN INFO (headings, text) ********/
     .main-info{
         position: absolute;
         top: 20%;
@@ -164,6 +114,7 @@
         font-size: 1.7vw;
     }
 
+    /********** BASIC INFO ********/
     .genres{
         position: absolute;
         bottom: 1%;
@@ -173,6 +124,15 @@
         writing-mode: vertical-rl;
     }
 
+    .runtime{
+        position: absolute;
+        top: 15%;
+        left: 7%;
+        font-size: 1.7vw;
+        padding: 0;
+    }
+
+    /********** Release date ********/
     .release-date{
         position: absolute;
     top: 13%;
@@ -192,14 +152,12 @@
     }
     .year{
      padding-left: 1rem;
-    /* vertical-align: middle; */
     top: 50%;
     left: 50%;
-    /* flex-direction: column;
-    justify-content: center; */
     font-size: 2vw;
     }
 
+    /********** Rater ********/
     .react-rater{
         writing-mode: vertical-rl;
         font-size: 2vw;
@@ -208,19 +166,4 @@
         left: 7%;
         padding: 0; 
     }
-
-    .runtime{
-        position: absolute;
-        top: 15%;
-        left: 7%;
-        font-size: 1.7vw;
-        padding: 0;
-    }
-
-}
-
-@media(min-width:1024px){
-    /* .card-text{
-        font-size: 150%;
-    } */
 }

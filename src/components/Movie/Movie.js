@@ -12,7 +12,6 @@ class Movie extends Component {
               alt="Card image"
             />
             <h5 className="card-title list-movie-title">{this.props.title}</h5>
-
           </div>
         );
     }

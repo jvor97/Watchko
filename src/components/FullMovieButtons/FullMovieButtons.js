@@ -11,8 +11,8 @@ class FullMovieButtons extends Component {
       bottom: '.3rem',
       left: '0.4rem',
       color: "#6f6f6f",
-      ':hover': {
-          color: '#c5c5c5'
+      ":hover": {
+          color: "#c5c5c5"
       }
     };
 
@@ -20,7 +20,7 @@ class FullMovieButtons extends Component {
       <div className="FullMovieButtons">
         <IoIosArrowRoundBack
         style={style}
-          onClick={this.props.onRemove}
+          onClick={this.props.onGoBack}
           size={50}
         />
       </div>

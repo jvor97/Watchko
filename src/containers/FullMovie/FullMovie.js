@@ -1,25 +1,13 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import Rater from "react-rater";
 
 import FullMovieButtons from "../../components/FullMovieButtons/FullMovieButtons";
-import axios from "axios";
-import { connect } from "react-redux";
-import { IoIosStarOutline } from "react-icons/io";
-import { IoIosStar } from "react-icons/io";
-import Rater from 'react-rater'
-import 'react-rater/lib/react-rater.css'
-
-
+import "react-rater/lib/react-rater.css";
 import "./FullMovie.css";
 import * as actionCreators from "../../store/actions/actions";
 
-
-
 class FullMovie extends Component {
-  state = {
-    selectedMovie: null,
-    previousID: null
-  };
-
   componentDidMount() {
     if (this.props.match.params.id) {
       if (this.props.match.params.id != this.props.previousID) {
@@ -55,29 +43,27 @@ class FullMovie extends Component {
   //   }
   // }
 
-  removeHandler = () => {
+  goBackHandler = () => {
     this.props.history.push("/");
   };
 
-  getRating = (voteAverage) => {
+  getRating = voteAverage => {
     let rating;
     if (voteAverage <= 2) {
-      rating = 1
+      rating = 1;
     } else if (voteAverage <= 4) {
-      rating = 2
+      rating = 2;
     } else if (voteAverage <= 6) {
-      rating = 3
-    }else if (voteAverage <= 8) {
-      rating = 4
-    }else {
-      rating = 5
+      rating = 3;
+    } else if (voteAverage <= 8) {
+      rating = 4;
+    } else {
+      rating = 5;
     }
     return rating;
-  }
+  };
 
   render() {
-
-
     let movie = <p>Please select a movie</p>;
     if (this.props.match.params.id) {
       movie = <p>Loading please wait...</p>;
@@ -89,13 +75,6 @@ class FullMovie extends Component {
       movie = (
         <div>
           <div className="card bg-dark">
-            {/* <img
-              className="poster"
-              src={
-                "https://image.tmdb.org/t/p/original/" +
-                this.props.fullMovie.poster_path
-              }
-            /> */}
             <img
               className="bg-image"
               src={
@@ -109,8 +88,11 @@ class FullMovie extends Component {
                 <h5 className="tagline">{this.props.fullMovie.tagline}</h5>
                 <div className="card-text">{this.props.fullMovie.overview}</div>
               </div>
-              {/* <div className="basic-info-movie"> */}
-              <Rater total={5} rating={this.getRating(this.props.fullMovie.vote_average)} interactive={false}/>
+              <Rater
+                total={5}
+                rating={this.getRating(this.props.fullMovie.vote_average)}
+                interactive={false}
+              />
               <div className="genres">
                 <h6>{genres}</h6>
               </div>
@@ -123,9 +105,9 @@ class FullMovie extends Component {
                   {this.props.fullMovie.release_date.split("-")[0]}
                 </div>
               </div>
-              <div className="runtime">{this.props.fullMovie.runtime + " min"}</div>
-          
-              {/* </div> */}
+              <div className="runtime">
+                {this.props.fullMovie.runtime + " min"}
+              </div>
             </div>
           </div>
         </div>
@@ -135,7 +117,7 @@ class FullMovie extends Component {
     return (
       <div className="FullMovie">
         {movie}
-        <FullMovieButtons onRemove={this.removeHandler} />
+        <FullMovieButtons onGoBack={this.goBackHandler} />
       </div>
     );
   }
@@ -144,8 +126,7 @@ class FullMovie extends Component {
 const mapStateToProps = state => {
   return {
     fullMovie: state.api.selectedMovie,
-    previousID: state.api.previousID,
-    displayAbout: state.displayEl.displayAbout
+    previousID: state.api.previousID
   };
 };
 

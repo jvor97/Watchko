@@ -4,8 +4,6 @@ import MovieList from '../MovieList/MovieList';
 import FullMovie from '../FullMovie/FullMovie';
 import About from '../About/About';
 
-import './MovieDB.css';
-
 
 class MovieDB extends Component {
 

@@ -1,5 +1,3 @@
-
-
 let initialState = {
   movies: [],
   selectedMovie: null,
