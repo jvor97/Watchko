@@ -1,10 +1,12 @@
 import axios from 'axios';
+import { bool } from 'prop-types';
 
 // export const LOADMOVIES = 'LOADMOVIES';
 // export const RELOADMOVIES = 'RELOADMOVIES';
 
 export const loadMovies = () =>{
     return(dispatch) => {
+        dispatch(itemsLoading(true));
         let movies = [];
         for (let i = 0; i < 5; i++) {
             let page = i;
@@ -17,6 +19,12 @@ export const loadMovies = () =>{
               })
         }
     }
+}
+
+export const itemsLoading = bool => {
+   return{ type: 'ITEMS_LOADING',
+    loading: bool
+   }
 }
 
 export const loadMoviesData = (movies) => {
@@ -32,7 +40,8 @@ export const loadMoviesData = (movies) => {
 
 export const loadFullMovie = (id) =>{
     return(dispatch) => {
-        return axios.get(
+        dispatch(itemsLoading(true));
+        axios.get(
                   "https://api.themoviedb.org/3/movie/" +
                     id +
                     "?api_key=65777f92529c3462f958232f137b357f&language=en-US&page=1&fbclid=IwAR3WdGpp9ZHMyGn4Vyni4MFF0hpc-Kfvyyj9PLnyueheoQ0o3YIPcmSL5Dk&language=en-US"

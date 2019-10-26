@@ -11,7 +11,7 @@ class FullMovie extends Component {
   componentDidMount() {
     if (this.props.match.params.id) {
       if (this.props.match.params.id != this.props.previousID) {
-        this.props.loadFullMovie(this.props.match.params.id);
+       this.props.onMount(this.props.match.params.id);
       }
     }
   }
@@ -65,7 +65,7 @@ class FullMovie extends Component {
 
   render() {
     let movie = <p>Please select a movie</p>;
-    if (this.props.match.params.id) {
+    if (this.props.loading) {
       movie = <p>Loading please wait...</p>;
     }
     if (this.props.fullMovie) {
@@ -126,19 +126,20 @@ class FullMovie extends Component {
 const mapStateToProps = state => {
   return {
     fullMovie: state.api.selectedMovie,
-    previousID: state.api.previousID
+    previousID: state.api.previousID,
+    loading: state.api.loading
   };
 };
 
-// mapDispatchToProps = state => {
-//   return {
-
-//   }
-// }
+const mapDispatchToProps = dispatch => {
+  return {
+        onMount: (id) => dispatch(actionCreators.loadFullMovie(id))
+  }
+}
 
 // export default connect(mapStateToProps,mapDispatchToProps)(FullMovie);
 
 export default connect(
   mapStateToProps,
-  actionCreators
+  mapDispatchToProps
 )(FullMovie);

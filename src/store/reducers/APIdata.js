@@ -1,4 +1,5 @@
 let initialState = {
+  loading: false,
   movies: [],
   selectedMovie: null,
   previousID: null
@@ -6,6 +7,11 @@ let initialState = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case "ITEMS_LOADING":
+    return {
+      ...state,
+      loading: action.loading
+    };
     case "LOAD_MOVIES":
       return {
         ...state,

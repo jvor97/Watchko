@@ -6,7 +6,7 @@ import * as actionCreators from "../../store/actions/actions";
 class MovieList extends Component {
   componentDidMount() {
     console.log(this.props);
-    this.props.loadMovies();
+    this.props.onMount();
   }
 
   fullPostHandler = id => {
@@ -26,7 +26,9 @@ class MovieList extends Component {
     }
 
     let movies = <p>Something went wrong</p>;
-    // if (!this.props.error) {
+    if (this.props.loading) {
+      movies = <p>Loading ...</p>
+    }
     if (this.props.movies) {
       movies = this.props.movies.map(movie => {
         return (
@@ -51,16 +53,17 @@ class MovieList extends Component {
 const mapStateToProps = state => {
   return {
     movies: state.api.movies,
+    loading: state.api.loading
   };
 };
 
-// mapDispatchToProps = dispatch => {
-//   return {
-//     onMount : () => dispatch({type: actionType.LOADMOVIES})
-//   }
-// }
+const mapDispatchToProps = dispatch => {
+  return {
+    onMount : () => dispatch(actionCreators.loadMovies())
+  }
+}
 
 export default connect(
   mapStateToProps,
-  actionCreators
+  mapDispatchToProps
 )(MovieList);
