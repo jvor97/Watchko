@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 // import {connect} from 'react-redux';
 import './About.css';
+import Form from '../Form/Form';
 
 class About extends Component {
     render () {
@@ -26,6 +27,7 @@ class About extends Component {
                 No specific genre mood ? No problem, we will display you currently most popular movies !
             </div>
             <div id="side-text">About Watchko</div>
+            <Form></Form>
             </section>
         )
     }
