@@ -19,6 +19,7 @@ class About extends Component {
 
         return(
             <section className='About'>
+            <div className='about-div'>
               <div className='aboutText'>
                 <span style={{fontSize: '3vw', color: '#cacaca'}}>Can't decide what movie to watch tonight ?</span> <br/> 
                 <span style={{fontSize: '2.5vw', color: '#bdbdbd'}}>You are on the right place !</span> <br/>
@@ -27,7 +28,10 @@ class About extends Component {
                 No specific genre mood ? No problem, we will display you currently most popular movies !
             </div>
             <div id="side-text">About Watchko</div>
+            </div>
+            <div className='form-div'>
             <Form></Form>
+            </div>
             </section>
         )
     }

@@ -1,32 +1,46 @@
- .About{
-    height: 100vh;
-    background-color: #0c0d0ef2;
-    color: #9d9d9de6;
+.About {
+  height: 100vh;
+  background-color: #0c0d0ef2;
+  color: #9d9d9de6;
+  display: flex;
 }
 
+.about-div {
+  float: left;
+  position: relative;
+  display: inline-block;
+  width: 50%;
+}
 
-.aboutText{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 2vw;
-    text-align: left;
-    border-left: 2px solid #847f12;
-    padding-left: 1rem;
-} 
+.form-div {
+  float: left;
+  top: 20%;
+  position: relative;
+  display: inline-block;
+}
 
-#side-text{
-    writing-mode: vertical-lr;
-    font-size: 3vw;
-    text-transform: uppercase;
-    position: absolute;
-    /* top: 35%;
+.aboutText {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2vw;
+  text-align: left;
+  border-left: 2px solid #847f12;
+  padding-left: 1rem;
+}
+
+#side-text {
+  writing-mode: vertical-lr;
+  font-size: 3vw;
+  text-transform: uppercase;
+  position: absolute;
+  /* top: 35%;
     left: 20%; */
-    top: 40%;
-    left: 21%;
-    transform: translate(-21%,-40%);
-    color: #847f12;
-    font-weight: 600;
-    white-space: nowrap;
+  top: 40%;
+  left: 21%;
+  transform: translate(-21%, -40%);
+  color: #847f12;
+  font-weight: 600;
+  white-space: nowrap;
 }

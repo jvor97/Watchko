@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Input from '../../components/Input/Input';
+import Input from "../../components/Input/Input";
 
 class Form extends Component {
   state = {
@@ -40,6 +40,18 @@ class Form extends Component {
       }
     }
   };
+
+  changeHandler = (event, id) => {
+    const updatedForm = { ...this.state.contactForm };
+    const updatedFormEl = { ...updatedForm[id] };
+
+    updatedFormEl.value = event.target.value;
+    updatedForm[id] = updatedFormEl;
+    this.setState({
+      contactForm: updatedForm
+    });
+  };
+
   render() {
     let contactFormElements = [];
     for (const key in this.state.contactForm) {
@@ -51,14 +63,15 @@ class Form extends Component {
     return (
       <div>
         <form>
-          {contactFormElements.map(formElement =>
-          <Input
-            value={formElement.config.value}
-            elementType={formElement.config.elementType}
-            key={formElement.id}
-            config={formElement.config.configuration}
-          ></Input>
-          )}
+          {contactFormElements.map(formElement => (
+            <Input
+              value={formElement.config.value}
+              elementType={formElement.config.elementType}
+              key={formElement.id}
+              config={formElement.config.configuration}
+              onChange={event => this.changeHandler(event, formElement.id)}
+            ></Input>
+          ))}
         </form>
       </div>
     );
