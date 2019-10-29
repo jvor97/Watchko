@@ -1,3 +1,4 @@
+/* eslint-disable default-case */
 let initialState = {
   loading: false,
   movies: [],

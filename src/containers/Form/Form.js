@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Input from "../../components/Input/Input";
+import axios from "axios";
 
 class Form extends Component {
   state = {
@@ -52,6 +53,21 @@ class Form extends Component {
     });
   };
 
+  contactFormHandler = event => {
+    event.preventDefault();
+    let formData = {};
+    for (const formElement in this.state.contactForm) {
+      // formData[formElement] = formElement.value;
+      formData[formElement] = this.state.contactForm[formElement].value;
+    }
+    axios
+      .post("https://jsonplaceholder.typicode.com/posts", formData)
+      .then(response => {
+        console.log(response);
+        // this.props.history.push("/");
+      });
+  };
+
   render() {
     let contactFormElements = [];
     for (const key in this.state.contactForm) {
@@ -62,7 +78,7 @@ class Form extends Component {
     }
     return (
       <div>
-        <form>
+        <form onSubmit={event => this.contactFormHandler(event)}>
           {contactFormElements.map(formElement => (
             <Input
               value={formElement.config.value}
@@ -72,6 +88,7 @@ class Form extends Component {
               onChange={event => this.changeHandler(event, formElement.id)}
             ></Input>
           ))}
+          <button>Submit</button>
         </form>
       </div>
     );
