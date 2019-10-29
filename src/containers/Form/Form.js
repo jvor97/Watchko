@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Input from "../../components/Input/Input";
 import axios from "axios";
+import { number } from "prop-types";
 
 class Form extends Component {
   state = {
@@ -11,7 +12,14 @@ class Form extends Component {
           type: "text",
           placeholder: "John Smith"
         },
-        value: ""
+        value: "",
+        validation: {
+          require: true,
+          minLength: 5,
+          number: false,
+          specChar: false
+        },
+        valid: false
       },
       email: {
         elementType: "input",
@@ -19,7 +27,14 @@ class Form extends Component {
           type: "email",
           placeholder: "john.smith@example.com"
         },
-        value: ""
+        value: "",
+        validation: {
+          require: true,
+          minLength: 5,
+          number: false,
+          specChar: false
+        },
+        valid: false
       },
       textarea: {
         elementType: "textarea",
@@ -27,7 +42,14 @@ class Form extends Component {
           type: "text",
           placeholder: "..."
         },
-        value: ""
+        value: "",
+        validation: {
+          require: true,
+          minLength: 10,
+          number: false,
+          specChar: false
+        },
+        valid: false
       },
       select: {
         elementType: "select",
@@ -42,12 +64,36 @@ class Form extends Component {
     }
   };
 
+  validateValue = (rule, value) => {
+    let isValid = true;
+    if (rule.require && isValid) {
+      value.trim() !== "" ? (isValid = true) : (isValid = false);
+    }
+    if (rule.minLength && isValid) {
+      value.length >= rule.minLength ? (isValid = true) : (isValid = false);
+    }
+    if (rule.number && isValid) {
+      const patt = /[0-9]/g;
+      patt.test(value) ? (isValid = true) : (isValid = false);
+    }
+    if (rule.specChar && isValid) {
+      const patt = /[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
+      patt.test(value) ? (isValid = true) : (isValid = false);
+    }
+    return isValid;
+  };
+
   changeHandler = (event, id) => {
     const updatedForm = { ...this.state.contactForm };
     const updatedFormEl = { ...updatedForm[id] };
 
     updatedFormEl.value = event.target.value;
+    updatedFormEl.valid = this.validateValue(
+      updatedFormEl.validation,
+      updatedFormEl.value
+    );
     updatedForm[id] = updatedFormEl;
+    console.log(updatedFormEl);
     this.setState({
       contactForm: updatedForm
     });
