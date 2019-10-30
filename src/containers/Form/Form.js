@@ -18,7 +18,8 @@ class Form extends Component {
           number: false,
           specChar: false
         },
-        valid: false
+        valid: false,
+        touched: false
       },
       email: {
         elementType: "input",
@@ -33,7 +34,8 @@ class Form extends Component {
           number: false,
           specChar: false
         },
-        valid: false
+        valid: false,
+        touched: false
       },
       textarea: {
         elementType: "textarea",
@@ -48,7 +50,8 @@ class Form extends Component {
           number: false,
           specChar: false
         },
-        valid: false
+        valid: false,
+        touched: false
       },
       select: {
         elementType: "select",
@@ -91,6 +94,7 @@ class Form extends Component {
       updatedFormEl.validation,
       updatedFormEl.value
     );
+    updatedFormEl.touched = true;
     updatedForm[id] = updatedFormEl;
     console.log(updatedFormEl);
     this.setState({
@@ -132,6 +136,7 @@ class Form extends Component {
               key={formElement.id}
               config={formElement.config.configuration}
               invalid={!formElement.config.valid}
+              touched={formElement.config.touched}
               onChange={event => this.changeHandler(event, formElement.id)}
             ></Input>
           ))}

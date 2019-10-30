@@ -4,8 +4,10 @@ import "./Input.css";
 
 const input = props => {
   let classes = [".input"];
-  if (props.invalid) {
+  let validationMessage;
+  if (props.invalid && props.touched) {
     classes.push("invalid");
+    validationMessage = <p>Please enter a valid value </p>;
   }
 
   let inputType;
@@ -49,6 +51,7 @@ const input = props => {
     <div className="form-group">
       <label>{props.label}</label>
       {inputType}
+      {validationMessage}
     </div>
   );
 };
