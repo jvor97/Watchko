@@ -63,7 +63,8 @@ class Form extends Component {
           ]
         }
       }
-    }
+    },
+    valid: true
   };
 
   validateValue = (rule, value) => {
@@ -95,10 +96,21 @@ class Form extends Component {
       updatedFormEl.value
     );
     updatedFormEl.touched = true;
+
+    let validForm = true;
+    for (let formElement in updatedForm) {
+      // if (updatedForm[formElement].valid && validForm) {
+      //   validForm = true;
+      // }
+      //nefunguje preco ?
+      validForm = updatedForm[formElement].valid && validForm;
+    }
+
     updatedForm[id] = updatedFormEl;
     console.log(updatedFormEl);
     this.setState({
-      contactForm: updatedForm
+      contactForm: updatedForm,
+      valid: validForm
     });
   };
 
@@ -140,7 +152,7 @@ class Form extends Component {
               onChange={event => this.changeHandler(event, formElement.id)}
             ></Input>
           ))}
-          <button>Submit</button>
+          <button disabled={!this.state.valid}>Submit</button>
         </form>
       </div>
     );
