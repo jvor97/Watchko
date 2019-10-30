@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Input from "../../components/Input/Input";
 import axios from "axios";
-import { number } from "prop-types";
 
 class Form extends Component {
   state = {
@@ -122,6 +121,7 @@ class Form extends Component {
         config: this.state.contactForm[key]
       });
     }
+
     return (
       <div>
         <form onSubmit={event => this.contactFormHandler(event)}>
@@ -131,6 +131,7 @@ class Form extends Component {
               elementType={formElement.config.elementType}
               key={formElement.id}
               config={formElement.config.configuration}
+              invalid={!formElement.config.valid}
               onChange={event => this.changeHandler(event, formElement.id)}
             ></Input>
           ))}
