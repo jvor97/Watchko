@@ -61,7 +61,9 @@ class Form extends Component {
             { value: "shipping", displayValue: "Shipping" },
             { value: "tech problems", displayValue: "Technical problems" }
           ]
-        }
+        },
+        valid: true,
+        validation: {}
       }
     },
     valid: true
