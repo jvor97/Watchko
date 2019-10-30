@@ -55,7 +55,7 @@ class Form extends Component {
       },
       select: {
         elementType: "select",
-        value: "",
+        value: "shipping",
         configuration: {
           options: [
             { value: "shipping", displayValue: "Shipping" },
