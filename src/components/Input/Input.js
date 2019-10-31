@@ -3,7 +3,7 @@ import React from "react";
 import "./Input.css";
 
 const input = props => {
-  let classes = [".input"];
+  let classes = ["form-control"];
   let validationMessage;
   if (props.invalid && props.touched) {
     classes.push("invalid");
@@ -36,7 +36,11 @@ const input = props => {
       break;
     case "select":
       inputType = (
-        <select value={props.value} onChange={props.onChange}>
+        <select
+          value={props.value}
+          onChange={props.onChange}
+          className="form-control custom-select"
+        >
           {props.config.options.map(option => (
             <option value={option.value} key={option.value}>
               {option.displayValue}

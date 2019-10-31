@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Input from "../../components/Input/Input";
+import SubmitBtn from "../../components/Buttons/SubmitBtn/SubmitBtn";
 import axios from "axios";
 
 class Form extends Component {
@@ -140,9 +141,13 @@ class Form extends Component {
       });
     }
 
+    const style = {
+      width: "100%"
+    };
+
     return (
       <div>
-        <form onSubmit={event => this.contactFormHandler(event)}>
+        <form onSubmit={event => this.contactFormHandler(event)} style={style}>
           {contactFormElements.map(formElement => (
             <Input
               value={formElement.config.value}
@@ -154,7 +159,9 @@ class Form extends Component {
               onChange={event => this.changeHandler(event, formElement.id)}
             ></Input>
           ))}
-          <button disabled={!this.state.valid}>Submit</button>
+          <SubmitBtn disabled={!this.state.valid}>
+            Submit
+          </SubmitBtn>
         </form>
       </div>
     );

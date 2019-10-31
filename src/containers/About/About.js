@@ -19,13 +19,14 @@ class About extends Component {
 
     return (
       <section className="About">
-        <div className="about-div">
-          <div className="aboutText">
-            <span style={{ fontSize: "3vw", color: "#cacaca" }}>
+        <div className="half-page-div">
+          <div id="side-text">About Watchko</div>
+          <div className="half-page-text aboutText">
+            <span style={{ fontSize: "2.7vw", color: "#cacaca" }}>
               Can't decide what movie to watch tonight ?
             </span>{" "}
             <br />
-            <span style={{ fontSize: "2.5vw", color: "#bdbdbd" }}>
+            <span style={{ fontSize: "2vw", color: "#bdbdbd" }}>
               You are on the right place !
             </span>{" "}
             <br />
@@ -34,10 +35,12 @@ class About extends Component {
             Find it in our genre list! No specific genre mood ? No problem, we
             will display you currently most popular movies !
           </div>
-          <div id="side-text">About Watchko</div>
         </div>
-        <div className="form-div">
+        <div className="half-page-div form-div">
+          <div id="side-text">Contact us</div>
+          <div className='half-page-text contact-form'>
           <Form></Form>
+          </div>
         </div>
       </section>
     );
