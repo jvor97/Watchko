@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 
 import "./Nav.css";
 import logo from "./watchko-logo.png";
+import * as actionCreators from "../../store/actions/displayEl";
 
 class Nav extends Component {
   render() {
@@ -38,6 +40,16 @@ class Nav extends Component {
                   About
                 </Link>
               </li>
+              <li className="nav-item">
+                <button
+                  className="nav-link"
+                  onClick={this.props.toggleGenres}
+                  aria-controls="example-collapse-text"
+                  aria-expanded={this.props.toggleGenres}
+                >
+                  Genres
+                </button>
+              </li>
             </ul>
           </div>
         </div>
@@ -46,4 +58,19 @@ class Nav extends Component {
   }
 }
 
-export default Nav;
+const mapStateToProps = state => {
+  return {
+    openGenres: state.displayEl.openGenres
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    toggleGenres: () => dispatch({ type: "TOGGLE_GENRES" })
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Nav);

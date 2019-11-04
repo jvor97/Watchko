@@ -1,24 +1,19 @@
-import * as actionTypes from '../actions/actionTypes';
+/* eslint-disable default-case */
+// import * as actionTypes from '../actions/actionTypes';
 
 let initialState = {
-    displayAbout: false
-}
+  openGenres: false
+};
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.DISPLAY_ABOUT:
+    case "TOGGLE_GENRES":
       return {
         ...state,
-        displayAbout: true
+        openGenres: !state.openGenres
       };
-      case 'CLOSE.ABOUT':
-        return{
-          ...state,
-          displayAbout: false
-        }
   }
   return state;
 };
-
 
 export default reducer;
