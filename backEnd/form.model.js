@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-let Form = new Schema({
+let ContactForm = new Schema({
   form_name: {
     type: String
   },
@@ -16,4 +16,4 @@ let Form = new Schema({
   }
 });
 
-module.exports = mongoose.model("Form", Form);
+module.exports = mongoose.model("ContacForm", ContactForm);

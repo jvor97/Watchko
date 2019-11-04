@@ -124,12 +124,10 @@ class Form extends Component {
       // formData[formElement] = formElement.value;
       formData[formElement] = this.state.contactForm[formElement].value;
     }
-    axios
-      .post("https://jsonplaceholder.typicode.com/posts", formData)
-      .then(response => {
-        console.log(response);
-        // this.props.history.push("/");
-      });
+    axios.post("http://localhost:4000/about/add", formData).then(response => {
+      console.log(response.config.data);
+      // this.props.history.push("/");
+    });
   };
 
   render() {
@@ -159,9 +157,7 @@ class Form extends Component {
               onChange={event => this.changeHandler(event, formElement.id)}
             ></Input>
           ))}
-          <SubmitBtn disabled={!this.state.valid}>
-            Submit
-          </SubmitBtn>
+          <SubmitBtn disabled={!this.state.valid}>Submit</SubmitBtn>
         </form>
       </div>
     );
