@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import Collapse from "react-bootstrap/Collapse";
+import Genres from "../Genres/Genres";
 
 import "./Nav.css";
 import logo from "./watchko-logo.png";
@@ -45,7 +47,7 @@ class Nav extends Component {
                   className="nav-link"
                   onClick={this.props.toggleGenres}
                   aria-controls="example-collapse-text"
-                  aria-expanded={this.props.toggleGenres}
+                  aria-expanded={this.props.openGenres}
                 >
                   Genres
                 </button>
@@ -53,6 +55,7 @@ class Nav extends Component {
             </ul>
           </div>
         </div>
+        <Genres />
       </nav>
     );
   }
