@@ -24,7 +24,7 @@ class Genres extends Component {
         >
           click
         </Button> */}
-        <div>
+        <div className="Genres">
           <Collapse in={this.props.open}>
             <div id="multiCollapseExample1">
               <ul>

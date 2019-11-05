@@ -46,8 +46,8 @@ class Nav extends Component {
                 <button
                   className="nav-link"
                   onClick={this.props.toggleGenres}
-                  aria-controls="example-collapse-text"
-                  aria-expanded={this.props.openGenres}
+                  // aria-controls="example-collapse-text"
+                  // aria-expanded={this.props.openGenres}
                 >
                   Genres
                 </button>
@@ -55,17 +55,16 @@ class Nav extends Component {
             </ul>
           </div>
         </div>
-        <Genres />
       </nav>
     );
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    openGenres: state.displayEl.openGenres
-  };
-};
+// const mapStateToProps = state => {
+//   return {
+//     openGenres: state.displayEl.openGenres
+//   };
+// };
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -74,6 +73,6 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
 )(Nav);

@@ -4,22 +4,24 @@ import {BrowserRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
 import MovieDB from './containers/MovieDB/MovieDB';
 import Nav from './components/Nav/Nav';
-import About from './containers/About/About';
+import Genres from './components/Genres/Genres';
 
 class App extends Component {
   render() {
-  console.log(this.props.display);
-  let about;
-  if (this.props.display) {
-      about = <About/>
+  console.log(this.props.openGenres);
+  let genres;
+  if (this.props.openGenres) {
+      genres = <Genres/>
   }
 
   return (
     <BrowserRouter>
     <div className="App">
+    <div>
       <Nav/>
-      {about}
       <MovieDB/>
+    </div>
+      {genres}
     </div>
     </BrowserRouter>
   );
@@ -28,7 +30,7 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-  display: state.displayEl.displayAbout
+  openGenres: state.displayEl.openGenres
   }
 }
 
