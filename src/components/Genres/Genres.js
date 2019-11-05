@@ -3,22 +3,17 @@ import Collapse from "react-bootstrap/Collapse";
 import axios from "axios";
 import { connect } from "react-redux";
 import "./Genres.css";
+import * as actionCreators from "../../store/actions/actions";
 
 class Genres extends Component {
+  componentDidMount() {
+    console.log(this.props.genres);
+    this.props.onMount();
+  }
+
   render() {
     // function Example() {
     //     const [open, setOpen] = useState(false);
-
-    let genres = [];
-    const loadGenres = () => {
-      axios
-        .get(
-          "https://api.themoviedb.org/3/genre/movie/list?api_key=65777f92529c3462f958232f137b357f&language=en-US"
-        )
-        .then(response => {
-          genres.push(response.data);
-        });
-    };
 
     return (
       <>
@@ -33,26 +28,13 @@ class Genres extends Component {
           <Collapse in={this.props.open}>
             <div id="multiCollapseExample1">
               <ul>
-                {
-                  (loadGenres(),
-                  genres.map(genre => {
-                    return <li key={genre.id}>{genre.name}</li>;
-                  }))
-                }
-                <li className="bu">ifje</li>
-                <li className="bu">ifje</li>
-                <li className="bu">ifje</li>
-                <li className="bu">ifje</li>
-                <li className="bu">ifje</li>
-                <li className="bu">ifje</li>
-                <li className="bu">ifje</li>
-                <li className="bu">ifje</li>
-                <li className="bu">ifje</li>
-                <li className="bu">ifje</li>
-                <li className="bu">ifje</li>
-                <li className="bu">ifje</li>
-                <li className="bu">ifje</li>
-                <li className="bu">ifje</li>
+                {this.props.genres.map(genre => {
+                  return (
+                    <li key={genre.id} className="genre">
+                      {genre.name}
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           </Collapse>
@@ -64,14 +46,18 @@ class Genres extends Component {
 
 const mapStateToProps = state => {
   return {
-    open: state.displayEl.openGenres
+    open: state.displayEl.openGenres,
+    genres: state.api.genres
   };
 };
 
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     onMount: () => dispatch(() => loadGenres())
-//   };
-// };
+const mapDispatchToProps = dispatch => {
+  return {
+    onMount: () => dispatch(actionCreators.loadGenres())
+  };
+};
 
-export default connect(mapStateToProps)(Genres);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Genres);
