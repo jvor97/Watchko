@@ -1,19 +1,41 @@
 import React, { Component } from "react";
 import Collapse from "react-bootstrap/Collapse";
-import axios from "axios";
 import { connect } from "react-redux";
 import "./Genres.css";
 import * as actionCreators from "../../store/actions/actions";
 
 class Genres extends Component {
   componentDidMount() {
-    console.log(this.props.genres);
     this.props.onMount();
+    console.log(this.props.genres);
   }
+
+  displayMoviesByGenreHandler = genre => {
+    return (window.location.href = window.location.href + "genre/" + genre);
+    // this.props.history.push("/genre");
+  };
 
   render() {
     // function Example() {
     //     const [open, setOpen] = useState(false);
+
+    let genres = <p>Something went wrong</p>;
+
+    if (this.props.genres) {
+      console.log(this.props.genres);
+      genres = this.props.genres.map(genre => {
+        return (
+          <li
+            key={genre.id}
+            className="genre"
+            id={genre.id}
+            onClick={() => this.displayMoviesByGenreHandler(genre.id)}
+          >
+            {genre.name}
+          </li>
+        );
+      });
+    }
 
     return (
       <>
@@ -27,15 +49,7 @@ class Genres extends Component {
         <div className="Genres">
           <Collapse in={this.props.open}>
             <div id="collapse-content">
-              <ul>
-                {this.props.genres.map(genre => {
-                  return (
-                    <li key={genre.id} className="genre">
-                      {genre.name}
-                    </li>
-                  );
-                })}
-              </ul>
+              <ul>{genres}</ul>
             </div>
           </Collapse>
         </div>
@@ -43,6 +57,10 @@ class Genres extends Component {
     );
   }
 }
+
+//na click naloadujem nove movies a v movie liste checknem ci prrevious movies = movies ak nie tak update
+
+//na click iba zmenim zaner a v movieliste checknem v cmpdidUpd ci min gan je taky isty ako gan z url (nejak cez props sa tam dostat) a ak nie tak updatujem
 
 const mapStateToProps = state => {
   return {

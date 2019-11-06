@@ -4,7 +4,8 @@ let initialState = {
   movies: [],
   selectedMovie: null,
   previousID: null,
-  genres: []
+  genres: null
+  // genre: ""
 };
 
 const reducer = (state = initialState, action) => {
@@ -17,7 +18,8 @@ const reducer = (state = initialState, action) => {
     case "LOAD_MOVIES":
       return {
         ...state,
-        movies: action.movies
+        movies: action.movies,
+        genre: action.genre
       };
     case "LOAD_FULLMOVIE":
       console.log(action.selectedMovie);
@@ -28,11 +30,13 @@ const reducer = (state = initialState, action) => {
       };
     case "LOAD_GENRES":
       console.log(action.genres);
+      console.log(state.genres);
       return {
         ...state,
         genres: action.genres
       };
   }
+  console.log(state.genres);
   return state;
 };
 

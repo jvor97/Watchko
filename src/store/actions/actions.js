@@ -4,7 +4,7 @@ import { bool } from "prop-types";
 // export const LOADMOVIES = 'LOADMOVIES';
 // export const RELOADMOVIES = 'RELOADMOVIES';
 
-export const loadMovies = () => {
+export const loadMovies = genre => {
   return dispatch => {
     dispatch(itemsLoading(true));
     let movies = [];
@@ -14,11 +14,14 @@ export const loadMovies = () => {
         .get(
           "https://api.themoviedb.org/3/movie/popular?api_key=65777f92529c3462f958232f137b357f&language=en-US&page=" +
             page +
-            "&fbclid=IwAR3WdGpp9ZHMyGn4Vyni4MFF0hpc-Kfvyyj9PLnyueheoQ0o3YIPcmSL5Dkhttps://jsonplaceholder.typicode.com/posts"
+            genre +
+            "&fbclid=IwAR3WdGpp9ZHMyGn4Vyni4MFF0hpc-Kfvyyj9PLnyueheoQ0o3YIPcmSL5Dk"
         )
         .then(response => {
+          console.log(response.data.results);
           movies.push(response.data.results);
-          dispatch(loadMoviesData(movies));
+          console.log(movies);
+          dispatch(loadMoviesData(movies, genre));
         });
     }
   };
@@ -28,14 +31,15 @@ export const itemsLoading = bool => {
   return { type: "ITEMS_LOADING", loading: bool };
 };
 
-export const loadMoviesData = movies => {
+export const loadMoviesData = (movies, genre) => {
   console.log(movies);
   //concat all array to one
   var allMovies = [].concat.apply([], movies);
 
   return {
     type: "LOAD_MOVIES",
-    movies: allMovies
+    movies: allMovies,
+    genre: genre
   };
 };
 
@@ -78,6 +82,7 @@ export const loadGenres = () => {
 };
 
 export const loadGenresData = genres => {
+  console.log(genres);
   return {
     type: "LOAD_GENRES",
     genres: genres

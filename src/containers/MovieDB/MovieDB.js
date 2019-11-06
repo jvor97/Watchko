@@ -9,6 +9,7 @@ class MovieDB extends Component {
     return (
       <div className="MovieDB" style={{ marginTop: "-2rem" }}>
         <Route path="/" exact component={MovieList}></Route>
+        <Route path="/genre/:genre" exact component={MovieList}></Route>
         <Route path="/about" exact component={About}></Route>
         <Route path="/movies/:id" exact component={FullMovie}></Route>
       </div>
