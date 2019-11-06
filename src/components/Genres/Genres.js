@@ -11,7 +11,7 @@ class Genres extends Component {
   }
 
   displayMoviesByGenreHandler = genre => {
-    return (window.location.href = window.location.href + "genre/" + genre);
+    return (window.location.href = "http://localhost:3000/genre/" + genre);
     // this.props.history.push("/genre");
   };
 
