@@ -43,14 +43,14 @@ class Nav extends Component {
                 </Link>
               </li>
               <li className="nav-item">
-                <button
+                <p
                   className="nav-link"
                   onClick={this.props.toggleGenres}
                   // aria-controls="example-collapse-text"
                   // aria-expanded={this.props.openGenres}
                 >
                   Genres
-                </button>
+                </p>
               </li>
             </ul>
           </div>

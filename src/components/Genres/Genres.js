@@ -26,7 +26,7 @@ class Genres extends Component {
         </Button> */}
         <div className="Genres">
           <Collapse in={this.props.open}>
-            <div id="multiCollapseExample1">
+            <div id="collapse-content">
               <ul>
                 {this.props.genres.map(genre => {
                   return (
