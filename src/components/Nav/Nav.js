@@ -11,7 +11,7 @@ import * as actionCreators from "../../store/actions/displayEl";
 class Nav extends Component {
   render() {
     return (
-      <nav className="Nav navbar navbar-expand-lg navbar-dark fixed-top">
+      <nav className="Nav navbar navbar-expand-lg navbar-dark sticky-top">
         <div className="container">
           <Link className="navbar-brand" to="/">
             <div className="logo">

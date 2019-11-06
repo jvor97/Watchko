@@ -22,7 +22,6 @@ class MovieList extends Component {
       justifyContent: 'flex-start',
       alignItems: 'stretch',
       alignContent: 'stretch',
-      paddingTop: '1.5rem'
     }
 
     let movies = <p>Something went wrong</p>;
