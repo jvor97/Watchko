@@ -21,6 +21,10 @@ class Genres extends Component {
 
     let genres = <p>Something went wrong</p>;
 
+    if (this.props.loading) {
+      genres = <p>Loading ...</p>;
+    }
+
     if (this.props.genres) {
       console.log(this.props.genres);
       genres = this.props.genres.map(genre => {
