@@ -13,7 +13,7 @@ class MovieDB extends Component {
           <Route path="/" exact component={MovieList}></Route>
           <Route path="/genre/:genre" exact component={MovieList}></Route>
           <Suspense fallback={<div>Loading...</div>}>
-            <Route path="/about" exact render={props => <About {...props} />} />
+            <Route path="/about" exact render={() => <About />} />
             <Route
               path="/movies/:id"
               exact
