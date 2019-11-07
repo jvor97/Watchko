@@ -1,18 +1,27 @@
-import React, { Component } from "react";
+import React, { Component, Suspense } from "react";
 import { Route } from "react-router-dom";
 import MovieList from "../MovieList/MovieList";
-import FullMovie from "../FullMovie/FullMovie";
-import About from "../About/About";
+
+const About = React.lazy(() => import("../About/About"));
+const FullMovie = React.lazy(() => import("../FullMovie/FullMovie"));
 
 class MovieDB extends Component {
   render() {
     return (
-      <div className="MovieDB" style={{ marginTop: "-2rem" }}>
-        <Route path="/" exact component={MovieList}></Route>
-        <Route path="/genre/:genre" exact component={MovieList}></Route>
-        <Route path="/about" exact component={About}></Route>
-        <Route path="/movies/:id" exact component={FullMovie}></Route>
-      </div>
+      <React.Fragment>
+        <div className="MovieDB" style={{ marginTop: "-2rem" }}>
+          <Route path="/" exact component={MovieList}></Route>
+          <Route path="/genre/:genre" exact component={MovieList}></Route>
+          <Suspense fallback={<div>Loading...</div>}>
+            <Route path="/about" exact render={props => <About {...props} />} />
+            <Route
+              path="/movies/:id"
+              exact
+              render={props => <FullMovie {...props} />}
+            />
+          </Suspense>
+        </div>
+      </React.Fragment>
     );
   }
 }
