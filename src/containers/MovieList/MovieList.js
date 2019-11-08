@@ -9,15 +9,15 @@ export class MovieList extends Component {
     this.props.onLoadMovies(" ");
   }
 
-  // componentDidUpdate() {
-  //   let genre = this.props.match.params.genre;
-  //   if (genre) {
-  //     if (genre != this.props.genre) {
-  //       this.props.onLoadMovies(genre);
-  //       //ak g z url je iny ako g v state take update a set g v state na ten z url
-  //     }
-  //   }
-  // }
+  componentDidUpdate() {
+    let genre = this.props.match.params.genre;
+    if (genre) {
+      if (genre != this.props.genre) {
+        this.props.onLoadMovies(genre);
+        //ak g z url je iny ako g v state take update a set g v state na ten z url
+      }
+    }
+  }
 
   fullPostHandler = id => {
     this.props.history.push("/movies/" + id);
