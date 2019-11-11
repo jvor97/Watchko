@@ -4,11 +4,27 @@ import Input from "../Input/Input";
 class SignUp extends Component {
   state = {
     loginForm: {
-      name: {
+      firstName: {
         elementType: "input",
         elementConfig: {
           type: "text",
-          placeholder: "User name"
+          placeholder: "John"
+        },
+        value: ""
+      },
+      lastName: {
+        elementType: "input",
+        elementConfig: {
+          type: "text",
+          placeholder: "Smith"
+        },
+        value: ""
+      },
+      email: {
+        elementType: "input",
+        elementConfig: {
+          type: "email",
+          placeholder: "john.smith@example.com"
         },
         value: ""
       },
@@ -42,7 +58,19 @@ class SignUp extends Component {
       });
     }
 
-    return <form></form>;
+    return (
+      <form>
+        {formElementsArray.map(input => (
+          <Input
+            key={input.id}
+            elementType={input.config.elementType}
+            value={input.config.value}
+            config={input.config.elementConfig}
+            onChange={event => this.onChangeHandler(event, input.id)}
+          />
+        ))}
+      </form>
+    );
   }
 }
 

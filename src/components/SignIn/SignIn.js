@@ -1,14 +1,15 @@
 import React, { Component } from "react";
 import Input from "../Input/Input";
+import "./SignIn.css";
 
 class SignIn extends Component {
   state = {
     loginForm: {
-      name: {
+      email: {
         elementType: "input",
         elementConfig: {
-          type: "text",
-          placeholder: "User name"
+          type: "email",
+          placeholder: "User email"
         },
         value: ""
       },
@@ -42,8 +43,12 @@ class SignIn extends Component {
       });
     }
 
+    const style = {
+      width: "47%",
+      display: "inline-block"
+    };
     return (
-      <form>
+      <form className='SignIn'>
         {formElementsArray.map(input => (
           <Input
             key={input.id}
