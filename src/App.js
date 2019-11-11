@@ -8,6 +8,8 @@ import Genres from "./components/Genres/Genres";
 
 class App extends Component {
   render() {
+    console.log(this.props.openGenres);
+    console.log(this.props);
     let genres;
     if (this.props.openGenres) {
       genres = <Genres />;

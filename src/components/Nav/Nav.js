@@ -14,29 +14,39 @@ class Nav extends Component {
       <nav className="Nav navbar navbar-expand-lg navbar-dark sticky-top">
         <div className="container">
           <Link className="navbar-brand" to="/">
-            <div className="logo">
-              <img src={logo} alt="watchko-logo" />
-            </div>
+            {/* <div className="logo"> */}
+            <img src={logo} alt="watchko-logo" />
+            {/* </div> */}
           </Link>
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarTogglerDemo02"
-            aria-controls="navbarTogglerDemo02"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
+          <div className="d-flex ml-auto">
+            <button
+              className="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target="#navbarTogglerDemo02"
+              aria-controls="navbarTogglerDemo02"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span className="navbar-toggler-icon"></span>
+            </button>
+          </div>
 
           <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
-            <ul className="navbar-nav">
-              <li className="nav-item">
+            <form className="form-navbar my-2 my-lg-0 order-2">
+              <input
+                className="form-control"
+                name="s"
+                type="text"
+                placeholder="Search"
+              ></input>
+            </form>
+            <ul className="navbar-nav mr-auto order-1">
+              {/* <li className="nav-item">
                 <Link className="nav-link" to="/">
                   Movies<span className="sr-only">(current)</span>
                 </Link>
-              </li>
+              </li> */}
               <li className="nav-item">
                 <Link className="nav-link" to="/about">
                   About
@@ -53,6 +63,21 @@ class Nav extends Component {
                 </p>
               </li>
             </ul>
+            <ul className="navbar-nav d-none d-lg-flex order-3">
+              <li className="nav-item">
+                <Link className="nav-link" to="/sign">
+                  Sign in/ up
+                </Link>
+              </li>
+            </ul>
+            {/* <ul className="navbar-nav d-lg-none">
+              <li className="nav-item-divider"></li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/sign">
+                  Sign in / Sign up
+                </Link>
+              </li>
+            </ul> */}
           </div>
         </div>
       </nav>
