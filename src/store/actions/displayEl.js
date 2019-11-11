@@ -3,3 +3,8 @@ export const toggleGenres = () => {
     type: "TOGGLE_GENRES"
   };
 };
+export const toggleLogin = () => {
+  return {
+    type: "TOGGLE_LOGIN"
+  };
+};

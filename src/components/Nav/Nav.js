@@ -65,9 +65,9 @@ class Nav extends Component {
             </ul>
             <ul className="navbar-nav d-none d-lg-flex order-3">
               <li className="nav-item">
-                <Link className="nav-link" to="/sign">
+                <p className="nav-link" onClick={this.props.toggleLogin}>
                   Sign in/ up
-                </Link>
+                </p>
               </li>
             </ul>
             {/* <ul className="navbar-nav d-lg-none">
@@ -93,7 +93,8 @@ class Nav extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    toggleGenres: () => dispatch({ type: "TOGGLE_GENRES" })
+    toggleGenres: () => dispatch({ type: "TOGGLE_GENRES" }),
+    toggleLogin: () => dispatch({ type: "TOGGLE_LOGIN" })
   };
 };
 

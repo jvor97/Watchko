@@ -2,7 +2,8 @@
 // import * as actionTypes from '../actions/actionTypes';
 
 let initialState = {
-  openGenres: false
+  openGenres: false,
+  openLogin: false
 };
 
 const reducer = (state = initialState, action) => {
@@ -11,6 +12,11 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         openGenres: !state.openGenres
+      };
+    case "TOGGLE_LOGIN":
+      return {
+        ...state,
+        openLogin: !state.openLogin
       };
   }
   return state;
