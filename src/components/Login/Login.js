@@ -11,16 +11,16 @@ class Login extends Component {
       //     <div>Sign up</div>
       //     {/* //sign in comp */}
       //   </div>
-      <Modal show={this.props.show} onHide={handleClose}>
+      <Modal show={this.props.show} onHide={this.props.handleClose} centered>
         <Modal.Header closeButton>
           <Modal.Title>Modal heading</Modal.Title>
         </Modal.Header>
         <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button variant="secondary" onClick={this.props.handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleClose}>
+          <Button variant="primary" onClick={this.props.handleClose}>
             Save Changes
           </Button>
         </Modal.Footer>

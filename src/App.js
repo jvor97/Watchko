@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import MovieDB from "./containers/MovieDB/MovieDB";
 import Nav from "./components/Nav/Nav";
 import Genres from "./components/Genres/Genres";
+import Login from "./components/Login/Login";
 
 class App extends Component {
   render() {
@@ -21,6 +22,7 @@ class App extends Component {
           <div>
             <Nav />
             <MovieDB />
+            <Login />
           </div>
           {genres}
         </div>
