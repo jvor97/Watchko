@@ -11,7 +11,6 @@ import "./Login.css";
 
 class Login extends Component {
   state = {
-    displaySignIn: true,
     displaySignUp: false
   };
 
@@ -50,14 +49,14 @@ class Login extends Component {
             <ToggleButtonGroup type="radio" name="options" defaultValue={1}>
               <ToggleButton
                 value={1}
-                onClick={this.handleHideSignUp}
+                onClick={this.props.handleHideSignUp}
                 className="loginBtn"
               >
                 Sign in
               </ToggleButton>
               <ToggleButton
                 value={2}
-                onClick={this.handleDisplaySignUp}
+                onClick={this.props.handleDisplaySignUp}
                 className="loginBtn"
               >
                 Sign up
@@ -68,7 +67,7 @@ class Login extends Component {
             <Modal.Title>Modal heading</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            {this.state.displaySignUp ? <SignUp /> : <SignIn />}
+            {this.props.displaySignUp ? <SignUp /> : <SignIn />}
           </Modal.Body>
           <Modal.Footer>
             {/* <Button variant="secondary" onClick={this.props.handleClose}>
@@ -86,13 +85,16 @@ class Login extends Component {
 
 const mapStateToProps = state => {
   return {
-    show: state.displayEl.openLogin
+    show: state.displayEl.openLogin,
+    displaySignUp: state.displayEl.displaySignUp
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    handleClose: () => dispatch({ type: "TOGGLE_LOGIN" })
+    handleClose: () => dispatch({ type: "TOGGLE_LOGIN" }),
+    handleDisplaySignUp: () => dispatch({ type: "DISPLAY_SIGNUP" }),
+    handleHideSignUp: () => dispatch({ type: "HIDE_SIGNUP" })
   };
 };
 
