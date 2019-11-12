@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { ToggleButtonGroup } from "react-bootstrap";
 import { ToggleButton } from "react-bootstrap";
 import { ButtonToolbar } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 
 import SignIn from "../SignIn/SignIn";
 import SignUp from "../SignUp/SignUp";
@@ -44,7 +45,12 @@ class Login extends Component {
       `}
         </style>
 
-        <Modal show={this.props.show} onHide={this.props.handleClose} centered>
+        <Modal
+          show={this.props.show}
+          onHide={this.props.handleClose}
+          className="Login"
+          centered
+        >
           <ButtonToolbar>
             <ToggleButtonGroup type="radio" name="options" defaultValue={1}>
               <ToggleButton
@@ -63,19 +69,18 @@ class Login extends Component {
               </ToggleButton>
             </ToggleButtonGroup>
           </ButtonToolbar>
-          <Modal.Header closeButton>
-            <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Header>
+            <Modal.Title>
+              {this.props.displaySignUp ? "Sign Up" : "Sign In"}
+            </Modal.Title>
           </Modal.Header>
           <Modal.Body>
             {this.props.displaySignUp ? <SignUp /> : <SignIn />}
           </Modal.Body>
           <Modal.Footer>
-            {/* <Button variant="secondary" onClick={this.props.handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={this.props.handleClose}>
-            Save Changes
-          </Button> */}
+            <Button type="submit" className="signingBtn" size="lg" block>
+              {this.props.displaySignUp ? "Sign Up" : "Sign In"}
+            </Button>
           </Modal.Footer>
         </Modal>
       </>
