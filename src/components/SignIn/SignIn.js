@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Input from "../Input/Input";
-import "./SignIn.css";
 
 class SignIn extends Component {
   state = {
@@ -11,7 +10,8 @@ class SignIn extends Component {
           type: "email",
           placeholder: "User email"
         },
-        value: ""
+        value: "",
+        label: "Email"
       },
       password: {
         elementType: "input",
@@ -19,7 +19,8 @@ class SignIn extends Component {
           type: "password",
           placeholder: "Password"
         },
-        value: ""
+        value: "",
+        label: "Password"
       }
     }
   };
@@ -48,13 +49,14 @@ class SignIn extends Component {
       display: "inline-block"
     };
     return (
-      <form className='SignIn'>
+      <form>
         {formElementsArray.map(input => (
           <Input
             key={input.id}
             elementType={input.config.elementType}
             value={input.config.value}
             config={input.config.elementConfig}
+            label={input.config.label}
             onChange={event => this.onChangeHandler(event, input.id)}
           />
         ))}

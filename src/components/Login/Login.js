@@ -7,6 +7,7 @@ import { ButtonToolbar } from "react-bootstrap";
 
 import SignIn from "../SignIn/SignIn";
 import SignUp from "../SignUp/SignUp";
+import "./Login.css";
 
 class Login extends Component {
   state = {
@@ -47,10 +48,18 @@ class Login extends Component {
         <Modal show={this.props.show} onHide={this.props.handleClose} centered>
           <ButtonToolbar>
             <ToggleButtonGroup type="radio" name="options" defaultValue={1}>
-              <ToggleButton value={1} onClick={this.handleHideSignUp}>
+              <ToggleButton
+                value={1}
+                onClick={this.handleHideSignUp}
+                className="loginBtn"
+              >
                 Sign in
               </ToggleButton>
-              <ToggleButton value={2} onClick={this.handleDisplaySignUp}>
+              <ToggleButton
+                value={2}
+                onClick={this.handleDisplaySignUp}
+                className="loginBtn"
+              >
                 Sign up
               </ToggleButton>
             </ToggleButtonGroup>

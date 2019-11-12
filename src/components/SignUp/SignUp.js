@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Input from "../Input/Input";
+import "./SignUp.css";
 
 class SignUp extends Component {
   state = {
@@ -10,7 +11,8 @@ class SignUp extends Component {
           type: "text",
           placeholder: "John"
         },
-        value: ""
+        value: "",
+        label: "First Name"
       },
       lastName: {
         elementType: "input",
@@ -18,7 +20,8 @@ class SignUp extends Component {
           type: "text",
           placeholder: "Smith"
         },
-        value: ""
+        value: "",
+        label: "Last Name"
       },
       email: {
         elementType: "input",
@@ -26,7 +29,8 @@ class SignUp extends Component {
           type: "email",
           placeholder: "john.smith@example.com"
         },
-        value: ""
+        value: "",
+        label: "Email"
       },
       password: {
         elementType: "input",
@@ -34,7 +38,8 @@ class SignUp extends Component {
           type: "password",
           placeholder: "Password"
         },
-        value: ""
+        value: "",
+        label: "Password"
       }
     }
   };
@@ -59,13 +64,14 @@ class SignUp extends Component {
     }
 
     return (
-      <form>
+      <form className="SignUp">
         {formElementsArray.map(input => (
           <Input
             key={input.id}
             elementType={input.config.elementType}
             value={input.config.value}
             config={input.config.elementConfig}
+            label={input.config.label}
             onChange={event => this.onChangeHandler(event, input.id)}
           />
         ))}

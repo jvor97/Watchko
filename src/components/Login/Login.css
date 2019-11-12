@@ -1,0 +1,14 @@
+.loginBtn {
+  background-color: #847e12d3 !important;
+  border: none !important;
+}
+.loginBtn:hover,
+.loginBtn:active,
+.loginBtn:focus {
+  background-color: #847f12 !important;
+  border: none !important;
+  outline: none !important;
+}
+.loginBtn.active {
+  background-color: #847f12 !important;
+}
