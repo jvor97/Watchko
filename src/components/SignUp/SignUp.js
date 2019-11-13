@@ -1,6 +1,9 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { Button } from "react-bootstrap";
 import Input from "../Input/Input";
 import "./SignUp.css";
+import * as actions from "../../store/actions/index";
 
 class SignUp extends Component {
   state = {
@@ -54,6 +57,16 @@ class SignUp extends Component {
     });
   };
 
+  handleSubmit = event => {
+    event.preventDefault();
+    let data = {};
+    for (const formEl in this.state.loginForm) {
+      data[formEl] = this.state.loginForm[formEl].value;
+    }
+
+    this.props.onSignUp(data);
+  };
+
   render() {
     const formElementsArray = [];
     for (let i in this.state.loginForm) {
@@ -64,7 +77,7 @@ class SignUp extends Component {
     }
 
     return (
-      <form className="SignUp">
+      <form className="SignUp" onSubmit={this.handleSubmit}>
         {formElementsArray.map(input => (
           <Input
             key={input.id}
@@ -75,9 +88,24 @@ class SignUp extends Component {
             onChange={event => this.onChangeHandler(event, input.id)}
           />
         ))}
+        <Button
+          type="submit"
+          className="signingBtn"
+          onClick={this.handleSubmit}
+          size="lg"
+          block
+        >
+          Sign In
+        </Button>
       </form>
     );
   }
 }
 
-export default SignUp;
+const mapDispatchToProps = dispatch => {
+  return {
+    onSignUp: data => dispatch(actions.signUp(data))
+  };
+};
+
+export default connect(null, mapDispatchToProps)(SignUp);
