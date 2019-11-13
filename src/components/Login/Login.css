@@ -6,9 +6,9 @@
 .Login .modal-header {
   border-bottom: 1px solid #847f12 !important;
 }
-.Login .modal-footer {
+/* .Login .modal-footer {
   border-top: 1px solid #847f12 !important;
-}
+} */
 
 .loginBtn {
   background-color: #847e12d3 !important;

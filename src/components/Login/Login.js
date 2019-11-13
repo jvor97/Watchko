@@ -28,6 +28,8 @@ class Login extends Component {
       displaySignUp: false
     });
   };
+
+
   render() {
     return (
       //   <div className="Login">
@@ -77,11 +79,6 @@ class Login extends Component {
           <Modal.Body>
             {this.props.displaySignUp ? <SignUp /> : <SignIn />}
           </Modal.Body>
-          <Modal.Footer>
-            <Button type="submit" className="signingBtn" size="lg" block>
-              {this.props.displaySignUp ? "Sign Up" : "Sign In"}
-            </Button>
-          </Modal.Footer>
         </Modal>
       </>
     );
@@ -99,11 +96,8 @@ const mapDispatchToProps = dispatch => {
   return {
     handleClose: () => dispatch({ type: "TOGGLE_LOGIN" }),
     handleDisplaySignUp: () => dispatch({ type: "DISPLAY_SIGNUP" }),
-    handleHideSignUp: () => dispatch({ type: "HIDE_SIGNUP" })
+    handleHideSignUp: () => dispatch({ type: "HIDE_SIGNUP" }),
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

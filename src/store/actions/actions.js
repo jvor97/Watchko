@@ -1,5 +1,4 @@
 import axios from "axios";
-import { bool } from "prop-types";
 
 // export const LOADMOVIES = 'LOADMOVIES';
 // export const RELOADMOVIES = 'RELOADMOVIES';
