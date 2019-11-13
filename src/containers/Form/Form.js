@@ -33,7 +33,7 @@ class Form extends Component {
           require: true,
           minLength: 5,
           number: false,
-          specChar: false
+          specChar: true
         },
         valid: false,
         touched: false
