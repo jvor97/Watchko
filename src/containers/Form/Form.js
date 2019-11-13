@@ -110,7 +110,6 @@ class Form extends Component {
     }
 
     updatedForm[id] = updatedFormEl;
-    console.log(updatedFormEl);
     this.setState({
       contactForm: updatedForm,
       valid: validForm
@@ -124,10 +123,14 @@ class Form extends Component {
       // formData[formElement] = formElement.value;
       formData[formElement] = this.state.contactForm[formElement].value;
     }
-    axios.post("http://localhost:4000/about/add", formData).then(response => {
-      console.log(response.config.data);
-      // this.props.history.push("/");
-    });
+
+    //   ("http://localhost:4000/about/add"
+    axios
+      .post("https://watchko-94928.firebaseio.com/contactData.json", formData)
+      .then(response => {
+        console.log(response.config.data);
+        // this.props.history.push("/");
+      });
   };
 
   render() {
