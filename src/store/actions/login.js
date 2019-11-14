@@ -19,7 +19,7 @@ export const loginFail = error => {
     error: error
   };
 };
-export const signIn = (email, password) => {
+export const login = (email, password,loginMethod) => {
   return dispatch => {
     dispatch(loginStart());
     const data = {
@@ -27,7 +27,11 @@ export const signIn = (email, password) => {
       password: password,
       returnSecureToken: true
     }
-    axios.post('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAFr8_cD1hwNolhCWFe1befrevgrD1VU6g', data)
+    let url = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAFr8_cD1hwNolhCWFe1befrevgrD1VU6g';
+    if (loginMethod === 'signUp') {
+      url = "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyAFr8_cD1hwNolhCWFe1befrevgrD1VU6g"
+    }
+    axios.post(url, data)
     .then(
       response => {
         console.log(response.data);
@@ -42,30 +46,30 @@ export const signIn = (email, password) => {
   };
 };
 
-export const signUp = data => {
-  return dispatch => {
-    dispatch(loginStart());
-    const loginData = {
-      // firstName: data.firstName,
-      // lastName: data.lastName,
-      email: data.email,
-      password: data.password,
-      returnSecureToken: true
-    };
+// export const signUp = data => {
+//   return dispatch => {
+//     dispatch(loginStart());
+//     const loginData = {
+//       // firstName: data.firstName,
+//       // lastName: data.lastName,
+//       email: data.email,
+//       password: data.password,
+//       returnSecureToken: true
+//     };
 
-    axios
-      .post(
-        "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyAFr8_cD1hwNolhCWFe1befrevgrD1VU6g",
-        loginData
-      )
-      .then(response => {
-        console.log(response);
-        dispatch(loginSuccess(response.data.localId, response.data.idToken));
-      })
-      .catch(err => {
-        console.log(err);
-        dispatch(loginFail(err));
-      });
-  };
-};
+//     axios
+//       .post(
+//         "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyAFr8_cD1hwNolhCWFe1befrevgrD1VU6g",
+//         loginData
+//       )
+//       .then(response => {
+//         console.log(response);
+//         dispatch(loginSuccess(response.data.localId, response.data.idToken));
+//       })
+//       .catch(err => {
+//         console.log(err);
+//         dispatch(loginFail(err));
+//       });
+//   };
+// };
 

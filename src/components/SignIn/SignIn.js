@@ -97,7 +97,8 @@ class SignIn extends Component {
     event.preventDefault();
     this.props.onSignIn(
       this.state.loginForm.email.value,
-      this.state.loginForm.password.value
+      this.state.loginForm.password.value,
+      'signIn'
     );
   };
 
@@ -140,7 +141,7 @@ class SignIn extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onSignIn: (email, password) => dispatch(actions.signIn(email, password))
+    onSignIn: (email, password,loginMethod) => dispatch(actions.login(email, password, loginMethod))
   };
 };
 

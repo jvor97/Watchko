@@ -59,12 +59,12 @@ class SignUp extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    let data = {};
-    for (const formEl in this.state.loginForm) {
-      data[formEl] = this.state.loginForm[formEl].value;
-    }
+    // let data = {};
+    // for (const formEl in this.state.loginForm) {
+    //   data[formEl] = this.state.loginForm[formEl].value;
+    // }
 
-    this.props.onSignUp(data);
+    this.props.onSignUp(this.state.loginForm.email.value,this.state.loginForm.password.value,'signUp');
   };
 
   render() {
@@ -104,8 +104,8 @@ class SignUp extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onSignUp: data => dispatch(actions.signUp(data))
-  };
+    onSignUp: ((email, password,loginMethod) => dispatch(actions.login(email, password,loginMethod)))
+  }
 };
 
 export default connect(null, mapDispatchToProps)(SignUp);
