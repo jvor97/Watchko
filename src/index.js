@@ -12,11 +12,14 @@ import * as serviceWorker from "./serviceWorker";
 import "bootstrap/dist/css/bootstrap.min.css";
 import ApiReducer from "./store/reducers/APIdata";
 import DisplayReducer from "./store/reducers/displayEl";
+import LoginReducer from "./store/reducers/login";
+
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const reducer = combineReducers({
   api: ApiReducer,
-  displayEl: DisplayReducer
+  displayEl: DisplayReducer,
+  login: LoginReducer
 });
 let store = createStore(reducer, composeEnhancers(applyMiddleware(thunk)));
 

@@ -5,10 +5,12 @@ export const loginStart = () => {
     type: "LOGIN_START"
   };
 };
-export const loginSuccess = data => {
+export const loginSuccess = (userId, idToken) => {
+  console.log(userId);
   return {
-    type: "LOGIN_START",
-    loginData: data
+    type: "LOGIN_SUCCESS",
+    userId: userId,
+    idToken: idToken
   };
 };
 export const loginFail = error => {
@@ -20,8 +22,26 @@ export const loginFail = error => {
 export const signIn = (email, password) => {
   return dispatch => {
     dispatch(loginStart());
+    const data = {
+      email: email,
+      password: password,
+      returnSecureToken: true
+    }
+    axios.post('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAFr8_cD1hwNolhCWFe1befrevgrD1VU6g', data)
+    .then(
+      response => {
+        console.log(response.data);
+        dispatch(loginSuccess(response.data.localId, response.data.idToken))
+      }
+    ).catch(
+      err => {
+        dispatch(loginFail(err));
+        console.log(err);
+      }
+    )
   };
 };
+
 export const signUp = data => {
   return dispatch => {
     dispatch(loginStart());
@@ -40,7 +60,7 @@ export const signUp = data => {
       )
       .then(response => {
         console.log(response);
-        dispatch(loginSuccess(response.data));
+        dispatch(loginSuccess(response.data.localId, response.data.idToken));
       })
       .catch(err => {
         console.log(err);
@@ -48,3 +68,4 @@ export const signUp = data => {
       });
   };
 };
+
