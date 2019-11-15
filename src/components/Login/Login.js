@@ -31,12 +31,10 @@ class Login extends Component {
     });
   };
 
-
   render() {
-
     const spinnerStyle = {
-      margin:' 0 45%',
-    }
+      margin: " 0 45%"
+    };
 
     return (
       //   <div className="Login">
@@ -85,7 +83,13 @@ class Login extends Component {
           </Modal.Header>
           <Modal.Body>
             {this.props.error ? this.props.error.message : null}
-            {this.props.loading ? <Spinner animation="border" style={spinnerStyle}/> : (this.props.displaySignUp ? <SignUp /> : <SignIn />)}
+            {this.props.loading ? (
+              <Spinner animation="border" style={spinnerStyle} />
+            ) : this.props.displaySignUp ? (
+              <SignUp />
+            ) : (
+              <SignIn />
+            )}
           </Modal.Body>
         </Modal>
       </>
@@ -95,8 +99,8 @@ class Login extends Component {
 
 const mapStateToProps = state => {
   return {
-    show: state.displayEl.openLogin,
-    displaySignUp: state.displayEl.displaySignUp,
+    show: state.login.openLogin,
+    displaySignUp: state.login.displaySignUp,
     loading: state.login.loading,
     error: state.login.error
   };
@@ -106,7 +110,7 @@ const mapDispatchToProps = dispatch => {
   return {
     handleClose: () => dispatch({ type: "TOGGLE_LOGIN" }),
     handleDisplaySignUp: () => dispatch({ type: "DISPLAY_SIGNUP" }),
-    handleHideSignUp: () => dispatch({ type: "HIDE_SIGNUP" }),
+    handleHideSignUp: () => dispatch({ type: "HIDE_SIGNUP" })
   };
 };
 

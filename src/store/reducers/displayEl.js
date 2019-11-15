@@ -3,8 +3,6 @@
 
 let initialState = {
   openGenres: false,
-  openLogin: false,
-  displaySignUp: false
 };
 
 const reducer = (state = initialState, action) => {
@@ -13,22 +11,6 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         openGenres: !state.openGenres
-      };
-    case "TOGGLE_LOGIN":
-      return {
-        ...state,
-        openLogin: !state.openLogin,
-        displaySignUp: false
-      };
-    case "DISPLAY_SIGNUP":
-      return {
-        ...state,
-        displaySignUp: true
-      };
-    case "HIDE_SIGNUP":
-      return {
-        ...state,
-        displaySignUp: false
       };
   }
   return state;
