@@ -39,8 +39,8 @@ export const login = (email, password,loginMethod) => {
       }
     ).catch(
       err => {
-        dispatch(loginFail(err));
-        console.log(err);
+        dispatch(loginFail(err.response.data.error));
+        console.log(err.response.data.error);
       }
     )
   };

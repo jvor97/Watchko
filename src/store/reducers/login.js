@@ -18,7 +18,8 @@ const reducer = (state=initialState,action) => {
                 ...state,
                 loading: false,
                 userId: action.userId,
-                idToken: action.idToken
+                idToken: action.idToken,
+                error: null
             }
         case 'LOGIN_FAIL':
             return {
