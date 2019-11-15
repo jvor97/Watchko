@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 import Collapse from "react-bootstrap/Collapse";
 import Genres from "../Genres/Genres";
 
@@ -16,7 +17,11 @@ class Nav extends Component {
       </p>
     );
     if (this.props.logout != null) {
-      login = <p className="nav-link">Log out</p>;
+      login = (
+        <Link className="nav-link" to='/logout'>
+          Log out
+        </Link>
+      );
     }
 
     return (
