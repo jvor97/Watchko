@@ -10,6 +10,15 @@ import * as actionCreators from "../../store/actions/displayEl";
 
 class Nav extends Component {
   render() {
+    let login = (
+      <p className="nav-link" onClick={this.props.toggleLogin}>
+        Sign in/ up
+      </p>
+    );
+    if (this.props.logout != null) {
+      login = <p className="nav-link">Log out</p>;
+    }
+
     return (
       <nav className="Nav navbar navbar-expand-lg navbar-dark sticky-top">
         <div className="container">
@@ -64,11 +73,7 @@ class Nav extends Component {
               </li>
             </ul>
             <ul className="navbar-nav d-none d-lg-flex order-3">
-              <li className="nav-item">
-                <p className="nav-link" onClick={this.props.toggleLogin}>
-                  Sign in/ up
-                </p>
-              </li>
+              <li className="nav-item">{login}</li>
             </ul>
             {/* <ul className="navbar-nav d-lg-none">
               <li className="nav-item-divider"></li>
@@ -85,11 +90,11 @@ class Nav extends Component {
   }
 }
 
-// const mapStateToProps = state => {
-//   return {
-//     openGenres: state.displayEl.openGenres
-//   };
-// };
+const mapStateToProps = state => {
+  return {
+    logout: state.login.userId
+  };
+};
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -98,7 +103,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(Nav);
+export default connect(mapStateToProps, mapDispatchToProps)(Nav);
