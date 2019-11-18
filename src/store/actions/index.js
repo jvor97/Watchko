@@ -1,1 +1,1 @@
-export { login, checkloginExpiration } from "./login";
+export { login, checkloginExpiration, logout } from "./login";
