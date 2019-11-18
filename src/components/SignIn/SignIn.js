@@ -98,7 +98,7 @@ class SignIn extends Component {
     this.props.onSignIn(
       this.state.loginForm.email.value,
       this.state.loginForm.password.value,
-      'signIn'
+      "signIn"
     );
   };
 
@@ -141,7 +141,8 @@ class SignIn extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onSignIn: (email, password,loginMethod) => dispatch(actions.login(email, password, loginMethod))
+    onSignIn: (email, password, loginMethod) =>
+      dispatch(actions.login(email, password, loginMethod))
   };
 };
 

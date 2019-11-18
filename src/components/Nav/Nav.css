@@ -51,7 +51,7 @@
   border: 0 !important;
 }
 
-.form-navbar {
+/* .form-navbar {
   position: relative;
 }
 
@@ -68,8 +68,7 @@
   color: #cccccc;
   content: "\f4a5";
   font-family: "Ionicons";
-}
-
+} */
 
 /************** MEDIA QUERIES ****************/
 @media (min-width: 992px) {
@@ -79,7 +78,7 @@
   .logo img {
     width: 100%;
   }
-  .form-navbar:before {
+  /* .form-navbar:before {
     z-index: 1;
   }
   .form-navbar .form-control {
@@ -89,8 +88,7 @@
     background: transparent !important;
     padding-right: 0;
     width: 30px;
-  }
-
+  } */
 }
 
 @media (min-width: 1440px) {

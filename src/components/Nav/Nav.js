@@ -8,8 +8,12 @@ import Genres from "../Genres/Genres";
 import "./Nav.css";
 import logo from "./watchko-logo.png";
 import * as actionCreators from "../../store/actions/displayEl";
+import SearchBar from "../SearchBar/SearchBar";
 
 class Nav extends Component {
+  displaySearch = () => {
+    //ked nic nanpises tak sa schova a ked kliknes inde
+  };
   render() {
     let login = (
       <p className="nav-link" onClick={this.props.toggleLogin}>
@@ -18,7 +22,7 @@ class Nav extends Component {
     );
     if (this.props.logout != null) {
       login = (
-        <Link className="nav-link" to='/logout'>
+        <Link className="nav-link" to="/logout">
           Log out
         </Link>
       );
@@ -47,14 +51,6 @@ class Nav extends Component {
           </div>
 
           <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
-            <form className="form-navbar my-2 my-lg-0 order-2">
-              <input
-                className="form-control"
-                name="s"
-                type="text"
-                placeholder="Search"
-              ></input>
-            </form>
             <ul className="navbar-nav mr-auto order-1">
               {/* <li className="nav-item">
                 <Link className="nav-link" to="/">
@@ -76,8 +72,18 @@ class Nav extends Component {
                   Genres
                 </p>
               </li>
+              {/* <li>
+                <div className="my-2 my-lg-0 order-2">
+                  <SearchBar />
+                </div>
+              </li> */}
             </ul>
-            <ul className="navbar-nav d-none d-lg-flex order-3">
+            <ul className="navbar-nav mx-2 my-lg-0 order-2">
+              <li className="nav-item px-2">
+                <SearchBar />
+              </li>
+            </ul>
+            <ul className="navbar-nav d-none d-lg-flex order-3 mx-2">
               <li className="nav-item">{login}</li>
             </ul>
             {/* <ul className="navbar-nav d-lg-none">
