@@ -6,8 +6,12 @@ import MovieDB from "./containers/MovieDB/MovieDB";
 import Nav from "./components/Nav/Nav";
 import Genres from "./components/Genres/Genres";
 import Login from "./components/Login/Login";
+import * as actions from "./store/actions/index";
 
 class App extends Component {
+  componentDidMount = () => {
+    this.props.checkLogoutTime();
+  };
   render() {
     console.log(this.props.openGenres);
     console.log(this.props);
@@ -37,4 +41,10 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = dispatch => {
+  return {
+    checkLogoutTime: () => dispatch(actions.checkloginExpiration())
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
