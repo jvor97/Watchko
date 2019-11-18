@@ -20,7 +20,7 @@ export const loadMovies = genre => {
           console.log(response.data.results);
           movies.push(response.data.results);
           console.log(movies);
-          dispatch(loadMoviesData(movies, genre));
+          dispatch(loadMoviesData(movies, genre, null));
         });
     }
   };
@@ -30,7 +30,7 @@ export const itemsLoading = bool => {
   return { type: "ITEMS_LOADING", loading: bool };
 };
 
-export const loadMoviesData = (movies, genre) => {
+export const loadMoviesData = (movies, genre, search) => {
   console.log(movies);
   //concat all array to one
   var allMovies = [].concat.apply([], movies);
@@ -38,7 +38,8 @@ export const loadMoviesData = (movies, genre) => {
   return {
     type: "LOAD_MOVIES",
     movies: allMovies,
-    genre: genre
+    genre: genre,
+    search: search
   };
 };
 
@@ -85,5 +86,20 @@ export const loadGenresData = genres => {
   return {
     type: "LOAD_GENRES",
     genres: genres
+  };
+};
+
+export const getSearchMovies = query => {
+  return dispatch => {
+    dispatch(itemsLoading(true));
+    axios
+      .get(
+        "https://api.themoviedb.org/3/search/movie?api_key=65777f92529c3462f958232f137b357f&language=en-US&page=1&include_adult=false&query=" +
+          query
+      )
+      .then(response => {
+        console.log(response.data);
+        dispatch(loadMoviesData(response.data.results, null, query));
+      });
   };
 };

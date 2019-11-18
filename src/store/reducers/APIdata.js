@@ -4,7 +4,9 @@ let initialState = {
   movies: [],
   selectedMovie: null,
   previousID: null,
-  genres: null
+  genres: null,
+  search: null,
+  previousSearch: null
   // genre: ""
 };
 
@@ -19,7 +21,9 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         movies: action.movies,
-        genre: action.genre
+        genre: action.genre,
+        previousSearch: state.search,
+        search: action.search
       };
     case "LOAD_FULLMOVIE":
       console.log(action.selectedMovie);

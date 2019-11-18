@@ -1,5 +1,7 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { IoIosSearch } from "react-icons/io";
+import * as actions from "../../store/actions/index";
 
 class SearchBar extends Component {
   constructor(props) {
@@ -39,6 +41,7 @@ class SearchBar extends Component {
     return this.setState({
       value: event.target.value
     });
+    this.props.getSearchMovies(event.target.value);
   };
 
   render() {
@@ -83,4 +86,10 @@ class SearchBar extends Component {
   }
 }
 
-export default SearchBar;
+const mapDispatchToProps = dispatch => {
+  return {
+    getSearchMovies: query => dispatch(actions.getSearchMovies(query))
+  };
+};
+
+export default connect(null, mapDispatchToProps)(SearchBar);

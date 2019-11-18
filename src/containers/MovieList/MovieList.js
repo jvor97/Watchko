@@ -11,9 +11,16 @@ export class MovieList extends Component {
 
   componentDidUpdate() {
     let genre = this.props.match.params.genre;
+    let search = this.props.search;
     if (genre) {
       if (genre != this.props.genre) {
-        this.props.onLoadMovies(genre);
+        this.props.onLoadMovies(genre, null);
+        //ak g z url je iny ako g v state take update a set g v state na ten z url
+      }
+    }
+    if (search !== null && search.length > 0 && search !== undefined) {
+      if (this.props.previousSearch != search) {
+        this.props.onLoadMovies(null, search);
         //ak g z url je iny ako g v state take update a set g v state na ten z url
       }
     }
@@ -62,17 +69,17 @@ const mapStateToProps = state => {
   return {
     movies: state.api.movies,
     loading: state.api.loading,
-    genre: state.api.genre
+    genre: state.api.genre,
+    previousSearch: state.api.previousSearch,
+    search: state.api.search
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    onLoadMovies: genre => dispatch(actionCreators.loadMovies(genre))
+    onLoadMovies: (genre, search) =>
+      dispatch(actionCreators.loadMovies(genre, search))
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(MovieList);
+export default connect(mapStateToProps, mapDispatchToProps)(MovieList);
