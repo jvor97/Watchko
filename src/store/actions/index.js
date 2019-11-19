@@ -1,2 +1,2 @@
 export { login, checkloginExpiration, logout } from "./login";
-export { getSearchMovies } from "./actions";
+export { updateQuery, loadMovies } from "./actions";

@@ -3,25 +3,34 @@ import axios from "axios";
 // export const LOADMOVIES = 'LOADMOVIES';
 // export const RELOADMOVIES = 'RELOADMOVIES';
 
-export const loadMovies = genre => {
+export const loadMovies = (genre, query) => {
   return dispatch => {
     dispatch(itemsLoading(true));
     let movies = [];
     for (let i = 0; i < 5; i++) {
       let page = i;
-      axios
-        .get(
+      let url =
+        "https://api.themoviedb.org/3/discover/movie?api_key=65777f92529c3462f958232f137b357f&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=" +
+        page;
+      if (genre !== null) {
+        url =
           "https://api.themoviedb.org/3/discover/movie?api_key=65777f92529c3462f958232f137b357f&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=" +
-            page +
-            "&with_genres=" +
-            genre
-        )
-        .then(response => {
-          console.log(response.data.results);
-          movies.push(response.data.results);
-          console.log(movies);
-          dispatch(loadMoviesData(movies, genre, null));
-        });
+          page +
+          "&with_genres=" +
+          genre;
+      } else if (query !== null) {
+        url =
+          "https://api.themoviedb.org/3/search/movie?api_key=65777f92529c3462f958232f137b357f&language=en-US&sort_by=popularity.desc&include_adult=false&page=" +
+          page +
+          "&include_adult=false&query=" +
+          query;
+      }
+      axios.get(url).then(response => {
+        console.log(response.data.results);
+        movies.push(response.data.results);
+        console.log(movies);
+        dispatch(loadMoviesData(movies, genre, query));
+      });
     }
   };
 };
@@ -30,16 +39,16 @@ export const itemsLoading = bool => {
   return { type: "ITEMS_LOADING", loading: bool };
 };
 
-export const loadMoviesData = (movies, genre, search) => {
-  console.log(movies);
+export const loadMoviesData = (movies, genre, query) => {
   //concat all array to one
   var allMovies = [].concat.apply([], movies);
+  console.log(allMovies);
 
   return {
     type: "LOAD_MOVIES",
     movies: allMovies,
     genre: genre,
-    search: search
+    previousQuery: query
   };
 };
 
@@ -89,17 +98,9 @@ export const loadGenresData = genres => {
   };
 };
 
-export const getSearchMovies = query => {
-  return dispatch => {
-    dispatch(itemsLoading(true));
-    axios
-      .get(
-        "https://api.themoviedb.org/3/search/movie?api_key=65777f92529c3462f958232f137b357f&language=en-US&page=1&include_adult=false&query=" +
-          query
-      )
-      .then(response => {
-        console.log(response.data);
-        dispatch(loadMoviesData(response.data.results, null, query));
-      });
+export const updateQuery = query => {
+  return {
+    type: "UPDATE_QUERY",
+    query: query
   };
 };

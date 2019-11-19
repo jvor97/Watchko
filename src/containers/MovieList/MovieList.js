@@ -6,24 +6,36 @@ import * as actionCreators from "../../store/actions/actions";
 export class MovieList extends Component {
   componentDidMount() {
     console.log(this.props);
-    this.props.onLoadMovies(" ");
+    this.props.onLoadMovies(null, null);
   }
 
   componentDidUpdate() {
     let genre = this.props.match.params.genre;
-    let search = this.props.search;
-    if (genre) {
+    let query = this.props.query;
+    console.log(this.props.previousQuery);
+    console.log(this.props.query);
+
+    if (query !== null && query.length > 0 && query !== undefined) {
+      if (this.props.previousQuery != query) {
+        console.log("q update");
+        this.props.onLoadMovies(null, query);
+        //ak g z url je iny ako g v state take update a set g v state na ten z url
+      }
+    }
+
+    if (genre !== null && genre !== undefined) {
       if (genre != this.props.genre) {
         this.props.onLoadMovies(genre, null);
         //ak g z url je iny ako g v state take update a set g v state na ten z url
       }
     }
-    if (search !== null && search.length > 0 && search !== undefined) {
-      if (this.props.previousSearch != search) {
-        this.props.onLoadMovies(null, search);
-        //ak g z url je iny ako g v state take update a set g v state na ten z url
-      }
-    }
+    // if (query !== null && query.length > 0 && query !== undefined) {
+    //   if (this.props.previousQuery != query) {
+    //     console.log("q update");
+    //     this.props.onLoadMovies(null, query);
+    //     //ak g z url je iny ako g v state take update a set g v state na ten z url
+    //   }
+    // }
   }
 
   fullPostHandler = id => {
@@ -70,8 +82,8 @@ const mapStateToProps = state => {
     movies: state.api.movies,
     loading: state.api.loading,
     genre: state.api.genre,
-    previousSearch: state.api.previousSearch,
-    search: state.api.search
+    previousQuery: state.api.previousQuery,
+    query: state.api.query
   };
 };
 

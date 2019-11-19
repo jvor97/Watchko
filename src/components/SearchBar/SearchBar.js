@@ -41,7 +41,11 @@ class SearchBar extends Component {
     return this.setState({
       value: event.target.value
     });
-    this.props.getSearchMovies(event.target.value);
+  };
+
+  handleSubmit = event => {
+    event.preventDefault();
+    this.props.updateQuery(this.state.value);
   };
 
   render() {
@@ -75,20 +79,21 @@ class SearchBar extends Component {
       );
     }
     return (
-      <div
+      <form
         style={{ display: "flex", position: "relative" }}
         ref={this.setWrapperRef}
+        onSubmit={event => this.handleSubmit(event)}
       >
         {input}
         <IoIosSearch onClick={this.displaySearch} style={iconStyle} />
-      </div>
+      </form>
     );
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    getSearchMovies: query => dispatch(actions.getSearchMovies(query))
+    updateQuery: query => dispatch({ type: "UPDATE_QUERY", query: query })
   };
 };
 

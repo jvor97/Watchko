@@ -5,8 +5,8 @@ let initialState = {
   selectedMovie: null,
   previousID: null,
   genres: null,
-  search: null,
-  previousSearch: null
+  query: null,
+  previousQuery: null
   // genre: ""
 };
 
@@ -22,8 +22,7 @@ const reducer = (state = initialState, action) => {
         ...state,
         movies: action.movies,
         genre: action.genre,
-        previousSearch: state.search,
-        search: action.search
+        previousQuery: action.previousQuery
       };
     case "LOAD_FULLMOVIE":
       console.log(action.selectedMovie);
@@ -38,6 +37,12 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         genres: action.genres
+      };
+    case "UPDATE_QUERY":
+      return {
+        ...state,
+        query: action.query,
+        genre: null
       };
   }
   console.log(state.genres);
