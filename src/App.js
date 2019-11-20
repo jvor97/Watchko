@@ -23,7 +23,7 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div className="App">
-          <div>
+          <div style={{width: '100%'}}>
             <Nav />
             <MovieDB />
             <Login />
