@@ -1,0 +1,9 @@
+.bb{
+    border-radius: 5rem; 
+}
+
+.OrderBtn{
+    position: absolute;
+    bottom: 13%;
+    right: 10%;
+}

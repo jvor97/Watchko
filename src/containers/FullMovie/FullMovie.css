@@ -137,6 +137,7 @@
         position: absolute;
     top: 13%;
     right: 10%;
+    padding-left: 0;
     /* font-family: 'Raleway', sans-serif;
     display: flex;
     align-items: center;

@@ -6,6 +6,7 @@ import FullMovieButtons from "../../components/FullMovieButtons/FullMovieButtons
 import "react-rater/lib/react-rater.css";
 import "./FullMovie.css";
 import * as actionCreators from "../../store/actions/actions";
+import OrderBtn from "../../components/Buttons/OrderBtn/OrderBtn";
 
 class FullMovie extends Component {
   componentDidMount() {
@@ -96,6 +97,7 @@ class FullMovie extends Component {
               <div className="genres">
                 <h6>{genres}</h6>
               </div>
+              <OrderBtn/>
               <div className="release-date">
                 <div className="date">
                   <div>{this.props.fullMovie.release_date.split("-")[2]}</div>
