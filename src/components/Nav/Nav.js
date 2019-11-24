@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import { IoIosCart } from "react-icons/io";
 import { Redirect } from "react-router-dom";
 import Collapse from "react-bootstrap/Collapse";
 import Genres from "../Genres/Genres";
@@ -9,6 +10,7 @@ import "./Nav.css";
 import logo from "./watchko-logo.png";
 import * as actionCreators from "../../store/actions/displayEl";
 import SearchBar from "../SearchBar/SearchBar";
+import CartIcon from "../UI/CartIcon/CartIcon";
 
 class Nav extends Component {
   displaySearch = () => {
@@ -84,6 +86,13 @@ class Nav extends Component {
               </li>
             </ul>
             <ul className="navbar-nav d-none d-lg-flex order-3 mx-2">
+              {this.props.logout !== null ? (
+                <li className="nav-item" style={{ paddingRight: "1rem" }}>
+                  <Link to="/" className="nav-link" id='cartLink'>
+                    <CartIcon />
+                  </Link>
+                </li>
+              ) : null}
               <li className="nav-item">{login}</li>
             </ul>
             {/* <ul className="navbar-nav d-lg-none">
@@ -114,4 +123,7 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Nav);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Nav);

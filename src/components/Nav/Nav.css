@@ -37,6 +37,12 @@
   border-bottom: 2px transparent;
 }
 
+#cartLink:hover,
+#cartLink:active {
+  color: #847f12;
+  border-bottom: none;
+}
+
 .nav-link:hover,
 .nav-link:active {
   color: #c5c5c5;

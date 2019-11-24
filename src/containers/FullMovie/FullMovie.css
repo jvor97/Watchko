@@ -82,7 +82,7 @@
 
 @media(min-width:425px){
     .bg-image{
-        max-height: calc(100vh - 1rem);
+        max-height: calc(100vh - 45px);
     }
 }
 
