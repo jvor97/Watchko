@@ -3,7 +3,7 @@ const initialState = {
 };
 
 const reducer = (state = initialState, action) => {
-  switch (action) {
+  switch (action.type) {
     case "ORDER_COUNTER":
       return {
         ...state,
@@ -12,3 +12,5 @@ const reducer = (state = initialState, action) => {
   }
   return state;
 };
+
+export default reducer;

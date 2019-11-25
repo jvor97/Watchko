@@ -13,20 +13,31 @@ class OrderBtn extends Component {
     return (
       <ButtonToolbar className="OrderBtn">
         <ToggleButtonGroup type="radio" name="options" defaultValue={1}>
-          <ToggleButton
-            value={1}
+          <button
+            className="loginBtn btn btn-primary"
+            type="radio"
+            autocomplete="off"
+            value="Rent"
             onClick={this.props.handleOrder}
-            className="loginBtn"
           >
             Buy
-          </ToggleButton>
-          <ToggleButton
+          </button>
+          <button
+            className="loginBtn btn btn-primary"
+            type="radio"
+            autocomplete="off"
+            value="Rent"
+            onClick={this.props.handleOrder}
+          >
+            Rent
+          </button>
+          {/* <ToggleButton
             value={2}
             onClick={this.props.handleOrder}
             className="loginBtn"
           >
             Rent
-          </ToggleButton>
+          </ToggleButton> */}
         </ToggleButtonGroup>
       </ButtonToolbar>
     );
@@ -39,7 +50,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(OrderBtn);
+export default connect(null, mapDispatchToProps)(OrderBtn);

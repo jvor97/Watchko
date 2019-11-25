@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import { IoIosCart } from "react-icons/io";
+import { connect } from "react-redux";
 
 class CartIcon extends Component {
   render() {
@@ -12,11 +13,17 @@ class CartIcon extends Component {
       <div>
         <IoIosCart />
         <span class="badge badge-pill" style={style}>
-          1
+          {this.props.counter}
         </span>
       </div>
     );
   }
 }
 
-export default CartIcon;
+const mapStateToProps = state => {
+  return {
+    counter: state.order.counter
+  };
+};
+
+export default connect(mapStateToProps)(CartIcon);
