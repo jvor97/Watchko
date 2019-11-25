@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Button } from "react-bootstrap";
 import Input from "../Input/Input";
+import GeneralBtn from "../Buttons/GeneralBtn/GeneralBtn";
 import "./SignUp.css";
 import * as actions from "../../store/actions/index";
 
@@ -64,7 +64,11 @@ class SignUp extends Component {
     //   data[formEl] = this.state.loginForm[formEl].value;
     // }
 
-    this.props.onSignUp(this.state.loginForm.email.value,this.state.loginForm.password.value,'signUp');
+    this.props.onSignUp(
+      this.state.loginForm.email.value,
+      this.state.loginForm.password.value,
+      "signUp"
+    );
   };
 
   render() {
@@ -88,15 +92,13 @@ class SignUp extends Component {
             onChange={event => this.onChangeHandler(event, input.id)}
           />
         ))}
-        <Button
+        <GeneralBtn
           type="submit"
-          className="signingBtn"
+          id="signingBtn"
+          style={{ width: "100%", fontSize: "1.25rem" }}
           onClick={this.handleSubmit}
-          size="lg"
-          block
-        >
-          Sign In
-        </Button>
+          value="Sign Up"
+        />
       </form>
     );
   }
@@ -104,8 +106,9 @@ class SignUp extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onSignUp: ((email, password,loginMethod) => dispatch(actions.login(email, password,loginMethod)))
-  }
+    onSignUp: (email, password, loginMethod) =>
+      dispatch(actions.login(email, password, loginMethod))
+  };
 };
 
 export default connect(null, mapDispatchToProps)(SignUp);

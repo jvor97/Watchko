@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import { Button } from "react-bootstrap";
 import { connect } from "react-redux";
 
 import Input from "../Input/Input";
 import * as actions from "../../store/actions/index";
+import GeneralBtn from "../Buttons/GeneralBtn/GeneralBtn";
 
 class SignIn extends Component {
   state = {
@@ -125,15 +125,13 @@ class SignIn extends Component {
             onChange={event => this.onChangeHandler(event, input.id)}
           />
         ))}
-        <Button
+        <GeneralBtn
           type="submit"
-          className="signingBtn"
+          id="signingBtn"
+          style={{ width: "100%", fontSize: "1.25rem" }}
           onClick={this.handleSubmit}
-          size="lg"
-          block
-        >
-          Sign In
-        </Button>
+          value="Sign In"
+        />
       </form>
     );
   }
