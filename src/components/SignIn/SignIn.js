@@ -129,7 +129,7 @@ class SignIn extends Component {
           type="submit"
           id="signingBtn"
           style={{ width: "100%", fontSize: "1.25rem" }}
-          onClick={this.handleSubmit}
+          clicked={this.handleSubmit}
           value="Sign In"
         />
       </form>

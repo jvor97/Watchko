@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import Rater from "react-rater";
 
 import FullMovieButtons from "../../components/FullMovieButtons/FullMovieButtons";
+import Counter from "../../components/Counter/Counter";
 import "react-rater/lib/react-rater.css";
 import "./FullMovie.css";
 import * as actionCreators from "../../store/actions/actions";
@@ -12,7 +13,7 @@ class FullMovie extends Component {
   componentDidMount() {
     if (this.props.match.params.id) {
       if (this.props.match.params.id != this.props.previousID) {
-       this.props.onMount(this.props.match.params.id);
+        this.props.onMount(this.props.match.params.id);
       }
     }
   }
@@ -97,7 +98,7 @@ class FullMovie extends Component {
               <div className="genres">
                 <h6>{genres}</h6>
               </div>
-              <OrderBtn/>
+              <OrderBtn />
               <div className="release-date">
                 <div className="date">
                   <div>{this.props.fullMovie.release_date.split("-")[2]}</div>
@@ -135,13 +136,10 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-        onMount: (id) => dispatch(actionCreators.loadFullMovie(id))
-  }
-}
+    onMount: id => dispatch(actionCreators.loadFullMovie(id))
+  };
+};
 
 // export default connect(mapStateToProps,mapDispatchToProps)(FullMovie);
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(FullMovie);
+export default connect(mapStateToProps, mapDispatchToProps)(FullMovie);

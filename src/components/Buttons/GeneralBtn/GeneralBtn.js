@@ -8,6 +8,7 @@ const SubmitBtn = props => {
       className="btn btn-outline"
       disabled={props.disabled}
       style={props.style}
+      onClick={props.clicked}
     >
       {props.value}
     </button>
