@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 
 import GeneralBtn from "../Buttons/GeneralBtn/GeneralBtn";
 
@@ -8,6 +9,7 @@ class Counter extends Component {
   };
 
   handleDec = () => {
+    this.props.onDecrement();
     return this.setState(prevState => {
       return {
         value: prevState.value - 1
@@ -15,6 +17,7 @@ class Counter extends Component {
     });
   };
   handleInc = () => {
+    this.props.onIncrement();
     return this.setState(prevState => {
       return {
         value: prevState.value + 1
@@ -40,4 +43,14 @@ class Counter extends Component {
   }
 }
 
-export default Counter;
+const mapDispatchToProps = dispatch => {
+  return {
+    onIncrement: () => dispatch({ type: "CART_INCREMENT" }),
+    onDecrement: () => dispatch({ type: "CART_DECREMENT" })
+  };
+};
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(Counter);

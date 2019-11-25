@@ -15,6 +15,16 @@ const reducer = (state = initialState, action) => {
         counter: state.counter + 1,
         orderData: updatedOrderData
       };
+    case "CART_INCREMENT":
+      return {
+        ...state,
+        counter: state.counter + 1
+      };
+    case "CART_DECREMENT":
+      return {
+        ...state,
+        counter: state.counter - 1
+      };
   }
   return state;
 };
