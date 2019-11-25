@@ -7,6 +7,7 @@ class CartItem extends Component {
       <div class="card">
         <div class="card-body">
           <h5>{this.props.title}</h5>
+          <p>{this.props.typeOfOrder}</p>
           <Counter/>
           <div>{this.props.price}</div>
           <button>delete</button>

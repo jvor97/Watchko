@@ -18,7 +18,13 @@ class OrderBtn extends Component {
             type="radio"
             autoComplete="off"
             value="buy"
-            onClick={() => this.props.handleOrder(this.props.title, 9)}
+            onClick={() =>
+              this.props.handleOrder(
+                this.props.title,
+                this.props.buyPrice,
+                "buy"
+              )
+            }
           >
             {"Buy | " + this.props.buyPrice + " $"}
           </button>
@@ -27,7 +33,13 @@ class OrderBtn extends Component {
             type="radio"
             autoComplete="off"
             value="rent"
-            onClick={() => this.props.handleOrder(this.props.title, 7)}
+            onClick={() =>
+              this.props.handleOrder(
+                this.props.title,
+                this.props.rentPrice,
+                "rent"
+              )
+            }
           >
             {"Rent | " + this.props.rentPrice + " $"}
           </button>
@@ -46,12 +58,15 @@ class OrderBtn extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    handleOrder: (title, price) =>
+    handleOrder: (title, price, typeOfOrder) =>
       dispatch({
         type: "REGISTER_ORDER",
-        orderData: { title: title, price: price }
+        orderData: { title: title, price: price, typeOfOrder: typeOfOrder }
       })
   };
 };
 
-export default connect(null, mapDispatchToProps)(OrderBtn);
+export default connect(
+  null,
+  mapDispatchToProps
+)(OrderBtn);

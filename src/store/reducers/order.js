@@ -8,7 +8,8 @@ const reducer = (state = initialState, action) => {
     case "REGISTER_ORDER":
       let updatedOrderData = state.orderData.concat({
         title: action.orderData.title,
-        price: action.orderData.price
+        price: action.orderData.price,
+        typeOfOrder: action.orderData.typeOfOrder
       });
       return {
         ...state,

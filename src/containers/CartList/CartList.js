@@ -7,7 +7,11 @@ class Counter extends Component {
   render() {
     // let cartList;
     let cartList = this.props.orderData.map(order => (
-      <CartItem title={order.title} price={order.price} />
+      <CartItem
+        title={order.title}
+        price={order.price}
+        typeOfOrder={order.typeOfOrder}
+      />
     ));
     return <div>{cartList}</div>;
   }
