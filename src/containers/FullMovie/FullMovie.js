@@ -98,7 +98,11 @@ class FullMovie extends Component {
               <div className="genres">
                 <h6>{genres}</h6>
               </div>
-              <OrderBtn title={this.props.fullMovie.title} />
+              <OrderBtn
+                title={this.props.fullMovie.title}
+                rentPrice={this.props.fullMovie.rentPrice}
+                buyPrice={this.props.fullMovie.buyPrice}
+              />
               <div className="release-date">
                 <div className="date">
                   <div>{this.props.fullMovie.release_date.split("-")[2]}</div>

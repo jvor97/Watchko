@@ -20,7 +20,7 @@ class OrderBtn extends Component {
             value="buy"
             onClick={() => this.props.handleOrder(this.props.title, 9)}
           >
-            Buy
+            {"Buy | " + this.props.buyPrice + " $"}
           </button>
           <button
             className="loginBtn btn btn-primary"
@@ -29,7 +29,7 @@ class OrderBtn extends Component {
             value="rent"
             onClick={() => this.props.handleOrder(this.props.title, 7)}
           >
-            Rent
+            {"Rent | " + this.props.rentPrice + " $"}
           </button>
           {/* <ToggleButton
             value={2}

@@ -41,7 +41,7 @@ export const itemsLoading = bool => {
 
 export const loadMoviesData = (movies, genre, query) => {
   //concat all array to one
-  var allMovies = [].concat.apply([], movies);
+  let allMovies = [].concat.apply([], movies);
   console.log(allMovies);
 
   return {
@@ -68,6 +68,11 @@ export const loadFullMovie = id => {
 };
 
 export const loadMovie = (selectedMovie, id) => {
+  let rentRandom = Math.round((Math.random() * 8 * 100) / 100) + 1;
+  let buyRandom = Math.round((Math.random() * 15 * 100) / 100) + 7;
+
+  selectedMovie.rentPrice = rentRandom;
+  selectedMovie.buyPrice = buyRandom;
   console.log(selectedMovie);
   return {
     type: "LOAD_FULLMOVIE",
