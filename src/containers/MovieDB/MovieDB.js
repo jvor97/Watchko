@@ -2,6 +2,7 @@ import React, { Component, Suspense } from "react";
 import { Route } from "react-router-dom";
 import MovieList from "../MovieList/MovieList";
 import Logout from "../../components/Login/Logout";
+import CartList from "../CartList/CartList";
 
 const About = React.lazy(() => import("../About/About"));
 const FullMovie = React.lazy(() => import("../FullMovie/FullMovie"));
@@ -16,6 +17,7 @@ class MovieDB extends Component {
           <Route path="/logout" component={Logout}></Route>
           <Suspense fallback={<div>Loading...</div>}>
             <Route path="/about" exact render={() => <About />} />
+            <Route path="/cart" exact render={() => <CartList />} />
             <Route
               path="/movies/:id"
               exact

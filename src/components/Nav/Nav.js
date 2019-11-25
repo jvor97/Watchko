@@ -88,7 +88,7 @@ class Nav extends Component {
             <ul className="navbar-nav d-none d-lg-flex order-3 mx-2">
               {this.props.logout !== null ? (
                 <li className="nav-item" style={{ paddingRight: "1rem" }}>
-                  <Link to="/" className="nav-link" id='cartLink'>
+                  <Link to="/cart" className="nav-link" id='cartLink'>
                     <CartIcon />
                   </Link>
                 </li>

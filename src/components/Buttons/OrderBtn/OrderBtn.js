@@ -16,18 +16,18 @@ class OrderBtn extends Component {
           <button
             className="loginBtn btn btn-primary"
             type="radio"
-            autocomplete="off"
-            value="Rent"
-            onClick={this.props.handleOrder}
+            autoComplete="off"
+            value="buy"
+            onClick={() => this.props.handleOrder(this.props.title, 9)}
           >
             Buy
           </button>
           <button
             className="loginBtn btn btn-primary"
             type="radio"
-            autocomplete="off"
-            value="Rent"
-            onClick={this.props.handleOrder}
+            autoComplete="off"
+            value="rent"
+            onClick={() => this.props.handleOrder(this.props.title, 7)}
           >
             Rent
           </button>
@@ -46,7 +46,11 @@ class OrderBtn extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    handleOrder: () => dispatch({ type: "ORDER_COUNTER" })
+    handleOrder: (title, price) =>
+      dispatch({
+        type: "REGISTER_ORDER",
+        orderData: { title: title, price: price }
+      })
   };
 };
 
