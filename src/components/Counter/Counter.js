@@ -30,6 +30,7 @@ class Counter extends Component {
         <GeneralBtn value="-" clicked={this.handleDec} />
         <input
           value={this.state.value}
+          readOnly
           style={{
             width: "2rem",
             borderRadius: ".25rem",
@@ -50,7 +51,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(Counter);
+export default connect(null, mapDispatchToProps)(Counter);
