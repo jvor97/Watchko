@@ -1,6 +1,7 @@
 const initialState = {
   counter: 0,
-  orderData: []
+  orderData: [],
+  finalPrice: 0
 };
 
 const reducer = (state = initialState, action) => {
@@ -11,6 +12,14 @@ const reducer = (state = initialState, action) => {
         .toString(36)
         .substr(2, 9)
     );
+  };
+
+  const sumOrderPrice = () => {
+    let orderDataSum = [...state.orderData];
+    orderDataSum
+      .map(singleOrder => singleOrder.updatedPrice)
+      .reduce((acc, value) => acc + value);
+    return orderDataSum;
   };
 
   switch (action.type) {
@@ -26,7 +35,8 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         counter: state.counter + 1,
-        orderData: updatedOrderData
+        orderData: updatedOrderData,
+        finalPrice: () => sumOrderPrice()
       };
     case "CART_INCREMENT":
       let copyOrderDataInc = [...state.orderData];
@@ -39,7 +49,8 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         counter: state.counter + 1,
-        orderData: copyOrderDataInc
+        orderData: copyOrderDataInc,
+        finalPrice: sumOrderPrice()
       };
 
     case "CART_DECREMENT":
@@ -52,7 +63,8 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         counter: state.counter - 1,
-        orderData: copyOrderDataDec
+        orderData: copyOrderDataDec,
+        finalPrice: sumOrderPrice()
       };
   }
   return state;
