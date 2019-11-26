@@ -4,23 +4,24 @@ import { connect } from "react-redux";
 import CartItem from "../../components/CartItem/CartItem";
 
 class Counter extends Component {
-  generateId = () => {
-    return (
-      "_" +
-      Math.random()
-        .toString(36)
-        .substr(2, 9)
-    );
-  };
+  //   generateId = () => {
+  //     return (
+  //       "_" +
+  //       Math.random()
+  //         .toString(36)
+  //         .substr(2, 9)
+  //     );
+  //   };
   render() {
     // let cartList;
 
     let cartList = this.props.orderData.map(order => (
       <CartItem
         title={order.title}
-        price={order.price}
+        updatedPrice={order.updatedPrice}
         typeOfOrder={order.typeOfOrder}
-        key={this.generateId()}
+        id={order.id}
+        key={order.id}
       />
     ));
     return <div>{cartList}</div>;

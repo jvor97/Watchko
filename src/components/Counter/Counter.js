@@ -8,16 +8,16 @@ class Counter extends Component {
     value: 1
   };
 
-  handleDec = () => {
-    this.props.onDecrement();
+  handleDec = id => {
+    this.props.onDecrement(id);
     return this.setState(prevState => {
       return {
         value: prevState.value - 1
       };
     });
   };
-  handleInc = () => {
-    this.props.onIncrement();
+  handleInc = id => {
+    this.props.onIncrement(id);
     return this.setState(prevState => {
       return {
         value: prevState.value + 1
@@ -25,9 +25,11 @@ class Counter extends Component {
     });
   };
   render() {
+    let id = this.props.id;
+    console.log(this.props.id);
     return (
       <div>
-        <GeneralBtn value="-" clicked={this.handleDec} />
+        <GeneralBtn value="-" clicked={() => this.handleDec(id)} />
         <input
           value={this.state.value}
           readOnly
@@ -38,7 +40,7 @@ class Counter extends Component {
             padding: ".5rem"
           }}
         ></input>
-        <GeneralBtn value="+" clicked={this.handleInc} />
+        <GeneralBtn value="+" clicked={() => this.handleInc(id)} />
       </div>
     );
   }
@@ -46,8 +48,8 @@ class Counter extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onIncrement: () => dispatch({ type: "CART_INCREMENT" }),
-    onDecrement: () => dispatch({ type: "CART_DECREMENT" })
+    onIncrement: id => dispatch({ type: "CART_INCREMENT", id: id }),
+    onDecrement: id => dispatch({ type: "CART_DECREMENT", id: id })
   };
 };
 
