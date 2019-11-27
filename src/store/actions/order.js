@@ -1,3 +1,5 @@
+import axios from "axios";
+
 // export const handleOrder = () => {
 //     return dispatch => {
 //         type: 'ORDER_COUNTER'
@@ -78,5 +80,41 @@ export const onCartDecrement = id => {
   return {
     type: "CART_DECREMENT",
     id: id
+  };
+};
+
+export const handleCheckout = () => {
+  return (dispatch, getState) => {
+    const state = getState();
+    dispatch(checkoutStart());
+    axios
+      .post(
+        "https://watchko-94928.firebaseio.com/order.json",
+        state.order.orderData
+      )
+      .then(response => {
+        dispatch(checkoutSent());
+      })
+      .catch(err => {
+        dispatch(checkoutFail(err.response.data.error));
+        console.log(err.response.data.error);
+      });
+  };
+};
+
+export const checkoutStart = () => {
+  return {
+    type: "CHECKOUT_START"
+  };
+};
+export const checkoutSent = () => {
+  return {
+    type: "CHECKOUT_SENT"
+  };
+};
+export const checkoutFail = err => {
+  return {
+    type: "CHECKOUT_FAIL",
+    error: err
   };
 };

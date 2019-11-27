@@ -1,33 +1,49 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Spinner } from "react-bootstrap";
 
 import CartItem from "../../components/CartItem/CartItem";
+import GeneralBtn from "../../components/Buttons/GeneralBtn/GeneralBtn";
+import * as actions from "../../store/actions/index";
 
 class Counter extends Component {
-  //   generateId = () => {
-  //     return (
-  //       "_" +
-  //       Math.random()
-  //         .toString(36)
-  //         .substr(2, 9)
-  //     );
-  //   };
   render() {
     // let cartList;
 
-    let cartList = this.props.orderData.map(order => (
-      <CartItem
-        title={order.title}
-        updatedPrice={order.updatedPrice}
-        typeOfOrder={order.typeOfOrder}
-        id={order.id}
-        key={order.id}
-      />
-    ));
+    let cartList = (
+      <>
+        <div>
+          {this.props.orderData.map(order => (
+            <CartItem
+              title={order.title}
+              updatedPrice={order.updatedPrice}
+              typeOfOrder={order.typeOfOrder}
+              id={order.id}
+              key={order.id}
+            />
+          ))}
+        </div>
+        <div>{this.props.finalPrice}</div>
+        <GeneralBtn value="Checkout" clicked={this.props.onCheckout} />
+      </>
+    );
+
+    if (this.props.orderData.length == 0) {
+      cartList = <div>Your cart is empty</div>;
+    }
+
+    if (this.props.loading) {
+      cartList = <Spinner animation="border" />;
+    }
+
+    if (this.props.messageSent) {
+      cartList = <div>Your order has been sent</div>;
+    }
     return (
       <div>
         {cartList}
-        <div>{this.props.finalPrice}</div>
+        {/* <div>{this.props.finalPrice}</div>
+        <GeneralBtn value="Checkout" clicked={this.props.onCheckout} /> */}
       </div>
     );
   }
@@ -36,8 +52,16 @@ class Counter extends Component {
 const mapStateToProps = state => {
   return {
     orderData: state.order.orderData,
-    finalPrice: state.order.finalPrice
+    finalPrice: state.order.finalPrice,
+    loading: state.order.loading,
+    messageSent: state.order.messageSent
   };
 };
 
-export default connect(mapStateToProps)(Counter);
+const mapDispatchToProps = dispatch => {
+  return {
+    onCheckout: () => dispatch(actions.handleCheckout())
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Counter);

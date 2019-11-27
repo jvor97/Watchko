@@ -1,7 +1,10 @@
 const initialState = {
   counter: 0,
   orderData: [],
-  finalPrice: 0
+  finalPrice: 0,
+  error: null,
+  loading: false,
+  messageSent: false
 };
 
 const sumOrderPrice = state => {
@@ -64,6 +67,24 @@ const reducer = (state = initialState, action) => {
         counter: state.counter - 1,
         orderData: copyOrderDataDec
       };
+      case "CHECKOUT_START":
+        return{
+          ...state,
+          loading: true
+        }
+      case "CHECKOUT_SENT":
+        return{
+          ...state,
+          loading:false,
+          messageSent: true,
+          orderData: []
+        }
+      case "CHECKOUT_FAIL": 
+      return{
+        ...state,
+        error: action.error
+      }
+      
   }
   return state;
 };
