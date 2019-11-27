@@ -7,6 +7,7 @@ import {
 import { connect } from "react-redux";
 
 import "./OrderBtn.css";
+import * as actions from "../../../store/actions/index";
 
 class OrderBtn extends Component {
   render() {
@@ -58,15 +59,14 @@ class OrderBtn extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
+    // handleOrder: (title, price, typeOfOrder) =>
+    //   dispatch({
+    //     type: "REGISTER_ORDER",
+    //     orderData: { title: title, price: price, typeOfOrder: typeOfOrder }
+    //   }),
     handleOrder: (title, price, typeOfOrder) =>
-      dispatch({
-        type: "REGISTER_ORDER",
-        orderData: { title: title, price: price, typeOfOrder: typeOfOrder }
-      })
+      dispatch(actions.registerOrder(title, price, typeOfOrder))
   };
 };
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(OrderBtn);
+export default connect(null, mapDispatchToProps)(OrderBtn);

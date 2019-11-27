@@ -3,3 +3,54 @@
 //         type: 'ORDER_COUNTER'
 //     }
 // }
+
+const generateId = () => {
+  return (
+    "_" +
+    Math.random()
+      .toString(36)
+      .substr(2, 9)
+  );
+};
+
+// const sumOrderPrice = updatedOrderData => {
+//   // let orderDataSum = [...state.orderData];
+//   updatedOrderData
+//     .map(singleOrder => singleOrder.updatedPrice)
+//     .reduce((acc, value) => acc + value);
+//   return updatedOrderData;
+// };
+
+export const registerOrder = (title, price, typeOfOrder) => {
+  return dispatch => {
+    let orderData = {
+      title: title,
+      price: price,
+      updatedPrice: price,
+      typeOfOrder: typeOfOrder,
+      id: generateId()
+    };
+    // console.log(updatedOrderData[0].id);
+    dispatch(registerOrderAction(orderData));
+    dispatch(sumOrderPrice());
+    // return {
+    //   ...state,
+    //   counter: state.counter + 1,
+    //   orderData: updatedOrderData,
+    //   finalPrice: () => sumOrderPrice()
+    // };
+  };
+};
+
+export const registerOrderAction = orderData => {
+  return {
+    type: "REGISTER_ORDER",
+    orderData: orderData
+  };
+};
+
+export const sumOrderPrice = () => {
+  return {
+    type: "SUM_PRICE"
+  };
+};

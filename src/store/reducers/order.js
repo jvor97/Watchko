@@ -4,68 +4,65 @@ const initialState = {
   finalPrice: 0
 };
 
+const sumOrderPrice = state => {
+  let orderDataSum = [...state.orderData];
+  let sum = orderDataSum.reduce(
+    (acc, singleOrder) => acc + singleOrder.updatedPrice,
+    0
+  );
+  return sum;
+};
+
 const reducer = (state = initialState, action) => {
-  const generateId = () => {
-    return (
-      "_" +
-      Math.random()
-        .toString(36)
-        .substr(2, 9)
-    );
-  };
-
-  const sumOrderPrice = () => {
-    let orderDataSum = [...state.orderData];
-    orderDataSum
-      .map(singleOrder => singleOrder.updatedPrice)
-      .reduce((acc, value) => acc + value);
-    return orderDataSum;
-  };
-
   switch (action.type) {
     case "REGISTER_ORDER":
+      // console.log(updatedOrderData[0].id);
       let updatedOrderData = state.orderData.concat({
         title: action.orderData.title,
         price: action.orderData.price,
         updatedPrice: action.orderData.price,
         typeOfOrder: action.orderData.typeOfOrder,
-        id: generateId()
+        id: action.orderData.id
       });
-      console.log(updatedOrderData[0].id);
       return {
         ...state,
         counter: state.counter + 1,
-        orderData: updatedOrderData,
-        finalPrice: () => sumOrderPrice()
+        orderData: updatedOrderData
       };
-    case "CART_INCREMENT":
-      let copyOrderDataInc = [...state.orderData];
-      let currentObjectInc = copyOrderDataInc.find(
-        currentObj => currentObj.id === action.id
-      );
-
-      currentObjectInc.updatedPrice += currentObjectInc.price;
-
+    case "SUM_PRICE":
       return {
         ...state,
-        counter: state.counter + 1,
-        orderData: copyOrderDataInc,
-        finalPrice: sumOrderPrice()
+        finalPrice: sumOrderPrice(state)
       };
 
-    case "CART_DECREMENT":
-      let copyOrderDataDec = [...state.orderData];
-      let currentObjectDec = copyOrderDataDec.find(
-        currentObj => currentObj.id === action.id
-      );
-      currentObjectDec.updatedPrice -= currentObjectDec.price;
+    // case "CART_INCREMENT":
+    //   let copyOrderDataInc = [...state.orderData];
+    //   let currentObjectInc = copyOrderDataInc.find(
+    //     currentObj => currentObj.id === action.id
+    //   );
 
-      return {
-        ...state,
-        counter: state.counter - 1,
-        orderData: copyOrderDataDec,
-        finalPrice: sumOrderPrice()
-      };
+    //   currentObjectInc.updatedPrice += currentObjectInc.price;
+
+    //   return {
+    //     ...state,
+    //     counter: state.counter + 1,
+    //     orderData: copyOrderDataInc,
+    //     finalPrice: sumOrderPrice()
+    //   };
+
+    // case "CART_DECREMENT":
+    //   let copyOrderDataDec = [...state.orderData];
+    //   let currentObjectDec = copyOrderDataDec.find(
+    //     currentObj => currentObj.id === action.id
+    //   );
+    //   currentObjectDec.updatedPrice -= currentObjectDec.price;
+
+    //   return {
+    //     ...state,
+    //     counter: state.counter - 1,
+    //     orderData: copyOrderDataDec,
+    //     finalPrice: sumOrderPrice()
+    //   };
   }
   return state;
 };
