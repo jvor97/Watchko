@@ -54,3 +54,29 @@ export const sumOrderPrice = () => {
     type: "SUM_PRICE"
   };
 };
+
+export const cartIncrement = id => {
+  return dispatch => {
+    dispatch(onCartIncrement(id));
+    dispatch(sumOrderPrice());
+  };
+};
+export const onCartIncrement = id => {
+  return {
+    type: "CART_INCREMENT",
+    id: id
+  };
+};
+
+export const cartDecrement = id => {
+  return dispatch => {
+    dispatch(onCartDecrement(id));
+    dispatch(sumOrderPrice());
+  };
+};
+export const onCartDecrement = id => {
+  return {
+    type: "CART_DECREMENT",
+    id: id
+  };
+};

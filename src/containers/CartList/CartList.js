@@ -24,13 +24,19 @@ class Counter extends Component {
         key={order.id}
       />
     ));
-    return <div>{cartList}</div>;
+    return (
+      <div>
+        {cartList}
+        <div>{this.props.finalPrice}</div>
+      </div>
+    );
   }
 }
 
 const mapStateToProps = state => {
   return {
-    orderData: state.order.orderData
+    orderData: state.order.orderData,
+    finalPrice: state.order.finalPrice
   };
 };
 

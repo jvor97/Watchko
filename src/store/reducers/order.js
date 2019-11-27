@@ -35,34 +35,32 @@ const reducer = (state = initialState, action) => {
         finalPrice: sumOrderPrice(state)
       };
 
-    // case "CART_INCREMENT":
-    //   let copyOrderDataInc = [...state.orderData];
-    //   let currentObjectInc = copyOrderDataInc.find(
-    //     currentObj => currentObj.id === action.id
-    //   );
+    case "CART_INCREMENT":
+      let copyOrderDataInc = [...state.orderData];
+      let currentObjectInc = copyOrderDataInc.find(
+        currentObj => currentObj.id === action.id
+      );
 
-    //   currentObjectInc.updatedPrice += currentObjectInc.price;
+      currentObjectInc.updatedPrice += currentObjectInc.price;
 
-    //   return {
-    //     ...state,
-    //     counter: state.counter + 1,
-    //     orderData: copyOrderDataInc,
-    //     finalPrice: sumOrderPrice()
-    //   };
+      return {
+        ...state,
+        counter: state.counter + 1,
+        orderData: copyOrderDataInc
+      };
 
-    // case "CART_DECREMENT":
-    //   let copyOrderDataDec = [...state.orderData];
-    //   let currentObjectDec = copyOrderDataDec.find(
-    //     currentObj => currentObj.id === action.id
-    //   );
-    //   currentObjectDec.updatedPrice -= currentObjectDec.price;
+    case "CART_DECREMENT":
+      let copyOrderDataDec = [...state.orderData];
+      let currentObjectDec = copyOrderDataDec.find(
+        currentObj => currentObj.id === action.id
+      );
+      currentObjectDec.updatedPrice -= currentObjectDec.price;
 
-    //   return {
-    //     ...state,
-    //     counter: state.counter - 1,
-    //     orderData: copyOrderDataDec,
-    //     finalPrice: sumOrderPrice()
-    //   };
+      return {
+        ...state,
+        counter: state.counter - 1,
+        orderData: copyOrderDataDec
+      };
   }
   return state;
 };

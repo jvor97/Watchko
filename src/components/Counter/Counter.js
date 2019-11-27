@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import GeneralBtn from "../Buttons/GeneralBtn/GeneralBtn";
+import * as actions from "../../store/actions/index";
 
 class Counter extends Component {
   state = {
@@ -48,8 +49,8 @@ class Counter extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onIncrement: id => dispatch({ type: "CART_INCREMENT", id: id }),
-    onDecrement: id => dispatch({ type: "CART_DECREMENT", id: id })
+    onIncrement: id => dispatch(actions.cartIncrement(id)),
+    onDecrement: id => dispatch(actions.cartDecrement(id))
   };
 };
 
