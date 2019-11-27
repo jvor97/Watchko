@@ -13,6 +13,12 @@ const sumOrderPrice = state => {
   return sum;
 };
 
+const getCurrentObj = (state, id) => {
+  let copyOrderData = [...state.orderData];
+  let currentObject = copyOrderData.find(currentObj => currentObj.id === id);
+  return currentObject;
+};
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case "REGISTER_ORDER":
@@ -37,11 +43,9 @@ const reducer = (state = initialState, action) => {
 
     case "CART_INCREMENT":
       let copyOrderDataInc = [...state.orderData];
-      let currentObjectInc = copyOrderDataInc.find(
-        currentObj => currentObj.id === action.id
-      );
-
+      let currentObjectInc = getCurrentObj(state, action.id);
       currentObjectInc.updatedPrice += currentObjectInc.price;
+      copyOrderDataInc[action.id] = currentObjectInc;
 
       return {
         ...state,
@@ -51,10 +55,9 @@ const reducer = (state = initialState, action) => {
 
     case "CART_DECREMENT":
       let copyOrderDataDec = [...state.orderData];
-      let currentObjectDec = copyOrderDataDec.find(
-        currentObj => currentObj.id === action.id
-      );
+      let currentObjectDec = getCurrentObj(state, action.id);
       currentObjectDec.updatedPrice -= currentObjectDec.price;
+      copyOrderDataDec[action.id] = currentObjectDec;
 
       return {
         ...state,
