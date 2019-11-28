@@ -30,6 +30,8 @@ const groupDuplicatedOrders = updatedOrderData => {
         movie.title === updatedOrderData[i].title &&
         movie.typeOfOrder === updatedOrderData[i].typeOfOrder
     ).length;
+    updatedOrderData[i].updatedPrice =
+      updatedOrderData[i].numOfOrders * updatedOrderData[i].price;
   }
 
   updatedOrderData = updatedOrderData.reduce((uniqueArr, object) => {
@@ -77,6 +79,7 @@ const reducer = (state = initialState, action) => {
       let copyOrderDataInc = [...state.orderData];
       let currentObjectInc = getCurrentObj(state, action.id);
       currentObjectInc.updatedPrice += currentObjectInc.price;
+      currentObjectInc.numOfOrders += 1;
       copyOrderDataInc[action.id] = currentObjectInc;
 
       return {
@@ -89,6 +92,7 @@ const reducer = (state = initialState, action) => {
       let copyOrderDataDec = [...state.orderData];
       let currentObjectDec = getCurrentObj(state, action.id);
       currentObjectDec.updatedPrice -= currentObjectDec.price;
+      currentObjectDec.numOfOrders -= 1;
       copyOrderDataDec[action.id] = currentObjectDec;
 
       return {
