@@ -99,3 +99,9 @@ const reducer = (state = initialState, action) => {
 };
 
 export default reducer;
+
+//zacnem loopovat orderData a zoberiem jeden element z array
+//tento dam do filter ci element == elementu z copy arr a dam .lenght
+//pridat novu value v orderdata[i].numOfOrder = riadok vyssie
+//odstarnit duplicaty- filter(x => x.typeOfOrder !== element.toO && x.title !== element.title)
+//nahradit v counter value za value numOfOrder plus pri inc a dec tuto value menit
