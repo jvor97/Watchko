@@ -22,6 +22,31 @@ const getCurrentObj = (state, id) => {
   return currentObject;
 };
 
+const groupDuplicatedOrders = updatedOrderData => {
+  let copy = [...updatedOrderData];
+  for (let i = 0; i < updatedOrderData.length; i++) {
+    updatedOrderData[i].numOfOrders = copy.filter(
+      movie =>
+        movie.title === updatedOrderData[i].title &&
+        movie.typeOfOrder === updatedOrderData[i].typeOfOrder
+    ).length;
+  }
+
+  updatedOrderData = updatedOrderData.reduce((uniqueArr, object) => {
+    if (
+      !uniqueArr.some(
+        obj =>
+          obj.title === object.title && obj.typeOfOrder === object.typeOfOrder
+      )
+    ) {
+      uniqueArr.push(object);
+    }
+    return uniqueArr;
+  }, []);
+
+  return updatedOrderData;
+};
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case "REGISTER_ORDER":
@@ -33,6 +58,9 @@ const reducer = (state = initialState, action) => {
         typeOfOrder: action.orderData.typeOfOrder,
         id: action.orderData.id
       });
+
+      updatedOrderData = groupDuplicatedOrders(updatedOrderData);
+
       return {
         ...state,
         counter: state.counter + 1,
@@ -99,9 +127,3 @@ const reducer = (state = initialState, action) => {
 };
 
 export default reducer;
-
-//zacnem loopovat orderData a zoberiem jeden element z array
-//tento dam do filter ci element == elementu z copy arr a dam .lenght
-//pridat novu value v orderdata[i].numOfOrder = riadok vyssie
-//odstarnit duplicaty- filter(x => x.typeOfOrder !== element.toO && x.title !== element.title)
-//nahradit v counter value za value numOfOrder plus pri inc a dec tuto value menit
