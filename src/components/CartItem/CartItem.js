@@ -10,7 +10,7 @@ class CartItem extends Component {
         <div className="card-body">
           <h5>{this.props.title}</h5>
           <p>{this.props.typeOfOrder}</p>
-          <Counter id={this.props.id} />
+          <Counter id={this.props.id} numOfOrders={this.props.numOfOrders}/>
           <div>{this.props.updatedPrice}</div>
           <CloseBtn clicked={() => this.props.onDelete(this.props.id)} />
         </div>

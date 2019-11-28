@@ -20,6 +20,7 @@ class Counter extends Component {
               typeOfOrder={order.typeOfOrder}
               id={order.id}
               key={order.id}
+              numOfOrders={order.numOfOrders}
             />
           ))}
         </div>
@@ -65,4 +66,3 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Counter);
-

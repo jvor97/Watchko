@@ -32,7 +32,7 @@ class Counter extends Component {
       <div>
         <GeneralBtn value="-" clicked={() => this.handleDec(id)} />
         <input
-          value={this.state.value}
+          value={this.props.numOfOrders}
           readOnly
           style={{
             width: "2rem",
