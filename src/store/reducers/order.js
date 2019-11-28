@@ -36,7 +36,8 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         counter: state.counter + 1,
-        orderData: updatedOrderData
+        orderData: updatedOrderData,
+        messageSent: false
       };
     case "SUM_PRICE":
       return {
@@ -77,7 +78,8 @@ const reducer = (state = initialState, action) => {
         ...state,
         loading: false,
         messageSent: true,
-        orderData: []
+        orderData: [],
+        counter: 0
       };
     case "CHECKOUT_FAIL":
       return {
