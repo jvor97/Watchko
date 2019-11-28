@@ -84,7 +84,11 @@ const reducer = (state = initialState, action) => {
         ...state,
         error: action.error
       }
-      
+      case 'DELETE_CARTITEM':
+        return{
+          ...state,
+          orderData: state.orderData.filter(delItem => delItem.id !== action.id)
+        }
   }
   return state;
 };
