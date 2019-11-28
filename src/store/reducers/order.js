@@ -67,28 +67,31 @@ const reducer = (state = initialState, action) => {
         counter: state.counter - 1,
         orderData: copyOrderDataDec
       };
-      case "CHECKOUT_START":
-        return{
-          ...state,
-          loading: true
-        }
-      case "CHECKOUT_SENT":
-        return{
-          ...state,
-          loading:false,
-          messageSent: true,
-          orderData: []
-        }
-      case "CHECKOUT_FAIL": 
-      return{
+    case "CHECKOUT_START":
+      return {
+        ...state,
+        loading: true
+      };
+    case "CHECKOUT_SENT":
+      return {
+        ...state,
+        loading: false,
+        messageSent: true,
+        orderData: []
+      };
+    case "CHECKOUT_FAIL":
+      return {
         ...state,
         error: action.error
-      }
-      case 'DELETE_CARTITEM':
-        return{
-          ...state,
-          orderData: state.orderData.filter(delItem => delItem.id !== action.id)
-        }
+      };
+    case "DELETE_CARTITEM":
+      let currentObjectDel = getCurrentObj(state, action.id);
+      let itemCounter = currentObjectDel.updatedPrice / currentObjectDel.price;
+      return {
+        ...state,
+        orderData: state.orderData.filter(delItem => delItem.id !== action.id),
+        counter: state.counter - itemCounter
+      };
   }
   return state;
 };
