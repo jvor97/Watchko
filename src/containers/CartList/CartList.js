@@ -25,8 +25,19 @@ class Counter extends Component {
             />
           ))}
         </tbody>
-        <div>{this.props.finalPrice}</div>
-        <GeneralBtn value="Checkout" clicked={this.props.onCheckout} />
+        <tbody>
+          <tr style={{ display: "flex" }}>
+            <td className="card-body"></td>
+            <td className="card-body"></td>
+            <td className="card-body"></td>
+            <td className="card-body">
+              <div>{this.props.finalPrice} $</div>
+            </td>
+            <td className="card-body">
+              <GeneralBtn value="Checkout" clicked={this.props.onCheckout} />
+            </td>
+          </tr>
+        </tbody>
       </table>
     );
 

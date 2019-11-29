@@ -34,6 +34,7 @@ export const registerOrder = (title, price, typeOfOrder) => {
     };
     // console.log(updatedOrderData[0].id);
     dispatch(registerOrderAction(orderData));
+    dispatch(updateNumOfOrders(orderData));
     dispatch(sumOrderPrice());
     // return {
     //   ...state,
@@ -47,6 +48,12 @@ export const registerOrder = (title, price, typeOfOrder) => {
 export const registerOrderAction = orderData => {
   return {
     type: "REGISTER_ORDER",
+    orderData: orderData
+  };
+};
+export const updateNumOfOrders = orderData => {
+  return {
+    type: "UPDATE_NUM_ORDERS",
     orderData: orderData
   };
 };

@@ -9,6 +9,7 @@
 .CartList .card {
   background-color: #17191b;
   text-align: initial;
+  flex-direction: row !important;
 }
 
 .CartList .card-body {
@@ -23,7 +24,7 @@
 }
 
 .CartList .card-body:nth-child(3) {
-    width: 15rem;
+  width: 15rem;
 }
 .CartList .card-body:first-child {
   width: 20rem;

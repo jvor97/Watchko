@@ -22,32 +22,59 @@ const getCurrentObj = (state, id) => {
   return currentObject;
 };
 
-const groupDuplicatedOrders = updatedOrderData => {
-  let copy = [...updatedOrderData];
-  for (let i = 0; i < updatedOrderData.length; i++) {
-    updatedOrderData[i].numOfOrders = copy.filter(
-      movie =>
-        movie.title === updatedOrderData[i].title &&
-        movie.typeOfOrder === updatedOrderData[i].typeOfOrder
-    ).length;
-    updatedOrderData[i].updatedPrice =
-      updatedOrderData[i].numOfOrders * updatedOrderData[i].price;
-  }
+// const groupDuplicatedOrders = (updatedOrderData, currObj, id) => {
+//   let copy = [...updatedOrderData];
+// for (let i = 0; i < updatedOrderData.length; i++) {
+//   updatedOrderData[i].numOfOrders = copy.filter(
+//     movie =>
+//       movie.title === updatedOrderData[i].title &&
+//       movie.typeOfOrder === updatedOrderData[i].typeOfOrder
+//   ).length;
+//   updatedOrderData[i].updatedPrice =
+//     updatedOrderData[i].numOfOrders * updatedOrderData[i].price;
+// }
 
-  updatedOrderData = updatedOrderData.reduce((uniqueArr, object) => {
-    if (
-      !uniqueArr.some(
-        obj =>
-          obj.title === object.title && obj.typeOfOrder === object.typeOfOrder
-      )
-    ) {
-      uniqueArr.push(object);
-    }
-    return uniqueArr;
-  }, []);
+// for (let i = 0; i < updatedOrderData.length; i++) {
+//   if (
+//     copy.filter(
+//       movie =>
+//         movie.title === updatedOrderData[i].title &&
+//         movie.typeOfOrder === updatedOrderData[i].typeOfOrder
+//     )
+//   ) {
+//     updatedOrderData[i].numOfOrders += 1;
+//   }
+//   updatedOrderData[i].updatedPrice =
+//     updatedOrderData[i].numOfOrders * updatedOrderData[i].price;
+// }
 
-  return updatedOrderData;
-};
+//   if (
+//     copy.filter(
+//       movie =>
+//         movie.title === currObj.title &&
+//         movie.typeOfOrder === currObj.typeOfOrder
+//     )
+//   ) {
+//     currObj.numOfOrders += 1;
+//   }
+//   currObj.updatedPrice = currObj.numOfOrders * currObj.price;
+
+//   updatedOrderData[id] = currObj;
+
+//   updatedOrderData = updatedOrderData.reduce((uniqueArr, object) => {
+//     if (
+//       !uniqueArr.some(
+//         obj =>
+//           obj.title === object.title && obj.typeOfOrder === object.typeOfOrder
+//       )
+//     ) {
+//       uniqueArr.push(object);
+//     }
+//     return uniqueArr;
+//   }, []);
+
+//   return updatedOrderData;
+// };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -58,16 +85,67 @@ const reducer = (state = initialState, action) => {
         price: action.orderData.price,
         updatedPrice: action.orderData.price,
         typeOfOrder: action.orderData.typeOfOrder,
-        id: action.orderData.id
+        id: action.orderData.id,
+        numOfOrders: 0
       });
 
-      updatedOrderData = groupDuplicatedOrders(updatedOrderData);
+      // let currentObjectReg = getCurrentObj(state, action.orderData.id);
+      // updatedOrderData = groupDuplicatedOrders(
+      //   updatedOrderData,
+      //   currentObjectReg,
+      //   action.orderData.id
+      // );
 
       return {
         ...state,
         counter: state.counter + 1,
         orderData: updatedOrderData,
         messageSent: false
+      };
+    case "UPDATE_NUM_ORDERS":
+      let copy = [...state.orderData];
+      let currObj = action.orderData;
+      // if (
+      //   copy.filter(
+      //     movie =>
+      //       movie.title === currObj.title &&
+      //       movie.typeOfOrder === currObj.typeOfOrder
+      //   )
+      // ) {
+      //   currObj.numOfOrders += 1;
+      // }
+
+      for (let i = 0; i < copy.length; i++) {
+        const movie = copy[i];
+        if (
+          movie.title === currObj.title &&
+          movie.typeOfOrder === currObj.typeOfOrder
+        ) {
+          currObj.numOfOrders += 1;
+          movie.numOfOrders += 1;
+          movie.updatedPrice = currObj.numOfOrders * currObj.price;
+        }
+      }
+      // currObj.updatedPrice = currObj.numOfOrders * currObj.price;
+
+      // updatedOrderData[id] = currObj;
+
+      copy = copy.reduce((uniqueArr, object) => {
+        if (
+          !uniqueArr.some(
+            obj =>
+              obj.title === object.title &&
+              obj.typeOfOrder === object.typeOfOrder
+          )
+        ) {
+          uniqueArr.push(object);
+        }
+        return uniqueArr;
+      }, []);
+
+      return {
+        ...state,
+        orderData: copy
       };
     case "SUM_PRICE":
       return {
