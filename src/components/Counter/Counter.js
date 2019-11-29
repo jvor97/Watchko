@@ -37,8 +37,9 @@ class Counter extends Component {
           style={{
             width: "2rem",
             borderRadius: ".25rem",
-            margin: "0 .25rem",
-            padding: ".5rem"
+            margin: "0 0.5rem",
+            padding: "0.3rem .5rem",
+            verticalAlign: "bottom"
           }}
         ></input>
         <GeneralBtn value="+" clicked={() => this.handleInc(id)} />

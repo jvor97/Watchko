@@ -5,14 +5,15 @@ import { Spinner } from "react-bootstrap";
 import CartItem from "../../components/CartItem/CartItem";
 import GeneralBtn from "../../components/Buttons/GeneralBtn/GeneralBtn";
 import * as actions from "../../store/actions/index";
+import "./CartList.css";
 
 class Counter extends Component {
   render() {
     // let cartList;
 
     let cartList = (
-      <>
-        <div>
+      <table className="CartList">
+        <tbody>
           {this.props.orderData.map(order => (
             <CartItem
               title={order.title}
@@ -23,10 +24,10 @@ class Counter extends Component {
               numOfOrders={order.numOfOrders}
             />
           ))}
-        </div>
+        </tbody>
         <div>{this.props.finalPrice}</div>
         <GeneralBtn value="Checkout" clicked={this.props.onCheckout} />
-      </>
+      </table>
     );
 
     if (this.props.orderData.length == 0) {

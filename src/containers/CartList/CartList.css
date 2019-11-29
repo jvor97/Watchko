@@ -1,0 +1,30 @@
+.CartList {
+  background-color: #0c0d0ef2;
+  color: #9d9d9de6;
+  padding: 3rem;
+  width: 85%;
+  margin: 8% auto;
+}
+
+.CartList .card {
+  background-color: #17191b;
+  text-align: initial;
+}
+
+.CartList .card-body {
+  display: flex;
+  width: 10rem;
+}
+.CartList .card-body div,
+.CartList .card-body h5,
+.CartList .card-body svg {
+  margin: 1rem;
+  margin-left: 15%;
+}
+
+.CartList .card-body:nth-child(3) {
+    width: 15rem;
+}
+.CartList .card-body:first-child {
+  width: 20rem;
+}

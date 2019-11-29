@@ -3,10 +3,11 @@ body {
   /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif; */
-    
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #9d9d9de6!important; 
+  color: #9d9d9de6 !important;
+  background-color: #0c0d0e !important;
 }
 
 code {
@@ -14,6 +15,9 @@ code {
     monospace;
 }
 
-h1,h2,h3,h4 {
+h1,
+h2,
+h3,
+h4 {
   color: #c5c5c5;
 }
