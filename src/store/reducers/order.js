@@ -123,7 +123,7 @@ const reducer = (state = initialState, action) => {
         ) {
           currObj.numOfOrders += 1;
           movie.numOfOrders += 1;
-          movie.updatedPrice = currObj.numOfOrders * currObj.price;
+          movie.updatedPrice = movie.numOfOrders * movie.price;
         }
       }
       // currObj.updatedPrice = currObj.numOfOrders * currObj.price;
