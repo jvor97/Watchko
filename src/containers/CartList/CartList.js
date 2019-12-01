@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Spinner } from "react-bootstrap";
+import { IoIosCheckmarkCircleOutline } from "react-icons/io";
 
 import CartItem from "../../components/CartItem/CartItem";
 import GeneralBtn from "../../components/Buttons/GeneralBtn/GeneralBtn";
 import * as actions from "../../store/actions/index";
 import "./CartList.css";
+import emptyCart from "./emptyCart.png";
 
 class Counter extends Component {
   render() {
@@ -42,15 +44,25 @@ class Counter extends Component {
     );
 
     if (this.props.orderData.length == 0) {
-      cartList = <div>Your cart is empty</div>;
+      cartList = (
+        <>
+          <div className="CartList">Your cart is empty</div>
+          <img src={emptyCart}></img>
+        </>
+      );
     }
 
     if (this.props.loading) {
-      cartList = <Spinner animation="border" />;
+      cartList = <Spinner animation="border" className="CartList" />;
     }
 
     if (this.props.messageSent) {
-      cartList = <div>Your order has been sent</div>;
+      cartList = (
+        <>
+          <div className="CartList">Your order has been sent</div>
+          <IoIosCheckmarkCircleOutline size={300} color="#918d2c" />
+        </>
+      );
     }
     return (
       <div>
@@ -77,4 +89,7 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Counter);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Counter);
