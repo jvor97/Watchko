@@ -90,6 +90,7 @@ const reducer = (state = initialState, action) => {
       });
 
       // localStorage.setItem("orderData", JSON.stringify(updatedOrderData));
+      localStorage.setItem("counter", Number(state.counter + 1));
 
       // let currentObjectReg = getCurrentObj(state, action.orderData.id);
       // updatedOrderData = groupDuplicatedOrders(
@@ -149,9 +150,10 @@ const reducer = (state = initialState, action) => {
 
       return {
         ...state,
-        orderData: JSON.parse(localStorage.getItem("orderData"))
+        orderData: copy
       };
     case "SUM_PRICE":
+      localStorage.setItem("finalPrice", sumOrderPrice(state));
       return {
         ...state,
         finalPrice: sumOrderPrice(state)
@@ -163,6 +165,9 @@ const reducer = (state = initialState, action) => {
       currentObjectInc.updatedPrice += currentObjectInc.price;
       currentObjectInc.numOfOrders += 1;
       copyOrderDataInc[action.id] = currentObjectInc;
+
+      localStorage.setItem("counter", Number(state.counter + 1));
+      localStorage.setItem("orderData", JSON.stringify(copyOrderDataInc));
 
       return {
         ...state,
@@ -177,6 +182,9 @@ const reducer = (state = initialState, action) => {
       currentObjectDec.numOfOrders -= 1;
       copyOrderDataDec[action.id] = currentObjectDec;
 
+      localStorage.setItem("counter", Number(state.counter - 1));
+      localStorage.setItem("orderData", JSON.stringify(copyOrderDataDec));
+
       return {
         ...state,
         counter: state.counter - 1,
@@ -188,6 +196,7 @@ const reducer = (state = initialState, action) => {
         loading: true
       };
     case "CHECKOUT_SENT":
+      // localStorage.setItem("orderData", []);
       return {
         ...state,
         loading: false,
@@ -203,6 +212,9 @@ const reducer = (state = initialState, action) => {
     case "DELETE_CARTITEM":
       let currentObjectDel = getCurrentObj(state, action.id);
       let itemCounter = currentObjectDel.updatedPrice / currentObjectDel.price;
+
+      localStorage.setItem("counter", Number(state.counter - itemCounter))
+
       return {
         ...state,
         orderData: state.orderData.filter(delItem => delItem.id !== action.id),
@@ -212,14 +224,20 @@ const reducer = (state = initialState, action) => {
       let token = localStorage.getItem("token");
       if (!token) {
         localStorage.removeItem("orderData");
+        localStorage.removeItem("counter");
+        localStorage.removeItem("finalPrice");
         return {
           ...state,
-          orderData: []
+          orderData: [],
+          finalPrice: 0,
+          counter: 0
         };
       } else {
         return {
           ...state,
-          orderData: JSON.parse(localStorage.getItem("orderData"))
+          orderData: JSON.parse(localStorage.getItem("orderData")),
+          finalPrice: localStorage.getItem("finalPrice"),
+          counter: localStorage.getItem("counter")
         };
       }
   }

@@ -13,37 +13,39 @@ class Counter extends Component {
   render() {
     let cartList;
 
-    cartList = (
-      <table className="CartList">
-        <tbody>
-          {this.props.orderData.map(order => (
-            <CartItem
-              title={order.title}
-              updatedPrice={order.updatedPrice}
-              typeOfOrder={order.typeOfOrder}
-              id={order.id}
-              key={order.id}
-              numOfOrders={order.numOfOrders}
-            />
-          ))}
-        </tbody>
-        <tbody>
-          <tr style={{ display: "flex" }}>
-            <td className="card-body"></td>
-            <td className="card-body"></td>
-            <td className="card-body"></td>
-            <td className="card-body">
-              <div>{this.props.finalPrice} $</div>
-            </td>
-            <td className="card-body">
-              <GeneralBtn value="Checkout" clicked={this.props.onCheckout} />
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    );
+    if (this.props.orderData !== null) {
+      cartList = (
+        <table className="CartList">
+          <tbody>
+            {this.props.orderData.map(order => (
+              <CartItem
+                title={order.title}
+                updatedPrice={order.updatedPrice}
+                typeOfOrder={order.typeOfOrder}
+                id={order.id}
+                key={order.id}
+                numOfOrders={order.numOfOrders}
+              />
+            ))}
+          </tbody>
+          <tbody>
+            <tr style={{ display: "flex" }}>
+              <td className="card-body"></td>
+              <td className="card-body"></td>
+              <td className="card-body"></td>
+              <td className="card-body">
+                <div>{this.props.finalPrice} $</div>
+              </td>
+              <td className="card-body">
+                <GeneralBtn value="Checkout" clicked={this.props.onCheckout} />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      );
+    }
 
-    if (this.props.orderData.length == 0) {
+    if (this.props.orderData === null) {
       cartList = (
         <>
           <div className="CartList">Your cart is empty</div>
