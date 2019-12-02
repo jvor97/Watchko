@@ -213,31 +213,39 @@ const reducer = (state = initialState, action) => {
       let currentObjectDel = getCurrentObj(state, action.id);
       let itemCounter = currentObjectDel.updatedPrice / currentObjectDel.price;
 
-      localStorage.setItem("counter", Number(state.counter - itemCounter))
+      localStorage.setItem("counter", Number(state.counter - itemCounter));
 
       return {
         ...state,
         orderData: state.orderData.filter(delItem => delItem.id !== action.id),
         counter: state.counter - itemCounter
       };
+    case "ORDER_LOGOUT":
+      return {
+        ...state,
+        orderData: [],
+        finalPrice: 0,
+        counter: 0
+      };
     case "CHECK_LOGIN_ORDERDATA":
       let token = localStorage.getItem("token");
-      if (!token) {
-        localStorage.removeItem("orderData");
-        localStorage.removeItem("counter");
-        localStorage.removeItem("finalPrice");
+      let orderData = localStorage.getItem("orderData");
+
+      if (token) {
+        if (orderData) {
+          return {
+            ...state,
+            orderData: JSON.parse(localStorage.getItem("orderData")),
+            finalPrice: localStorage.getItem("finalPrice"),
+            counter: Number(localStorage.getItem("counter"))
+          };
+        }
+      } else {
         return {
           ...state,
           orderData: [],
           finalPrice: 0,
           counter: 0
-        };
-      } else {
-        return {
-          ...state,
-          orderData: JSON.parse(localStorage.getItem("orderData")),
-          finalPrice: localStorage.getItem("finalPrice"),
-          counter: localStorage.getItem("counter")
         };
       }
   }

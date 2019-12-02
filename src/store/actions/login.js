@@ -20,15 +20,29 @@ export const loginFail = error => {
   };
 };
 export const logout = () => {
-  localStorage.removeItem("token");
-  localStorage.removeItem("expirationDate");
-  localStorage.removeItem("userId");
-  localStorage.removeItem("orderData");
+  return dispatch => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("expirationDate");
+    localStorage.removeItem("userId");
+    localStorage.removeItem("orderData");
+    localStorage.removeItem("counter");
+    localStorage.removeItem("finalPrice");
+    dispatch(loginLogout());
+    dispatch(orderLogout());
+  };
+};
 
+export const loginLogout = () => {
   return {
     type: "LOGIN_LOGOUT"
   };
 };
+export const orderLogout = () => {
+  return {
+    type: "ORDER_LOGOUT"
+  };
+};
+
 export const checkLoginTime = expirationTime => {
   return dispatch => {
     setTimeout(() => {
@@ -75,13 +89,15 @@ export const checkloginExpiration = () => {
   return dispatch => {
     let token = localStorage.getItem("token");
     if (!token) {
+      dispatch(checkLoginOrderData());
       dispatch(logout());
+      // dispatch(checkLoginOrderData());
     } else {
       let expirationDate = new Date(localStorage.getItem("expirationDate"));
       if (expirationDate > new Date()) {
         let userId = localStorage.getItem("userId");
         dispatch(loginSuccess(userId, token));
-        // dispatch(checkLoginOrderData());
+        dispatch(checkLoginOrderData());
         dispatch(
           checkLoginTime(
             (expirationDate.getTime() - new Date().getTime()) / 1000
@@ -93,6 +109,9 @@ export const checkloginExpiration = () => {
 };
 
 export const checkLoginOrderData = () => {
+  localStorage.removeItem("orderData");
+  localStorage.removeItem("counter");
+  localStorage.removeItem("finalPrice");
   return {
     type: "CHECK_LOGIN_ORDERDATA"
   };

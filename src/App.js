@@ -11,7 +11,7 @@ import * as actions from "./store/actions/index";
 class App extends Component {
   componentDidMount = () => {
     this.props.checkLogoutTime();
-    this.props.checkLoginOrderData();
+    // this.props.checkLoginOrderData();
   };
   render() {
     console.log(this.props.openGenres);
@@ -44,9 +44,12 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    checkLogoutTime: () => dispatch(actions.checkloginExpiration()),
-    checkLoginOrderData: () => dispatch({ type: "CHECK_LOGIN_ORDERDATA" })
+    checkLogoutTime: () => dispatch(actions.checkloginExpiration())
+    // checkLoginOrderData: () => dispatch({ type: "CHECK_LOGIN_ORDERDATA" })
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
