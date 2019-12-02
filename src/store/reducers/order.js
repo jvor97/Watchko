@@ -89,6 +89,8 @@ const reducer = (state = initialState, action) => {
         numOfOrders: 0
       });
 
+      // localStorage.setItem("orderData", JSON.stringify(updatedOrderData));
+
       // let currentObjectReg = getCurrentObj(state, action.orderData.id);
       // updatedOrderData = groupDuplicatedOrders(
       //   updatedOrderData,
@@ -143,9 +145,11 @@ const reducer = (state = initialState, action) => {
         return uniqueArr;
       }, []);
 
+      localStorage.setItem("orderData", JSON.stringify(copy));
+
       return {
         ...state,
-        orderData: copy
+        orderData: JSON.parse(localStorage.getItem("orderData"))
       };
     case "SUM_PRICE":
       return {
@@ -204,6 +208,20 @@ const reducer = (state = initialState, action) => {
         orderData: state.orderData.filter(delItem => delItem.id !== action.id),
         counter: state.counter - itemCounter
       };
+    case "CHECK_LOGIN_ORDERDATA":
+      let token = localStorage.getItem("token");
+      if (!token) {
+        localStorage.removeItem("orderData");
+        return {
+          ...state,
+          orderData: []
+        };
+      } else {
+        return {
+          ...state,
+          orderData: JSON.parse(localStorage.getItem("orderData"))
+        };
+      }
   }
   return state;
 };

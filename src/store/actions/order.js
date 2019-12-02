@@ -35,6 +35,8 @@ export const registerOrder = (title, price, typeOfOrder) => {
     // console.log(updatedOrderData[0].id);
     dispatch(registerOrderAction(orderData));
     dispatch(updateNumOfOrders(orderData));
+    // localStorage.setItem("orderData", orderData);
+    // dispatch(storeOrderData(orderData));
     dispatch(sumOrderPrice());
     // return {
     //   ...state,

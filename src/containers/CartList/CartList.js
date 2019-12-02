@@ -11,9 +11,9 @@ import emptyCart from "./emptyCart.png";
 
 class Counter extends Component {
   render() {
-    // let cartList;
+    let cartList;
 
-    let cartList = (
+    cartList = (
       <table className="CartList">
         <tbody>
           {this.props.orderData.map(order => (
@@ -89,7 +89,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Counter);
+export default connect(mapStateToProps, mapDispatchToProps)(Counter);

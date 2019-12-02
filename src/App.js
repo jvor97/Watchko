@@ -11,6 +11,7 @@ import * as actions from "./store/actions/index";
 class App extends Component {
   componentDidMount = () => {
     this.props.checkLogoutTime();
+    this.props.checkLoginOrderData();
   };
   render() {
     console.log(this.props.openGenres);
@@ -23,7 +24,7 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div className="App">
-          <div style={{width: '100%'}}>
+          <div style={{ width: "100%" }}>
             <Nav />
             <MovieDB />
             <Login />
@@ -43,7 +44,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    checkLogoutTime: () => dispatch(actions.checkloginExpiration())
+    checkLogoutTime: () => dispatch(actions.checkloginExpiration()),
+    checkLoginOrderData: () => dispatch({ type: "CHECK_LOGIN_ORDERDATA" })
   };
 };
 

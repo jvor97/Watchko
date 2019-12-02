@@ -23,6 +23,8 @@ export const logout = () => {
   localStorage.removeItem("token");
   localStorage.removeItem("expirationDate");
   localStorage.removeItem("userId");
+  localStorage.removeItem("orderData");
+
   return {
     type: "LOGIN_LOGOUT"
   };
