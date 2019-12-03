@@ -89,15 +89,12 @@ export const checkloginExpiration = () => {
   return dispatch => {
     let token = localStorage.getItem("token");
     if (!token) {
-      dispatch(checkLoginOrderData());
       dispatch(logout());
-      // dispatch(checkLoginOrderData());
     } else {
       let expirationDate = new Date(localStorage.getItem("expirationDate"));
       if (expirationDate > new Date()) {
         let userId = localStorage.getItem("userId");
         dispatch(loginSuccess(userId, token));
-        dispatch(checkLoginOrderData());
         dispatch(
           checkLoginTime(
             (expirationDate.getTime() - new Date().getTime()) / 1000
