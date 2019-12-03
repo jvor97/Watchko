@@ -21,12 +21,7 @@ export const loginFail = error => {
 };
 export const logout = () => {
   return dispatch => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("expirationDate");
-    localStorage.removeItem("userId");
-    localStorage.removeItem("orderData");
-    localStorage.removeItem("counter");
-    localStorage.removeItem("finalPrice");
+    localStorage.clear();
     dispatch(loginLogout());
     dispatch(orderLogout());
   };
