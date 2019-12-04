@@ -84,6 +84,20 @@ export const onCartDecrement = id => {
   };
 };
 
+export const deleteCartItem = id => {
+  return dispatch => {
+    dispatch(onDeleteItem(id));
+    dispatch(sumOrderPrice());
+  };
+};
+
+export const onDeleteItem = id => {
+  return {
+    type: "DELETE_CARTITEM",
+    id: id
+  };
+};
+
 export const handleCheckout = () => {
   return (dispatch, getState) => {
     const state = getState();

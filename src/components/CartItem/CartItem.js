@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Counter from "../Counter/Counter";
 import CloseBtn from "../Buttons/CloseBtn/CloseBtn";
+import * as actions from "../../store/actions/index";
 
 class CartItem extends Component {
   render() {
@@ -29,7 +30,7 @@ class CartItem extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onDelete: id => dispatch({ type: "DELETE_CARTITEM", id: id })
+    onDelete: id => dispatch(actions.deleteCartItem(id))
   };
 };
 

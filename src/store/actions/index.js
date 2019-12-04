@@ -4,5 +4,6 @@ export {
   registerOrder,
   cartIncrement,
   cartDecrement,
+  deleteCartItem,
   handleCheckout
 } from "./order";
