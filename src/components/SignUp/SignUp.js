@@ -132,6 +132,7 @@ class SignUp extends Component {
           style={{ width: "100%", fontSize: "1.25rem" }}
           clicked={this.handleSubmit}
           value="Sign Up"
+          disabled={!this.state.valid}
         />
       </form>
     );
