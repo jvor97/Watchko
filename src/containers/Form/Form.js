@@ -75,7 +75,7 @@ class Form extends Component {
     let newState = formChangeHandler(event, id, this.state);
     this.setState({
       form: newState.updatedForm,
-      valid: newState.validForm
+      valid: newState.valid
     });
   };
 

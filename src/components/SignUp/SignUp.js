@@ -85,7 +85,7 @@ class SignUp extends Component {
     let newState = formChangeHandler(e, id, this.state);
     this.setState({
       form: newState.updatedForm,
-      valid: newState.validForm
+      valid: newState.valid
     });
   };
 
