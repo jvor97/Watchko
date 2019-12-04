@@ -24,46 +24,21 @@ class SignIn extends Component {
           type: "password",
           placeholder: "Password"
         },
-        validation: {
-          require: true,
-          minLength: 7,
-          number: true,
-          specChar: true
-        },
-        valid: false,
-        touched: false,
         value: "",
         label: "Password"
       }
-    },
-    valid: true
+    }
   };
 
   onChangeHandler = (e, id) => {
     let updatedForm = { ...this.state.loginForm };
     let updatedFormEl = { ...updatedForm[id] };
     updatedFormEl.value = e.target.value;
-    updatedFormEl.valid = validateValue(
-      updatedFormEl.validation,
-      updatedFormEl.value
-    );
+
+    updatedForm[id] = updatedFormEl;
 
     this.setState({
       loginForm: updatedForm
-    });
-
-    updatedFormEl.touched = true;
-
-    let validForm = true;
-    for (let formElement in updatedForm) {
-      validForm = updatedForm[formElement].valid && validForm;
-    }
-
-    updatedForm[id] = updatedFormEl;
-    console.log(updatedFormEl);
-    this.setState({
-      contactForm: updatedForm,
-      valid: validForm
     });
   };
 
@@ -94,8 +69,6 @@ class SignIn extends Component {
             value={input.config.value}
             config={input.config.elementConfig}
             label={input.config.label}
-            invalid={!input.config.valid}
-            touched={input.config.touched}
             onChange={event => this.onChangeHandler(event, input.id)}
           />
         ))}
