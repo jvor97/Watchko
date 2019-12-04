@@ -27,10 +27,17 @@ class Counter extends Component {
   };
   render() {
     let id = this.props.id;
-    console.log(this.props.id);
+    let isDisabled = false;
+    if (this.props.numOfOrders === 1) {
+      isDisabled = true;
+    }
     return (
       <div>
-        <GeneralBtn value="-" clicked={() => this.handleDec(id)} />
+        <GeneralBtn
+          value="-"
+          disabled={isDisabled}
+          clicked={() => this.handleDec(id)}
+        />
         <input
           value={this.props.numOfOrders}
           readOnly
