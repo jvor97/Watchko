@@ -7,7 +7,9 @@ const input = props => {
   let validationMessage;
   if (props.invalid && props.touched) {
     classes.push("invalid");
-    validationMessage = <p>Please enter a valid value </p>;
+    validationMessage = (
+      <p style={{ fontSize: "70%" }}>Please enter a valid value </p>
+    );
   }
 
   let inputType;

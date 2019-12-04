@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { validateValue } from "../../shared/utility";
 
 import Input from "../Input/Input";
 import * as actions from "../../store/actions/index";
@@ -14,14 +15,6 @@ class SignIn extends Component {
           type: "email",
           placeholder: "User email"
         },
-        validation: {
-          require: true,
-          minLength: 5,
-          number: false,
-          specChar: true
-        },
-        valid: false,
-        touched: false,
         value: "",
         label: "Email"
       },
@@ -46,30 +39,11 @@ class SignIn extends Component {
     valid: true
   };
 
-  validateValue = (rule, value) => {
-    let isValid = true;
-    if (rule.require && isValid) {
-      value.trim() !== "" ? (isValid = true) : (isValid = false);
-    }
-    if (rule.minLength && isValid) {
-      value.length >= rule.minLength ? (isValid = true) : (isValid = false);
-    }
-    if (rule.number && isValid) {
-      const patt = /[0-9]/g;
-      patt.test(value) ? (isValid = true) : (isValid = false);
-    }
-    if (rule.specChar && isValid) {
-      const patt = /[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
-      patt.test(value) ? (isValid = true) : (isValid = false);
-    }
-    return isValid;
-  };
-
   onChangeHandler = (e, id) => {
     let updatedForm = { ...this.state.loginForm };
     let updatedFormEl = { ...updatedForm[id] };
     updatedFormEl.value = e.target.value;
-    updatedFormEl.valid = this.validateValue(
+    updatedFormEl.valid = validateValue(
       updatedFormEl.validation,
       updatedFormEl.value
     );

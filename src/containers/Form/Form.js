@@ -2,10 +2,11 @@ import React, { Component } from "react";
 import Input from "../../components/Input/Input";
 import GeneralBtn from "../../components/Buttons/GeneralBtn/GeneralBtn";
 import axios from "axios";
+import { formChangeHandler } from "../../shared/utility";
 
 class Form extends Component {
   state = {
-    contactForm: {
+    form: {
       name: {
         elementType: "input",
         configuration: {
@@ -70,58 +71,20 @@ class Form extends Component {
     valid: true
   };
 
-  validateValue = (rule, value) => {
-    let isValid = true;
-    if (rule.require && isValid) {
-      value.trim() !== "" ? (isValid = true) : (isValid = false);
-    }
-    if (rule.minLength && isValid) {
-      value.length >= rule.minLength ? (isValid = true) : (isValid = false);
-    }
-    if (rule.number && isValid) {
-      const patt = /[0-9]/g;
-      patt.test(value) ? (isValid = true) : (isValid = false);
-    }
-    if (rule.specChar && isValid) {
-      const patt = /[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
-      patt.test(value) ? (isValid = true) : (isValid = false);
-    }
-    return isValid;
-  };
-
   changeHandler = (event, id) => {
-    const updatedForm = { ...this.state.contactForm };
-    const updatedFormEl = { ...updatedForm[id] };
-
-    updatedFormEl.value = event.target.value;
-    updatedFormEl.valid = this.validateValue(
-      updatedFormEl.validation,
-      updatedFormEl.value
-    );
-    updatedFormEl.touched = true;
-
-    let validForm = true;
-    for (let formElement in updatedForm) {
-      // if (updatedForm[formElement].valid && validForm) {
-      //   validForm = true;
-      // }
-      //nefunguje preco ?
-      validForm = updatedForm[formElement].valid && validForm;
-    }
-
-    updatedForm[id] = updatedFormEl;
+    let newState = formChangeHandler(event, id, this.state);
     this.setState({
-      contactForm: updatedForm,
-      valid: validForm
+      form: newState.updatedForm,
+      valid: newState.validForm
     });
   };
 
   contactFormHandler = event => {
     event.preventDefault();
     let formData = {};
-    for (const formElement in this.state.contactForm) {
+    for (const formElement in this.state.form) {
       // formData[formElement] = formElement.value;
-      formData[formElement] = this.state.contactForm[formElement].value;
+      formData[formElement] = this.state.form[formElement].value;
     }
 
     //   ("http://localhost:4000/about/add"
@@ -135,10 +98,10 @@ class Form extends Component {
 
   render() {
     let contactFormElements = [];
-    for (const key in this.state.contactForm) {
+    for (const key in this.state.form) {
       contactFormElements.push({
         id: key,
-        config: this.state.contactForm[key]
+        config: this.state.form[key]
       });
     }
 

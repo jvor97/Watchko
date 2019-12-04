@@ -4,16 +4,25 @@ import Input from "../Input/Input";
 import GeneralBtn from "../Buttons/GeneralBtn/GeneralBtn";
 import "./SignUp.css";
 import * as actions from "../../store/actions/index";
+import { formChangeHandler } from "../../shared/utility";
 
 class SignUp extends Component {
   state = {
-    loginForm: {
+    form: {
       firstName: {
         elementType: "input",
         elementConfig: {
           type: "text",
           placeholder: "John"
         },
+        validation: {
+          require: true,
+          minLength: 0,
+          number: false,
+          specChar: false
+        },
+        valid: false,
+        touched: false,
         value: "",
         label: "First Name"
       },
@@ -23,6 +32,14 @@ class SignUp extends Component {
           type: "text",
           placeholder: "Smith"
         },
+        validation: {
+          require: true,
+          minLength: 0,
+          number: false,
+          specChar: false
+        },
+        valid: false,
+        touched: false,
         value: "",
         label: "Last Name"
       },
@@ -32,6 +49,14 @@ class SignUp extends Component {
           type: "email",
           placeholder: "john.smith@example.com"
         },
+        validation: {
+          require: true,
+          minLength: 5,
+          number: false,
+          specChar: true
+        },
+        valid: false,
+        touched: false,
         value: "",
         label: "Email"
       },
@@ -41,19 +66,26 @@ class SignUp extends Component {
           type: "password",
           placeholder: "Password"
         },
+        validation: {
+          require: true,
+          minLength: 5,
+          number: true,
+          specChar: true
+        },
+        valid: false,
+        touched: false,
         value: "",
         label: "Password"
       }
-    }
+    },
+    valid: true
   };
 
   onChangeHandler = (e, id) => {
-    let updatedLoginForm = { ...this.state.loginForm };
-    let updatedFormElement = { ...updatedLoginForm[id] };
-    updatedFormElement.value = e.target.value;
-    updatedLoginForm[id] = updatedFormElement;
+    let newState = formChangeHandler(e, id, this.state);
     this.setState({
-      loginForm: updatedLoginForm
+      form: newState.updatedForm,
+      valid: newState.validForm
     });
   };
 
@@ -65,18 +97,18 @@ class SignUp extends Component {
     // }
 
     this.props.onSignUp(
-      this.state.loginForm.email.value,
-      this.state.loginForm.password.value,
+      this.state.form.email.value,
+      this.state.form.password.value,
       "signUp"
     );
   };
 
   render() {
     const formElementsArray = [];
-    for (let i in this.state.loginForm) {
+    for (let i in this.state.form) {
       formElementsArray.push({
         id: i,
-        config: this.state.loginForm[i]
+        config: this.state.form[i]
       });
     }
 
@@ -88,6 +120,8 @@ class SignUp extends Component {
             elementType={input.config.elementType}
             value={input.config.value}
             config={input.config.elementConfig}
+            invalid={!input.config.valid}
+            touched={input.config.touched}
             label={input.config.label}
             onChange={event => this.onChangeHandler(event, input.id)}
           />
